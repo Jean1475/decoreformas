@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #E6EAEA; font-family: 'Hanken Grotesk', sans-serif; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  .bb-page, .bb-page * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  @page { size: A4 landscape; margin: 0; }
+  @media print {
+    body { background: #fff; }
+    .bb-stack { gap: 0 !important; padding: 0 !important; }
+    .bb-page { box-shadow: none !important; border-radius: 0 !important; break-after: page; margin: 0 !important; }
+    .bb-page:last-child { break-after: auto; }
+  }
+</style>
+</helmet>
+
+<div class="bb-stack" style="display:flex;flex-direction:column;align-items:center;gap:44px;padding:52px 24px 80px;min-height:100vh;">
+
+  <!-- ============ 01 · PORTADA ============ -->
+  <section class="bb-page" data-screen-label="01 Portada" style="position:relative;width:1123px;height:794px;overflow:hidden;flex:none;border-radius:4px;box-shadow:0 14px 44px rgba(15,25,45,0.20);background:#1D3557;">
+    <div style="position:absolute;right:-150px;bottom:-160px;opacity:0.09;">
+      <dc-import name="PixelMark" color="#A8DADC" cell="62" gap="9" radius="10" hint-size="640px,640px"></dc-import>
+    </div>
+    <div style="position:absolute;left:72px;top:60px;right:72px;display:flex;justify-content:space-between;align-items:center;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:#A8DADC;">
+      <span>Manual de identidad de marca</span>
+      <span>V1.0 · 2026</span>
+    </div>
+    <div style="position:absolute;left:72px;bottom:170px;">
+      <dc-import name="PixelMark" color="#E63946" cell="22" gap="4" radius="4" hint-size="230px,230px"></dc-import>
+      <div style="margin-top:40px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:96px;line-height:0.9;letter-spacing:-0.04em;color:#F1FAEE;">decoreformas</div>
+      <div style="margin-top:22px;font-family:'Space Mono',monospace;font-size:14px;letter-spacing:0.28em;text-transform:uppercase;color:#457B9D;">Reformas integrales · hogar &amp; espacios</div>
+    </div>
+    <div style="position:absolute;left:72px;bottom:60px;right:72px;display:flex;justify-content:space-between;align-items:center;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(241,250,238,0.45);">
+      <span>Cercana · Premium · Digital</span>
+      <span>Brand book — Decoreformas</span>
+    </div>
+  </section>
+
+  <!-- ============ 02 · ESENCIA ============ -->
+  <section class="bb-page" data-screen-label="02 Esencia" style="position:relative;width:1123px;height:794px;overflow:hidden;flex:none;border-radius:4px;box-shadow:0 14px 44px rgba(15,25,45,0.20);background:#FCFCFA;padding:64px 72px;">
+    <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#E63946;">01 — La marca</div>
+    <div style="margin-top:28px;max-width:880px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:54px;line-height:1.04;letter-spacing:-0.025em;color:#1D3557;text-wrap:balance;">Cercanos en el trato, impecables en la obra.</div>
+    <div style="margin-top:24px;max-width:720px;font-size:17px;line-height:1.6;color:#42526a;">Decoreformas reforma casas para una generación que quiere hablar claro, ver el avance en el móvil y abrir la puerta a un espacio que parece de revista. Cercana como un vecino, cuidada como un estudio de diseño.</div>
+
+    <div style="margin-top:64px;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;">
+      <div style="border-top:3px solid #1D3557;padding-top:24px;">
+        <dc-import name="PixelMark" color="#1D3557" cell="9" gap="2" radius="2" hint-size="95px,95px"></dc-import>
+        <div style="margin-top:20px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px;color:#1D3557;">Cercana y de confianza</div>
+        <div style="margin-top:10px;font-size:15px;line-height:1.55;color:#5a677c;">Hablamos sin tecnicismos, damos la cara y cumplimos los plazos que prometemos.</div>
+      </div>
+      <div style="border-top:3px solid #E63946;padding-top:24px;">
+        <dc-import name="PixelMark" color="#E63946" cell="9" gap="2" radius="2" hint-size="95px,95px"></dc-import>
+        <div style="margin-top:20px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px;color:#1D3557;">Cuidada y premium</div>
+        <div style="margin-top:10px;font-size:15px;line-height:1.55;color:#5a677c;">Acabados que se notan en los detalles, no en facturas sorpresa. Calidad visible.</div>
+      </div>
+      <div style="border-top:3px solid #457B9D;padding-top:24px;">
+        <dc-import name="PixelMark" color="#457B9D" cell="9" gap="2" radius="2" hint-size="95px,95px"></dc-import>
+        <div style="margin-top:20px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px;color:#1D3557;">Moderna y digital</div>
+        <div style="margin-top:10px;font-size:15px;line-height:1.55;color:#5a677c;">Presupuesto, seguimiento y entrega en tu pantalla. Sin papeleo eterno.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 03 · SÍMBOLO ============ -->
+  <section class="bb-page" data-screen-label="03 Simbolo" style="position:relative;width:1123px;height:794px;overflow:hidden;flex:none;border-radius:4px;box-shadow:0 14px 44px rgba(15,25,45,0.20);background:#FCFCFA;display:flex;">
+    <div style="width:48%;background:#F1FAEE;display:flex;align-items:center;justify-content:center;position:relative;">
+      <dc-import name="PixelMark" color="#1D3557" cell="40" gap="6" radius="6" hint-size="420px,420px"></dc-import>
+      <div style="position:absolute;left:48px;bottom:44px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#8aa0a3;">El símbolo · isotipo</div>
+    </div>
+    <div style="width:52%;padding:64px 72px;display:flex;flex-direction:column;justify-content:center;">
+      <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#E63946;">02 — El símbolo</div>
+      <div style="margin-top:24px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:46px;line-height:1.05;letter-spacing:-0.025em;color:#1D3557;">Una flor, una ventana, un más.</div>
+      <div style="margin-top:20px;font-size:16px;line-height:1.6;color:#5a677c;max-width:460px;">Construido sobre una retícula pixel de 9×9 — digital de raíz. Cuatro pétalos alrededor de un canal en forma de cruz que se lee de tres maneras:</div>
+      <div style="margin-top:36px;display:flex;flex-direction:column;gap:22px;">
+        <div style="display:flex;gap:18px;align-items:center;">
+          <dc-import name="PixelMark" color="#E63946" cell="7" gap="1" radius="1" hint-size="70px,70px"></dc-import>
+          <div><span style="font-family:'Space Grotesk';font-weight:600;font-size:18px;color:#1D3557;">Flor de cuatro hojas</span><span style="display:block;font-size:14.5px;color:#6b7889;">cercanía, cuidado y un punto amable.</span></div>
+        </div>
+        <div style="display:flex;gap:18px;align-items:center;">
+          <dc-import name="PixelMark" color="#457B9D" cell="7" gap="1" radius="1" hint-size="70px,70px"></dc-import>
+          <div><span style="font-family:'Space Grotesk';font-weight:600;font-size:18px;color:#1D3557;">Ventana de cuatro hojas</span><span style="display:block;font-size:14.5px;color:#6b7889;">hogar, luz y espacios que se abren.</span></div>
+        </div>
+        <div style="display:flex;gap:18px;align-items:center;">
+          <dc-import name="PixelMark" color="#1D3557" cell="7" gap="1" radius="1" hint-size="70px,70px"></dc-import>
+          <div><span style="font-family:'Space Grotesk';font-weight:600;font-size:18px;color:#1D3557;">Un signo «+» en el centro</span><span style="display:block;font-size:14.5px;color:#6b7889;">mejora, suma de valor, reforma.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 04 · LOGOTIPO ============ -->
+  <section class="bb-page" data-screen-label="04 Logotipo" style="position:relative;width:1123px;height:794px;overflow:hidden;flex:none;border-radius:4px;box-shadow:0 14px 44px rgba(15,25,45,0.20);background:#FCFCFA;padding:42px 72px;">
+    <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#E63946;">03 — Logotipo</div>
+    <div style="margin-top:14px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:36px;letter-spacing:-0.025em;color:#1D3557;">Logotipo y construcción</div>
+
+    <div style="margin-top:24px;display:grid;grid-template-columns:1.3fr 1fr;gap:24px;">
+      <!-- horizontal lockup -->
+      <div style="border:1px solid #e4e9e6;border-radius:10px;background:#fff;padding:30px 36px;display:flex;flex-direction:column;justify-content:space-between;">
+        <div style="display:flex;align-items:center;gap:22px;">
+          <dc-import name="PixelMark" color="#1D3557" cell="14" gap="2" radius="2" hint-size="150px,150px"></dc-import>
+          <span style="font-family:'Space Grotesk';font-weight:600;font-size:40px;letter-spacing:-0.04em;color:#1D3557;">decoreformas</span>
+        </div>
+        <div style="margin-top:30px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#9aa7a6;">Lockup horizontal · principal</div>
+      </div>
+      <!-- vertical lockup -->
+      <div style="border:1px solid #e4e9e6;border-radius:10px;background:#fff;padding:26px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;position:relative;">
+        <dc-import name="PixelMark" color="#1D3557" cell="13" gap="2" radius="2" hint-size="135px,135px"></dc-import>
+        <span style="font-family:'Space Grotesk';font-weight:600;font-size:26px;letter-spacing:-0.04em;color:#1D3557;">decoreformas</span>
+        <div style="position:absolute;left:24px;bottom:18px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#9aa7a6;">Vertical</div>
+      </div>
+    </div>
+
+    <div style="margin-top:18px;display:grid;grid-template-columns:1.3fr 1fr;gap:24px;">
+      <!-- clear space -->
+      <div style="border:1px solid #e4e9e6;border-radius:10px;background:#fff;padding:22px 32px;">
+        <div style="font-family:'Space Mono';font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#9aa7a6;margin-bottom:12px;">Área de respeto = 1 módulo (x)</div>
+        <div style="display:inline-flex;align-items:center;gap:16px;border:1.5px dashed #A8DADC;border-radius:6px;padding:22px;background:#F8FBFA;">
+          <dc-import name="PixelMark" color="#1D3557" cell="11" gap="2" radius="2" hint-size="120px,120px"></dc-import>
+          <span style="font-family:'Space Grotesk';font-weight:600;font-size:30px;letter-spacing:-0.04em;color:#1D3557;">decoreformas</span>
+        </div>
+        <div style="margin-top:14px;font-size:13.5px;color:#7a8798;">Mantén libre, como mínimo, el ancho de un módulo del símbolo alrededor del logo.</div>
+      </div>
+      <!-- min size -->
+      <div style="border:1px solid #e4e9e6;border-radius:10px;background:#fff;padding:22px 32px;display:flex;flex-direction:column;justify-content:center;">
+        <div style="font-family:'Space Mono';font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#9aa7a6;margin-bottom:20px;">Tamaño mínimo</div>
+        <div style="display:flex;align-items:flex-end;gap:30px;">
+          <div style="text-align:center;"><dc-import name="PixelMark" color="#1D3557" cell="5" gap="1" radius="1" hint-size="55px,55px"></dc-import><div style="margin-top:10px;font-family:'Space Mono';font-size:11px;color:#9aa7a6;">16 px · símbolo</div></div>
+          <div style="text-align:center;"><span style="font-family:'Space Grotesk';font-weight:600;font-size:16px;letter-spacing:-0.03em;color:#1D3557;">decoreformas</span><div style="margin-top:10px;font-family:'Space Mono';font-size:11px;color:#9aa7a6;">90 px · lockup</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 05 · VERSIONES ============ -->
+  <section class="bb-page" data-screen-label="05 Versiones" style="position:relative;width:1123px;height:794px;overflow:hidden;flex:none;border-radius:4px;box-shadow:0 14px 44px rgba(15,25,45,0.20);background:#FCFCFA;padding:64px 72px;">
+    <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#E63946;">04 — Versiones y usos</div>
+    <div style="margin-top:18px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:40px;letter-spacing:-0.025em;color:#1D3557;">Versiones cromáticas</div>
+
+    <div style="margin-top:34px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;">
+      <div style="border-radius:10px;background:#fff;border:1px solid #e4e9e6;height:150px;display:flex;align-items:center;justify-content:center;"><dc-import name="PixelMark" color="#1D3557" cell="10" gap="2" radius="2" hint-size="105px,105px"></dc-import></div>
+      <div style="border-radius:10px;background:#fff;border:1px solid #e4e9e6;height:150px;display:flex;align-items:center;justify-content:center;"><dc-import name="PixelMark" color="#E63946" cell="10" gap="2" radius="2" hint-size="105px,105px"></dc-import></div>
+      <div style="border-radius:10px;background:#fff;border:1px solid #e4e9e6;height:150px;display:flex;align-items:center;justify-content:center;"><dc-import name="PixelMark" color="#111418" cell="10" gap="2" radius="2" hint-size="105px,105px"></dc-import></div>
+      <div style="border-radius:10px;background:#1D3557;height:150px;display:flex;align-items:center;justify-content:center;"><dc-import name="PixelMark" color="#F1FAEE" cell="10" gap="2" radius="2" hint-size="105px,105px"></dc-import></div>
+      <div style="border-radius:10px;background:#E63946;height:150px;display:flex;align-items:center;justify-content:center;"><dc-import name="PixelMark" color="#FFFFFF" cell="10" gap="2" radius="2" hint-size="105px,105px"></dc-import></div>
+      <div style="border-radius:10px;background:#457B9D;height:150px;display:flex;align-items:center;justify-content:center;"><dc-import name="PixelMark" color="#F1FAEE" cell="10" gap="2" radius="2" hint-size="105px,105px"></dc-import></div>
+      <div style="border-radius:10px;background:#A8DADC;height:150px;display:flex;align-items:center;justify-content:center;"><dc-import name="PixelMark" color="#1D3557" cell="10" gap="2" radius="2" hint-size="105px,105px"></dc-import></div>
+      <div style="border-radius:10px;background:#F1FAEE;border:1px solid #e4e9e6;height:150px;display:flex;align-items:center;justify-content:center;"><dc-import name="PixelMark" color="#457B9D" cell="10" gap="2" radius="2" hint-size="105px,105px"></dc-import></div>
+    </div>
+
+    <div style="margin-top:34px;font-family:'Space Mono';font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#9aa7a6;">Usos incorrectos</div>
+    <div style="margin-top:14px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;">
+      <div style="border:1px solid #f0d9db;border-radius:10px;background:#fff;padding:18px;display:flex;flex-direction:column;align-items:center;gap:12px;"><div style="transform:scaleX(1.6);"><dc-import name="PixelMark" color="#1D3557" cell="7" gap="1" radius="1" hint-size="75px,75px"></dc-import></div><span style="font-size:12.5px;color:#9aa7a6;"><span style="color:#E63946;font-weight:700;">✕</span> No deformar</span></div>
+      <div style="border:1px solid #f0d9db;border-radius:10px;background:#fff;padding:18px;display:flex;flex-direction:column;align-items:center;gap:12px;"><dc-import name="PixelMark" color="#7c4dff" cell="7" gap="1" radius="1" hint-size="75px,75px"></dc-import><span style="font-size:12.5px;color:#9aa7a6;"><span style="color:#E63946;font-weight:700;">✕</span> Color fuera de paleta</span></div>
+      <div style="border:1px solid #f0d9db;border-radius:10px;background:#fff;padding:18px;display:flex;flex-direction:column;align-items:center;gap:12px;"><div style="transform:rotate(22deg);"><dc-import name="PixelMark" color="#1D3557" cell="7" gap="1" radius="1" hint-size="75px,75px"></dc-import></div><span style="font-size:12.5px;color:#9aa7a6;"><span style="color:#E63946;font-weight:700;">✕</span> No rotar</span></div>
+      <div style="border:1px solid #f0d9db;border-radius:10px;background:#fff;padding:18px;display:flex;flex-direction:column;align-items:center;gap:12px;"><div style="filter:drop-shadow(3px 4px 3px rgba(0,0,0,0.4));"><dc-import name="PixelMark" color="#1D3557" cell="7" gap="1" radius="1" hint-size="75px,75px"></dc-import></div><span style="font-size:12.5px;color:#9aa7a6;"><span style="color:#E63946;font-weight:700;">✕</span> Sin sombras/efectos</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 06 · COLOR ============ -->
+  <section class="bb-page" data-screen-label="06 Color" style="position:relative;width:1123px;height:794px;overflow:hidden;flex:none;border-radius:4px;box-shadow:0 14px 44px rgba(15,25,45,0.20);background:#FCFCFA;padding:64px 72px;">
+    <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#E63946;">05 — Color</div>
+    <div style="margin-top:18px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:40px;letter-spacing:-0.025em;color:#1D3557;">Paleta</div>
+
+    <div style="margin-top:34px;display:grid;grid-template-columns:repeat(5,1fr);gap:16px;">
+      <div style="border-radius:10px;overflow:hidden;border:1px solid #e9edec;">
+        <div style="height:160px;background:#1D3557;"></div>
+        <div style="padding:16px 14px;background:#fff;">
+          <div style="font-family:'Space Grotesk';font-weight:600;font-size:15px;color:#1D3557;">Oxford Navy</div>
+          <div style="font-family:'Space Mono';font-size:12px;color:#1D3557;margin-top:4px;">#1D3557</div>
+          <div style="font-family:'Space Mono';font-size:11px;color:#9aa7a6;">29 · 53 · 87</div>
+          <div style="margin-top:10px;font-size:12.5px;color:#6b7889;line-height:1.4;">Principal. Tinta y fondos.</div>
+        </div>
+      </div>
+      <div style="border-radius:10px;overflow:hidden;border:1px solid #e9edec;">
+        <div style="height:160px;background:#E63946;"></div>
+        <div style="padding:16px 14px;background:#fff;">
+          <div style="font-family:'Space Grotesk';font-weight:600;font-size:15px;color:#1D3557;">Punch Red</div>
+          <div style="font-family:'Space Mono';font-size:12px;color:#1D3557;margin-top:4px;">#E63946</div>
+          <div style="font-family:'Space Mono';font-size:11px;color:#9aa7a6;">230 · 57 · 70</div>
+          <div style="margin-top:10px;font-size:12.5px;color:#6b7889;line-height:1.4;">Acento. Energía y CTAs.</div>
+        </div>
+      </div>
+      <div style="border-radius:10px;overflow:hidden;border:1px solid #e9edec;">
+        <div style="height:160px;background:#457B9D;"></div>
+        <div style="padding:16px 14px;background:#fff;">
+          <div style="font-family:'Space Grotesk';font-weight:600;font-size:15px;color:#1D3557;">Cerulean</div>
+          <div style="font-family:'Space Mono';font-size:12px;color:#1D3557;margin-top:4px;">#457B9D</div>
+          <div style="font-family:'Space Mono';font-size:11px;color:#9aa7a6;">69 · 123 · 157</div>
+          <div style="margin-top:10px;font-size:12.5px;color:#6b7889;line-height:1.4;">Secundario. Apoyo.</div>
+        </div>
+      </div>
+      <div style="border-radius:10px;overflow:hidden;border:1px solid #e9edec;">
+        <div style="height:160px;background:#A8DADC;"></div>
+        <div style="padding:16px 14px;background:#fff;">
+          <div style="font-family:'Space Grotesk';font-weight:600;font-size:15px;color:#1D3557;">Frosted Blue</div>
+          <div style="font-family:'Space Mono';font-size:12px;color:#1D3557;margin-top:4px;">#A8DADC</div>
+          <div style="font-family:'Space Mono';font-size:11px;color:#9aa7a6;">168 · 218 · 220</div>
+          <div style="margin-top:10px;font-size:12.5px;color:#6b7889;line-height:1.4;">Suave. Fondos y detalles.</div>
+        </div>
+      </div>
+      <div style="border-radius:10px;overflow:hidden;border:1px solid #e9edec;">
+        <div style="height:160px;background:#F1FAEE;border-bottom:1px solid #e9edec;"></div>
+        <div style="padding:16px 14px;background:#fff;">
+          <div style="font-family:'Space Grotesk';font-weight:600;font-size:15px;color:#1D3557;">Honeydew</div>
+          <div style="font-family:'Space Mono';font-size:12px;color:#1D3557;margin-top:4px;">#F1FAEE</div>
+          <div style="font-family:'Space Mono';font-size:11px;color:#9aa7a6;">241 · 250 · 238</div>
+          <div style="margin-top:10px;font-size:12.5px;color:#6b7889;line-height:1.4;">Papel. Neutro de base.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:44px;font-family:'Space Mono';font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#9aa7a6;margin-bottom:12px;">Proporción de uso recomendada</div>
+    <div style="display:flex;height:46px;border-radius:8px;overflow:hidden;font-family:'Space Mono';font-size:11px;color:#fff;">
+      <div style="flex:48;background:#1D3557;display:flex;align-items:center;padding-left:14px;">48%</div>
+      <div style="flex:24;background:#F1FAEE;color:#1D3557;display:flex;align-items:center;padding-left:12px;border-right:1px solid #e3e8e6;">24%</div>
+      <div style="flex:15;background:#A8DADC;color:#1D3557;display:flex;align-items:center;padding-left:12px;">15%</div>
+      <div style="flex:8;background:#457B9D;display:flex;align-items:center;padding-left:10px;">8%</div>
+      <div style="flex:5;background:#E63946;display:flex;align-items:center;padding-left:8px;">5%</div>
+    </div>
+    <div style="margin-top:12px;font-size:13.5px;color:#7a8798;">El navy y el papel sostienen la marca; el rojo entra siempre como chispa, nunca como fondo dominante.</div>
+  </section>
+
+  <!-- ============ 07 · TIPOGRAFÍA ============ -->
+  <section class="bb-page" data-screen-label="07 Tipografia" style="position:relative;width:1123px;height:794px;overflow:hidden;flex:none;border-radius:4px;box-shadow:0 14px 44px rgba(15,25,45,0.20);background:#FCFCFA;padding:64px 72px;">
+    <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#E63946;">06 — Tipografía</div>
+    <div style="margin-top:18px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:40px;letter-spacing:-0.025em;color:#1D3557;">Sistema tipográfico</div>
+
+    <div style="margin-top:34px;display:grid;grid-template-columns:1.1fr 1fr;gap:26px;">
+      <div style="border:1px solid #e4e9e6;border-radius:12px;background:#fff;padding:34px 36px;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;">
+          <span style="font-family:'Space Grotesk';font-weight:600;font-size:18px;color:#1D3557;">Space Grotesk</span>
+          <span style="font-family:'Space Mono';font-size:11px;color:#9aa7a6;text-transform:uppercase;letter-spacing:0.12em;">Display · titulares</span>
+        </div>
+        <div style="font-family:'Space Grotesk';font-weight:500;font-size:96px;line-height:1;letter-spacing:-0.03em;color:#1D3557;margin-top:16px;">Aa</div>
+        <div style="margin-top:14px;font-family:'Space Grotesk';font-weight:500;font-size:18px;color:#42526a;letter-spacing:0.01em;">ABCDEFGHIJKLM · abcdefghijklm · 0123456789</div>
+        <div style="margin-top:18px;display:flex;gap:10px;font-family:'Space Mono';font-size:11px;color:#9aa7a6;">
+          <span style="border:1px solid #e4e9e6;border-radius:5px;padding:5px 9px;">Regular</span>
+          <span style="border:1px solid #e4e9e6;border-radius:5px;padding:5px 9px;">Medium</span>
+          <span style="border:1px solid #e4e9e6;border-radius:5px;padding:5px 9px;">Bold</span>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:26px;">
+        <div style="border:1px solid #e4e9e6;border-radius:12px;background:#fff;padding:26px 30px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;">
+            <span style="font-family:'Space Grotesk';font-weight:600;font-size:17px;color:#1D3557;">Hanken Grotesk</span>
+            <span style="font-family:'Space Mono';font-size:11px;color:#9aa7a6;text-transform:uppercase;letter-spacing:0.12em;">Texto</span>
+          </div>
+          <div style="margin-top:12px;font-size:16px;line-height:1.55;color:#42526a;">Texto cómodo y cercano para párrafos, presupuestos y la web. Legible en pantalla y en papel, con un tono cálido pero ordenado.</div>
+        </div>
+        <div style="border:1px solid #e4e9e6;border-radius:12px;background:#1D3557;padding:26px 30px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;">
+            <span style="font-family:'Space Grotesk';font-weight:600;font-size:17px;color:#F1FAEE;">Space Mono</span>
+            <span style="font-family:'Space Mono';font-size:11px;color:#A8DADC;text-transform:uppercase;letter-spacing:0.12em;">Etiquetas · datos</span>
+          </div>
+          <div style="margin-top:14px;font-family:'Space Mono';font-size:15px;letter-spacing:0.05em;color:#F1FAEE;">REF · 2026 — PRESUPUESTO_OK</div>
+          <div style="margin-top:8px;font-family:'Space Mono';font-size:12px;color:#A8DADC;">El guiño pixel: úsalo en kickers, fechas y números.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:30px;display:flex;align-items:baseline;gap:28px;flex-wrap:wrap;border-top:1px solid #e9edec;padding-top:24px;">
+      <span style="font-family:'Space Grotesk';font-weight:600;font-size:46px;letter-spacing:-0.03em;color:#1D3557;">Reformamos</span>
+      <span style="font-family:'Space Grotesk';font-weight:500;font-size:30px;letter-spacing:-0.02em;color:#457B9D;">tu espacio,</span>
+      <span style="font-family:'Hanken Grotesk';font-weight:600;font-size:22px;color:#6b7889;">a tu manera y</span>
+      <span style="font-family:'Space Mono';font-size:18px;color:#E63946;">en tu tiempo.</span>
+    </div>
+  </section>
+
+  <!-- ============ 08 · PATRÓN ============ -->
+  <section class="bb-page" data-screen-label="08 Patron" style="position:relative;width:1123px;height:794px;overflow:hidden;flex:none;border-radius:4px;box-shadow:0 14px 44px rgba(15,25,45,0.20);background:#FCFCFA;padding:64px 72px;">
+    <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#E63946;">07 — Patrón</div>
+    <div style="margin-top:18px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:40px;letter-spacing:-0.025em;color:#1D3557;">Patrón y textura</div>
+    <div style="margin-top:14px;max-width:640px;font-size:15.5px;line-height:1.55;color:#5a677c;">El isotipo se repite en retícula para crear fondos en redes, packaging, ropa de trabajo o vallas de obra. Tres pieles para distintos contextos.</div>
+
+    <div style="margin-top:34px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+      <div style="height:300px;border-radius:12px;overflow:hidden;border:1px solid #e4e9e6;background-color:#F1FAEE;background-image:url(&quot;data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9 9' shape-rendering='crispEdges'><g fill='%231D3557'><rect x='1' y='0' width='2' height='1'/><rect x='6' y='0' width='2' height='1'/><rect x='0' y='1' width='4' height='2'/><rect x='5' y='1' width='4' height='2'/><rect x='1' y='3' width='2' height='1'/><rect x='6' y='3' width='2' height='1'/><rect x='1' y='5' width='2' height='1'/><rect x='6' y='5' width='2' height='1'/><rect x='0' y='6' width='4' height='2'/><rect x='5' y='6' width='4' height='2'/><rect x='1' y='8' width='2' height='1'/><rect x='6' y='8' width='2' height='1'/></g></svg>&quot;);background-size:58px 58px;background-position:center;"></div>
+      <div style="height:300px;border-radius:12px;overflow:hidden;border:1px solid #e4e9e6;background-color:#E63946;background-image:url(&quot;data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9 9' shape-rendering='crispEdges'><g fill='%23ffffff'><rect x='1' y='0' width='2' height='1'/><rect x='6' y='0' width='2' height='1'/><rect x='0' y='1' width='4' height='2'/><rect x='5' y='1' width='4' height='2'/><rect x='1' y='3' width='2' height='1'/><rect x='6' y='3' width='2' height='1'/><rect x='1' y='5' width='2' height='1'/><rect x='6' y='5' width='2' height='1'/><rect x='0' y='6' width='4' height='2'/><rect x='5' y='6' width='4' height='2'/><rect x='1' y='8' width='2' height='1'/><rect x='6' y='8' width='2' height='1'/></g></svg>&quot;);background-size:58px 58px;background-position:center;"></div>
+      <div style="height:300px;border-radius:12px;overflow:hidden;border:1px solid #e4e9e6;background-color:#1D3557;background-image:url(&quot;data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9 9' shape-rendering='crispEdges'><g fill='%23A8DADC'><rect x='1' y='0' width='2' height='1'/><rect x='6' y='0' width='2' height='1'/><rect x='0' y='1' width='4' height='2'/><rect x='5' y='1' width='4' height='2'/><rect x='1' y='3' width='2' height='1'/><rect x='6' y='3' width='2' height='1'/><rect x='1' y='5' width='2' height='1'/><rect x='6' y='5' width='2' height='1'/><rect x='0' y='6' width='4' height='2'/><rect x='5' y='6' width='4' height='2'/><rect x='1' y='8' width='2' height='1'/><rect x='6' y='8' width='2' height='1'/></g></svg>&quot;);background-size:58px 58px;background-position:center;"></div>
+    </div>
+    <div style="margin-top:16px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;font-family:'Space Mono';font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#9aa7a6;">
+      <span>Navy / Honeydew</span><span>Blanco / Punch Red</span><span>Frosted / Navy</span>
+    </div>
+  </section>
+
+  <!-- ============ 09 · INSTAGRAM ============ -->
+  <section class="bb-page" data-screen-label="09 Instagram" style="position:relative;width:1123px;height:794px;overflow:hidden;flex:none;border-radius:4px;box-shadow:0 14px 44px rgba(15,25,45,0.20);background:#FCFCFA;padding:34px 60px;">
+    <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#E63946;">08 — Aplicación</div>
+    <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:34px;letter-spacing:-0.025em;color:#1D3557;">La marca en Instagram</div>
+
+    <div style="margin-top:18px;display:grid;grid-template-columns:330px 1fr;gap:34px;">
+      <!-- profile -->
+      <div>
+        <div style="display:flex;align-items:center;gap:22px;">
+          <div style="width:92px;height:92px;border-radius:50%;background:#1D3557;display:flex;align-items:center;justify-content:center;flex:none;"><dc-import name="PixelMark" color="#F1FAEE" cell="6" gap="1" radius="1" hint-size="62px,62px"></dc-import></div>
+          <div style="display:flex;gap:20px;text-align:center;">
+            <div><div style="font-family:'Space Grotesk';font-weight:700;font-size:18px;color:#1D3557;">128</div><div style="font-size:12px;color:#8a96a5;">posts</div></div>
+            <div><div style="font-family:'Space Grotesk';font-weight:700;font-size:18px;color:#1D3557;">14,2k</div><div style="font-size:12px;color:#8a96a5;">seguidores</div></div>
+            <div><div style="font-family:'Space Grotesk';font-weight:700;font-size:18px;color:#1D3557;">312</div><div style="font-size:12px;color:#8a96a5;">siguiendo</div></div>
+          </div>
+        </div>
+        <div style="margin-top:18px;font-family:'Space Grotesk';font-weight:600;font-size:16px;color:#1D3557;">decoreformas</div>
+        <div style="font-family:'Space Mono';font-size:11.5px;color:#457B9D;letter-spacing:0.04em;">REFORMAS INTEGRALES · MADRID</div>
+        <div style="margin-top:8px;font-size:13.5px;line-height:1.5;color:#5a677c;">Tu casa, como la imaginas.<br>Presupuesto claro y avance en tu móvil.<br>📍 Obras en toda la Comunidad</div>
+        <div style="margin-top:16px;display:inline-block;background:#E63946;color:#fff;font-family:'Space Grotesk';font-weight:600;font-size:13px;padding:9px 18px;border-radius:8px;">Pide presupuesto</div>
+        <div style="margin-top:24px;display:flex;gap:16px;">
+          <div style="text-align:center;"><div style="width:58px;height:58px;border-radius:50%;border:2px solid #A8DADC;display:flex;align-items:center;justify-content:center;background:#F1FAEE;"><dc-import name="PixelMark" color="#1D3557" cell="4" gap="1" radius="1" hint-size="44px,44px"></dc-import></div><div style="margin-top:6px;font-size:11px;color:#8a96a5;">Cocinas</div></div>
+          <div style="text-align:center;"><div style="width:58px;height:58px;border-radius:50%;border:2px solid #A8DADC;display:flex;align-items:center;justify-content:center;background:#F1FAEE;"><dc-import name="PixelMark" color="#E63946" cell="4" gap="1" radius="1" hint-size="44px,44px"></dc-import></div><div style="margin-top:6px;font-size:11px;color:#8a96a5;">Baños</div></div>
+          <div style="text-align:center;"><div style="width:58px;height:58px;border-radius:50%;border:2px solid #A8DADC;display:flex;align-items:center;justify-content:center;background:#F1FAEE;"><dc-import name="PixelMark" color="#457B9D" cell="4" gap="1" radius="1" hint-size="44px,44px"></dc-import></div><div style="margin-top:6px;font-size:11px;color:#8a96a5;">Antes/Después</div></div>
+        </div>
+      </div>
+
+      <!-- posts grid -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+        <div style="aspect-ratio:1;background:#1D3557;border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:14px;"><dc-import name="PixelMark" color="#E63946" cell="7" gap="1" radius="1" hint-size="75px,75px"></dc-import><span style="font-family:'Space Grotesk';font-weight:600;font-size:14px;color:#F1FAEE;text-align:center;">Antes / Después</span></div>
+        <div style="aspect-ratio:1;border-radius:4px;background-image:repeating-linear-gradient(45deg,#A8DADC,#A8DADC 9px,#bce3e4 9px,#bce3e4 18px);display:flex;align-items:flex-end;justify-content:center;padding:12px;"><span style="font-family:'Space Mono';font-size:10.5px;letter-spacing:0.08em;color:#1D3557;background:rgba(241,250,238,0.85);padding:4px 8px;border-radius:4px;">COCINA · MADRID</span></div>
+        <div style="aspect-ratio:1;background:#E63946;border-radius:4px;display:flex;align-items:center;justify-content:center;padding:18px;"><span style="font-family:'Space Grotesk';font-weight:600;font-size:18px;line-height:1.1;color:#fff;text-align:center;">3 semanas. Sin sustos.</span></div>
+        <div style="aspect-ratio:1;border-radius:4px;background-image:repeating-linear-gradient(45deg,#cdd8e3,#cdd8e3 9px,#dde5ec 9px,#dde5ec 18px);display:flex;align-items:flex-end;justify-content:center;padding:12px;"><span style="font-family:'Space Mono';font-size:10.5px;letter-spacing:0.08em;color:#1D3557;background:rgba(241,250,238,0.85);padding:4px 8px;border-radius:4px;">BAÑO · CHAMBERÍ</span></div>
+        <div style="aspect-ratio:1;background:#457B9D;border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:14px;"><span style="font-family:'Space Mono';font-size:10px;letter-spacing:0.14em;color:#A8DADC;">TIP</span><span style="font-family:'Space Grotesk';font-weight:600;font-size:14.5px;line-height:1.15;color:#fff;text-align:center;">Mide antes de comprar</span></div>
+        <div style="aspect-ratio:1;border-radius:4px;background-color:#1D3557;background-image:url(&quot;data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9 9' shape-rendering='crispEdges'><g fill='%23A8DADC'><rect x='1' y='0' width='2' height='1'/><rect x='6' y='0' width='2' height='1'/><rect x='0' y='1' width='4' height='2'/><rect x='5' y='1' width='4' height='2'/><rect x='1' y='3' width='2' height='1'/><rect x='6' y='3' width='2' height='1'/><rect x='1' y='5' width='2' height='1'/><rect x='6' y='5' width='2' height='1'/><rect x='0' y='6' width='4' height='2'/><rect x='5' y='6' width='4' height='2'/><rect x='1' y='8' width='2' height='1'/><rect x='6' y='8' width='2' height='1'/></g></svg>&quot;);background-size:40px 40px;"></div>
+        <div style="aspect-ratio:1;border-radius:4px;background-image:repeating-linear-gradient(45deg,#A8DADC,#A8DADC 9px,#bce3e4 9px,#bce3e4 18px);display:flex;align-items:flex-end;justify-content:center;padding:12px;"><span style="font-family:'Space Mono';font-size:10.5px;letter-spacing:0.08em;color:#1D3557;background:rgba(241,250,238,0.85);padding:4px 8px;border-radius:4px;">SALÓN · LATINA</span></div>
+        <div style="aspect-ratio:1;background:#F1FAEE;border:1px solid #e1e9e4;border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:14px;"><span style="font-family:'Space Grotesk';font-weight:600;font-size:15px;color:#1D3557;text-align:center;">«Encantados»</span><span style="font-family:'Space Mono';font-size:10px;color:#9aa7a6;">★★★★★ · Laura M.</span></div>
+        <div style="aspect-ratio:1;border-radius:4px;background-image:repeating-linear-gradient(45deg,#cdd8e3,#cdd8e3 9px,#dde5ec 9px,#dde5ec 18px);display:flex;align-items:flex-end;justify-content:center;padding:12px;"><span style="font-family:'Space Mono';font-size:10.5px;letter-spacing:0.08em;color:#1D3557;background:rgba(241,250,238,0.85);padding:4px 8px;border-radius:4px;">DORMITORIO</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 10 · CIERRE ============ -->
+  <section class="bb-page" data-screen-label="10 Cierre" style="position:relative;width:1123px;height:794px;overflow:hidden;flex:none;border-radius:4px;box-shadow:0 14px 44px rgba(15,25,45,0.20);background:#1D3557;display:flex;align-items:center;justify-content:center;">
+    <div style="position:absolute;left:-140px;top:-150px;opacity:0.08;"><dc-import name="PixelMark" color="#A8DADC" cell="56" gap="8" radius="8" hint-size="580px,580px"></dc-import></div>
+    <div style="text-align:center;position:relative;">
+      <div style="display:flex;justify-content:center;"><dc-import name="PixelMark" color="#E63946" cell="18" gap="3" radius="3" hint-size="190px,190px"></dc-import></div>
+      <div style="margin-top:34px;font-family:'Space Grotesk';font-weight:600;font-size:62px;letter-spacing:-0.04em;color:#F1FAEE;">decoreformas</div>
+      <div style="margin-top:18px;font-family:'Space Mono';font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:#A8DADC;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6e0601020f2e0a0b0d011c0b08011c030f1d400b1d">[email&#160;protected]</a> · @decoreformas</div>
+      <div style="margin-top:48px;font-family:'Space Mono';font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(241,250,238,0.4);">Manual de identidad · v1.0 · 2026</div>
+    </div>
+  </section>
+
+</div>
+</x-dc>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

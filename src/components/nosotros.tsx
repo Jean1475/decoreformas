@@ -1,0 +1,191 @@
+"use client";
+
+import { motion, useReducedMotion } from "motion/react";
+import Image from "next/image";
+
+const EASE = [0.16, 1, 0.3, 1] as const;
+
+const datos = [
+  { valor: "+10", desc: "años de oficio" },
+  { valor: "+300", desc: "proyectos entregados" },
+  { valor: "4,8 / 5", desc: "valoración de clientes" },
+];
+
+/* Cerulean bloom rendered in SVG for the decorative left-side element */
+function BloomDecor() {
+  return (
+    <svg
+      width="200"
+      height="200"
+      viewBox="0 0 200 200"
+      fill="#457B9D"
+      aria-hidden="true"
+      style={{ opacity: 0.18 }}
+    >
+      {/* Simplified 9×9 bloom scaled up */}
+      <g>
+        {/* Top petals */}
+        <rect x="44" y="0" width="44" height="22" rx="6" />
+        <rect x="112" y="0" width="44" height="22" rx="6" />
+        <rect x="0" y="44" width="88" height="44" rx="6" />
+        <rect x="112" y="44" width="88" height="44" rx="6" />
+        {/* Cross center gaps */}
+        <rect x="44" y="89" width="44" height="22" rx="6" />
+        <rect x="112" y="89" width="44" height="22" rx="6" />
+        {/* Bottom petals */}
+        <rect x="44" y="111" width="44" height="22" rx="6" />
+        <rect x="112" y="111" width="44" height="22" rx="6" />
+        <rect x="0" y="112" width="88" height="44" rx="6" />
+        <rect x="112" y="112" width="88" height="44" rx="6" />
+        <rect x="44" y="178" width="44" height="22" rx="6" />
+        <rect x="112" y="178" width="44" height="22" rx="6" />
+      </g>
+    </svg>
+  );
+}
+
+export default function Nosotros() {
+  const reduce = useReducedMotion();
+
+  return (
+    <section
+      id="nosotros"
+      className="py-24 lg:py-36 overflow-hidden"
+      style={{ background: "#F1FAEE" }}
+    >
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+          {/* Image + decoration */}
+          <motion.div
+            initial={{ opacity: reduce ? 1 : 0, x: reduce ? 0 : -32 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.9, ease: EASE }}
+            className="relative order-2 lg:order-1"
+          >
+            {/* Decorative blooms behind the photo */}
+            <div className="absolute -top-8 -left-8 pointer-events-none">
+              <BloomDecor />
+            </div>
+            <div
+              className="absolute -bottom-6 -right-6 pointer-events-none"
+              style={{ transform: "scale(0.65)", transformOrigin: "bottom right" }}
+            >
+              <BloomDecor />
+            </div>
+
+            <div
+              className="relative overflow-hidden"
+              style={{ aspectRatio: "4 / 5", borderRadius: "4px" }}
+            >
+              <Image
+                src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80"
+                alt="Arquitecto técnico de Decoreformas revisando planos de distribución sobre mesa de trabajo"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
+
+            {/* Floating stat chip */}
+            <div
+              className="absolute -bottom-5 -right-4 px-5 py-3.5"
+              style={{
+                background: "#1D3557",
+                color: "#ffffff",
+                borderRadius: "4px",
+              }}
+            >
+              <p
+                style={{
+                  fontFamily: "var(--font-space-grotesk), sans-serif",
+                  fontSize: "2rem",
+                  fontWeight: 700,
+                  lineHeight: 1,
+                  letterSpacing: "-0.04em",
+                }}
+              >
+                +10
+              </p>
+              <p
+                className="text-mono mt-0.5"
+                style={{ color: "#A8DADC", fontSize: "0.625rem" }}
+              >
+                años de oficio
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Text */}
+          <motion.div
+            initial={{ opacity: reduce ? 1 : 0, x: reduce ? 0 : 32 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.9, ease: EASE, delay: reduce ? 0 : 0.1 }}
+            className="order-1 lg:order-2"
+          >
+            <h2 className="text-headline" style={{ color: "#1D3557" }}>
+              Quiénes somos
+            </h2>
+
+            <p
+              className="text-body mt-6 prose-width"
+              style={{
+                color: "#42526a",
+                textWrap: "pretty",
+              } as React.CSSProperties}
+            >
+              Somos un equipo de arquitectos técnicos, diseñadores y jefes de
+              obra con base en Madrid. Fundamos Decoreformas porque la reforma
+              media tiene demasiadas fricciones: presupuestos que se inflan,
+              plazos que se alargan, comunicación fragmentada.
+            </p>
+            <p
+              className="text-body mt-4 prose-width"
+              style={{
+                color: "#6b7889",
+                textWrap: "pretty",
+              } as React.CSSProperties}
+            >
+              Construimos una empresa donde todas las fases de la obra pasan
+              por nosotros. El mismo equipo que firma el presupuesto es el que
+              ejecuta y entrega. Sin sorpresas en el precio ni en el calendario.
+            </p>
+
+            {/* Stats */}
+            <div className="mt-12 grid grid-cols-3 gap-6">
+              {datos.map((d) => (
+                <div
+                  key={d.desc}
+                  style={{
+                    borderTop: "3px solid #1D3557",
+                    paddingTop: "1rem",
+                  }}
+                >
+                  <p
+                    style={{
+                      fontFamily: "var(--font-space-grotesk), sans-serif",
+                      fontSize: "1.75rem",
+                      fontWeight: 700,
+                      color: "#1D3557",
+                      letterSpacing: "-0.04em",
+                      lineHeight: 1,
+                    }}
+                  >
+                    {d.valor}
+                  </p>
+                  <p
+                    className="text-label mt-1.5"
+                    style={{ color: "#6b7889" }}
+                  >
+                    {d.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
