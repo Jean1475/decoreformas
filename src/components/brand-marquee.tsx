@@ -1,5 +1,7 @@
 "use client";
 
+import { Fragment } from "react";
+
 /* Marcas y proveedores con los que trabaja DecorReformas.
    Tratamientos tipográficos variados para dar ritmo editorial
    sin necesidad de logos reales. */
@@ -194,10 +196,9 @@ export default function BrandMarquee() {
         }}
       >
         {items.map((b, i) => (
-          <>
-            <BrandItem key={`brand-${i}`} {...b} />
+          <Fragment key={i}>
+            <BrandItem {...b} />
             <span
-              key={`dot-${i}`}
               aria-hidden="true"
               style={{
                 flexShrink: 0,
@@ -208,7 +209,7 @@ export default function BrandMarquee() {
                 display: "inline-block",
               }}
             />
-          </>
+          </Fragment>
         ))}
       </div>
     </div>

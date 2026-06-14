@@ -41,8 +41,8 @@ export default function Servicios() {
   return (
     <section
       id="servicios"
-      className="py-24 lg:py-36"
-      style={{ background: "#ffffff" }}
+      className="py-20 lg:py-28"
+      style={{ background: "#ffffff", borderTop: "1px solid rgba(29,53,87,0.08)" }}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
@@ -76,17 +76,34 @@ export default function Servicios() {
               style={{ borderBottom: "1px solid rgba(29,53,87,0.10)" }}
             >
               <div className="flex items-start gap-8 py-10 lg:py-12">
-                {/* Accent bar replaces the old border-left — full border-top on just this */}
+                {/* Service index */}
                 <div
-                  className="shrink-0 hidden lg:block mt-1"
+                  className="shrink-0 hidden lg:flex flex-col items-center gap-2 mt-1"
                   aria-hidden="true"
-                  style={{
-                    width: 4,
-                    height: 48,
-                    background: s.accentColor,
-                    borderRadius: 2,
-                  }}
-                />
+                >
+                  <span
+                    style={{
+                      fontFamily: "var(--font-space-mono), monospace",
+                      fontSize: "0.6875rem",
+                      fontWeight: 400,
+                      color: "rgba(29,53,87,0.30)",
+                      letterSpacing: "0.08em",
+                      lineHeight: 1,
+                    }}
+                  >
+                    0{i + 1}
+                  </span>
+                  <span
+                    style={{
+                      width: 6,
+                      height: 6,
+                      borderRadius: "50%",
+                      background: s.accentColor,
+                      flexShrink: 0,
+                      display: "block",
+                    }}
+                  />
+                </div>
 
                 <div className="flex-1 min-w-0">
                   <div className="flex flex-col lg:flex-row lg:items-baseline lg:gap-6">

@@ -110,8 +110,8 @@ export default function Proyectos() {
   return (
     <section
       id="proyectos"
-      className="py-24 lg:py-36"
-      style={{ background: "#F1FAEE" }}
+      className="py-16 lg:py-24"
+      style={{ background: "#ffffff", borderTop: "1px solid rgba(29,53,87,0.08)" }}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}

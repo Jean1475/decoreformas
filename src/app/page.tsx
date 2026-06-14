@@ -16,8 +16,8 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
-        <Servicios />
         <BrandMarquee />
+        <Servicios />
         <Proyectos />
         <ObrasSlider />
         <Proceso />

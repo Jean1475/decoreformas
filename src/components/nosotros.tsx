@@ -51,7 +51,7 @@ export default function Nosotros() {
     <section
       id="nosotros"
       className="py-24 lg:py-36 overflow-hidden"
-      style={{ background: "#F1FAEE" }}
+      style={{ background: "#ffffff", borderTop: "1px solid rgba(29,53,87,0.08)" }}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
@@ -152,34 +152,32 @@ export default function Nosotros() {
               ejecuta y entrega. Sin sorpresas en el precio ni en el calendario.
             </p>
 
-            {/* Stats */}
-            <div className="mt-12 grid grid-cols-3 gap-6">
+            {/* Stats — inline list, not a metric dashboard */}
+            <div
+              className="mt-12 flex flex-col gap-3"
+              style={{ borderTop: "1px solid rgba(29,53,87,0.12)", paddingTop: "1.5rem" }}
+            >
               {datos.map((d) => (
-                <div
-                  key={d.desc}
-                  style={{
-                    borderTop: "3px solid #1D3557",
-                    paddingTop: "1rem",
-                  }}
-                >
-                  <p
+                <div key={d.desc} className="flex items-baseline gap-3">
+                  <span
                     style={{
                       fontFamily: "var(--font-space-grotesk), sans-serif",
-                      fontSize: "1.75rem",
+                      fontSize: "1.125rem",
                       fontWeight: 700,
                       color: "#1D3557",
-                      letterSpacing: "-0.04em",
+                      letterSpacing: "-0.025em",
                       lineHeight: 1,
+                      flexShrink: 0,
                     }}
                   >
                     {d.valor}
-                  </p>
-                  <p
-                    className="text-label mt-1.5"
+                  </span>
+                  <span
+                    className="text-label"
                     style={{ color: "#6b7889" }}
                   >
                     {d.desc}
-                  </p>
+                  </span>
                 </div>
               ))}
             </div>

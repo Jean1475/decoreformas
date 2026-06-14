@@ -320,8 +320,8 @@ export default function ObrasSlider() {
   return (
     <section
       id="obras"
-      className="py-24 lg:py-36"
-      style={{ background: "#ffffff" }}
+      className="py-16 lg:py-24"
+      style={{ background: "#ffffff", borderTop: "1px solid rgba(29,53,87,0.08)" }}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div

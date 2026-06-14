@@ -32,8 +32,8 @@ export default function Testimonios() {
   return (
     <section
       id="testimonios"
-      className="py-24 lg:py-36"
-      style={{ background: "#ffffff" }}
+      className="py-20 lg:py-32"
+      style={{ background: "#ffffff", borderTop: "1px solid rgba(29,53,87,0.08)" }}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Featured quote */}

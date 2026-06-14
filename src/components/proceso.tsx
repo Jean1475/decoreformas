@@ -33,7 +33,7 @@ export default function Proceso() {
   return (
     <section
       id="proceso"
-      className="relative py-24 lg:py-36 overflow-hidden pattern-navy"
+      className="relative py-20 lg:py-32 overflow-hidden pattern-navy"
     >
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
