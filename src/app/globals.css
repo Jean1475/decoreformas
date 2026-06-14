@@ -118,6 +118,15 @@ select {
   max-width: 65ch;
 }
 
+/* ─── Marquee animations ────────────────────────────────────────── */
+@keyframes brand-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  [style*="brand-scroll"] { animation: none !important; }
+}
+
 /* ─── Isotipo pixel pattern (used as bg in dark sections) ──────── */
 /* SVG data-URI pattern matching the brandbook bloom mark          */
 .pattern-navy {

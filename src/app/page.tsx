@@ -1,7 +1,9 @@
 import Nav from "@/components/nav";
 import Hero from "@/components/hero";
+import BrandMarquee from "@/components/brand-marquee";
 import Servicios from "@/components/servicios";
 import Proyectos from "@/components/proyectos";
+import ObrasSlider from "@/components/obras-slider";
 import Proceso from "@/components/proceso";
 import Testimonios from "@/components/testimonios";
 import Nosotros from "@/components/nosotros";
@@ -15,7 +17,9 @@ export default function Home() {
       <main>
         <Hero />
         <Servicios />
+        <BrandMarquee />
         <Proyectos />
+        <ObrasSlider />
         <Proceso />
         <Testimonios />
         <Nosotros />

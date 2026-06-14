@@ -70,9 +70,17 @@ export default function Contacto() {
       return;
     }
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 900));
+    await new Promise((r) => setTimeout(r, 600));
     setLoading(false);
     setEnviado(true);
+
+    /* Abre WhatsApp con los datos del formulario prellenados */
+    const msg = encodeURIComponent(
+      `Hola, soy ${form.nombre} (${form.contacto}).\nProyecto: ${form.tipo}${form.mensaje ? `\n${form.mensaje}` : ""}`
+    );
+    setTimeout(() => {
+      window.open(`https://wa.me/34600000000?text=${msg}`, "_blank", "noopener");
+    }, 700);
   };
 
   const focusInput = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
