@@ -134,3 +134,38 @@ select {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9 9' shape-rendering='crispEdges'%3E%3Cg fill='%23A8DADC' opacity='0.06'%3E%3Crect x='1' y='0' width='2' height='1'/%3E%3Crect x='6' y='0' width='2' height='1'/%3E%3Crect x='0' y='1' width='4' height='2'/%3E%3Crect x='5' y='1' width='4' height='2'/%3E%3Crect x='1' y='3' width='2' height='1'/%3E%3Crect x='6' y='3' width='2' height='1'/%3E%3Crect x='1' y='5' width='2' height='1'/%3E%3Crect x='6' y='5' width='2' height='1'/%3E%3Crect x='0' y='6' width='4' height='2'/%3E%3Crect x='5' y='6' width='4' height='2'/%3E%3Crect x='1' y='8' width='2' height='1'/%3E%3Crect x='6' y='8' width='2' height='1'/%3E%3C/g%3E%3C/svg%3E");
   background-size: 54px 54px;
 }
+
+/* ─── Hero responsive — colapsa a columna en mobile ────────────── */
+#inicio {
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 1023px) {
+  #inicio {
+    grid-template-columns: 1fr !important;
+    height: auto !important;
+    min-height: 100vh;
+  }
+
+  /* Columna izquierda: ocupa su espacio natural */
+  #inicio > div:first-child {
+    padding-top: 88px; /* nav 72px + extra */
+    padding-bottom: 3rem;
+    min-height: 80vh;
+  }
+
+  /* Columna derecha: altura fija para la imagen + form */
+  #inicio > div:last-child,
+  #inicio > [data-framer-component-type] {
+    min-height: 480px;
+  }
+}
+
+/* ─── Placeholder contrast en fondos oscuros ───────────────────── */
+#inicio input::placeholder {
+  color: rgba(241, 250, 238, 0.50);
+}
+
+#inicio select option[value=""] {
+  color: rgba(241, 250, 238, 0.50);
+}

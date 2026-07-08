@@ -1,8 +1,11 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
+import { useState } from "react";
 
 const EASE_EXPO = [0.16, 1, 0.3, 1] as const;
+
+type FormState = "idle" | "sending" | "success" | "error";
 
 function StarIcon() {
   return (
@@ -20,8 +23,23 @@ function CheckIcon() {
   );
 }
 
+const inputBase: React.CSSProperties = {
+  background: "rgba(255,255,255,0.07)",
+  border: "1px solid rgba(168,218,220,0.25)",
+  borderRadius: "6px",
+  padding: "0.625rem 0.75rem",
+  color: "#F1FAEE",
+  fontFamily: "var(--font-hanken), sans-serif",
+  fontSize: "0.875rem",
+  outline: "none",
+  width: "100%",
+  transition: "border-color 0.16s",
+};
+
 export default function Hero() {
   const reduce = useReducedMotion();
+  const [formState, setFormState] = useState<FormState>("idle");
+  const [errors, setErrors] = useState<{ nombre?: string; telefono?: string; tipo?: string }>({});
 
   const stagger = {
     animate: { transition: { staggerChildren: reduce ? 0 : 0.09 } },
@@ -36,6 +54,49 @@ export default function Hero() {
     },
   };
 
+  function validateField(name: string, value: string) {
+    if (name === "nombre" && !value.trim()) return "Escribe tu nombre";
+    if (name === "telefono") {
+      if (!value.trim()) return "Escribe tu teléfono";
+      if (!/^[+\d\s\-()]{7,}$/.test(value)) return "Teléfono no válido";
+    }
+    if (name === "tipo" && !value) return "Elige el tipo de reforma";
+    return undefined;
+  }
+
+  function handleBlur(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) {
+    const { name, value } = e.target;
+    const msg = validateField(name, value);
+    setErrors((prev) => ({ ...prev, [name]: msg }));
+  }
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const fd = new FormData(e.currentTarget);
+    const nombre = fd.get("nombre") as string;
+    const telefono = fd.get("telefono") as string;
+    const tipo = fd.get("tipo") as string;
+
+    const newErrors = {
+      nombre: validateField("nombre", nombre),
+      telefono: validateField("telefono", telefono),
+      tipo: validateField("tipo", tipo),
+    };
+    setErrors(newErrors);
+    if (Object.values(newErrors).some(Boolean)) return;
+
+    setFormState("sending");
+    try {
+      /* Aquí conectar con el endpoint real (Formspree, API, etc.) */
+      await new Promise((res) => setTimeout(res, 1200));
+      setFormState("success");
+    } catch {
+      setFormState("error");
+    }
+  }
+
+  const isBusy = formState === "sending";
+
   return (
     <section
       id="inicio"
@@ -49,7 +110,7 @@ export default function Hero() {
         position: "relative",
       }}
     >
-      {/* ── IZQUIERDA ── */}
+      {/* ── IZQUIERDA — contenido ── */}
       <div
         style={{
           display: "flex",
@@ -65,27 +126,27 @@ export default function Hero() {
           animate="animate"
           style={{
             width: "100%",
-            maxWidth: 520,
-            padding: "2rem 2.5rem 2.5rem",
+            maxWidth: 620,
+            padding: "2rem 3.5rem 2.5rem",
           }}
         >
           {/* Kicker */}
           <motion.p
             variants={fadeUp}
             className="text-mono"
-            style={{ color: "#A8DADC", marginBottom: "1.25rem", fontSize: "0.625rem" }}
+            style={{ color: "#A8DADC", marginBottom: "1.5rem", fontSize: "0.75rem" }}
           >
             Reformas integrales · Leganés · Getafe · Alcorcón · Móstoles
           </motion.p>
 
-          {/* Headline — tamaño más contenido para que quepa */}
+          {/* Headline */}
           <motion.h1
             variants={fadeUp}
             style={{
               fontFamily: "var(--font-space-grotesk), sans-serif",
-              fontSize: "clamp(2rem, 4.5vw, 3.75rem)",
+              fontSize: "clamp(2.5rem, 5vw, 5rem)",
               fontWeight: 700,
-              lineHeight: 1.05,
+              lineHeight: 1.03,
               letterSpacing: "-0.03em",
               color: "#ffffff",
               textWrap: "balance" as never,
@@ -102,11 +163,11 @@ export default function Hero() {
             variants={fadeUp}
             className="text-body"
             style={{
-              color: "rgba(241,250,238,0.72)",
-              lineHeight: 1.68,
-              marginTop: "1rem",
-              fontSize: "0.9375rem",
-              maxWidth: "48ch",
+              color: "rgba(241,250,238,0.75)",
+              lineHeight: 1.7,
+              marginTop: "1.375rem",
+              fontSize: "1.0625rem",
+              maxWidth: "52ch",
             }}
           >
             Presupuesto cerrado desde el primer día, un único interlocutor de principio
@@ -119,7 +180,7 @@ export default function Hero() {
           {/* CTAs */}
           <motion.div
             variants={fadeUp}
-            style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", marginTop: "1.75rem" }}
+            style={{ display: "flex", flexWrap: "wrap", gap: "0.875rem", marginTop: "2.25rem" }}
           >
             <a
               href="https://wa.me/34600000000?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20un%20presupuesto."
@@ -128,12 +189,12 @@ export default function Hero() {
               style={{
                 display: "inline-flex",
                 alignItems: "center",
-                gap: "0.5rem",
-                padding: "0.75rem 1.375rem",
+                gap: "0.625rem",
+                padding: "0.9rem 1.625rem",
                 background: "#25D366",
                 color: "#ffffff",
                 fontFamily: "var(--font-space-grotesk), sans-serif",
-                fontSize: "0.875rem",
+                fontSize: "1rem",
                 fontWeight: 600,
                 borderRadius: "6px",
                 textDecoration: "none",
@@ -154,12 +215,12 @@ export default function Hero() {
               style={{
                 display: "inline-flex",
                 alignItems: "center",
-                gap: "0.4rem",
-                padding: "0.75rem 1.25rem",
+                gap: "0.5rem",
+                padding: "0.9rem 1.5rem",
                 border: "1.5px solid rgba(168,218,220,0.32)",
                 color: "#F1FAEE",
                 fontFamily: "var(--font-space-grotesk), sans-serif",
-                fontSize: "0.875rem",
+                fontSize: "1rem",
                 fontWeight: 500,
                 borderRadius: "6px",
                 textDecoration: "none",
@@ -181,24 +242,24 @@ export default function Hero() {
             </a>
           </motion.div>
 
-          {/* Trust strip — compacto */}
+          {/* Trust strip */}
           <motion.div
             variants={fadeUp}
             style={{
-              marginTop: "1.5rem",
-              paddingTop: "1.25rem",
+              marginTop: "2rem",
+              paddingTop: "1.5rem",
               borderTop: "1px solid rgba(168,218,220,0.14)",
               display: "flex",
               flexDirection: "column",
-              gap: "0.5rem",
+              gap: "0.65rem",
             }}
           >
             {[
               { type: "check", text: "Presupuesto cerrado desde el primer día" },
               { type: "check", text: "25 años de oficio · +800 obras entregadas" },
-              { type: "stars", text: "4.9 en Google · 127 reseñas" },
+              { type: "stars", text: "4.9 en Google · 127 reseñas", href: "https://g.co/kgs/decoreformas" },
             ].map((row, i) => (
-              <div key={i} style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+              <div key={i} style={{ display: "flex", alignItems: "center", gap: "0.625rem" }}>
                 {row.type === "stars" ? (
                   <span style={{ display: "flex", gap: "1px" }} aria-label="4.9 de 5 estrellas">
                     <StarIcon /><StarIcon /><StarIcon /><StarIcon /><StarIcon />
@@ -206,19 +267,38 @@ export default function Hero() {
                 ) : (
                   <span style={{ flexShrink: 0, display: "flex" }}><CheckIcon /></span>
                 )}
-                <span
-                  className="text-mono"
-                  style={{ color: "rgba(241,250,238,0.58)", fontSize: "0.6rem", letterSpacing: "0.12em" }}
-                >
-                  {row.text}
-                </span>
+                {row.href ? (
+                  <a
+                    href={row.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-mono"
+                    style={{
+                      color: "rgba(241,250,238,0.58)",
+                      fontSize: "0.6rem",
+                      letterSpacing: "0.12em",
+                      textDecoration: "underline",
+                      textUnderlineOffset: "2px",
+                      textDecorationColor: "rgba(168,218,220,0.30)",
+                    }}
+                  >
+                    {row.text}
+                  </a>
+                ) : (
+                  <span
+                    className="text-mono"
+                    style={{ color: "rgba(241,250,238,0.58)", fontSize: "0.7rem", letterSpacing: "0.12em" }}
+                  >
+                    {row.text}
+                  </span>
+                )}
               </div>
             ))}
           </motion.div>
         </motion.div>
       </div>
 
-      {/* ── DERECHA — imagen 100% altura + formulario abajo ── */}
+      {/* ── DERECHA — imagen full + formulario ── */}
       <motion.div
         initial={{ opacity: reduce ? 1 : 0 }}
         animate={{ opacity: 1, transition: { duration: 1.1, delay: 0.15, ease: EASE_EXPO } }}
@@ -230,11 +310,11 @@ export default function Hero() {
           justifyContent: "flex-end",
         }}
       >
-        {/* Imagen empieza desde debajo del nav (72px) */}
+        {/* Imagen: espacio reformado real — salón Madrid 2024 */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=85&auto=format&fit=crop"
-          alt="Cocina reformada con acabados modernos en tonos neutros"
+          src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=85&auto=format&fit=crop"
+          alt="Salón reformado, suelo de madera clara y cocina integrada en tonos neutros"
           style={{
             position: "absolute",
             top: 72,
@@ -244,11 +324,11 @@ export default function Hero() {
             width: "100%",
             height: "calc(100% - 72px)",
             objectFit: "cover",
-            objectPosition: "center",
+            objectPosition: "center 30%",
           }}
         />
 
-        {/* Degradado sobre la imagen (empieza desde el nav) */}
+        {/* Degradado: foto visible arriba, oscuro en zona del formulario */}
         <div
           aria-hidden="true"
           style={{
@@ -258,11 +338,11 @@ export default function Hero() {
             right: 0,
             bottom: 0,
             background:
-              "linear-gradient(to bottom, rgba(8,22,34,0.04) 0%, rgba(8,22,34,0.18) 35%, rgba(8,22,34,0.72) 60%, rgba(8,22,34,0.97) 82%, #081622 100%)",
+              "linear-gradient(to bottom, rgba(8,22,34,0.04) 0%, rgba(8,22,34,0.15) 30%, rgba(8,22,34,0.70) 58%, rgba(8,22,34,0.96) 80%, #081622 100%)",
           }}
         />
 
-        {/* Formulario anclado al fondo */}
+        {/* Formulario */}
         <div
           style={{
             position: "relative",
@@ -270,147 +350,291 @@ export default function Hero() {
             padding: "2rem 2.5rem",
           }}
         >
-          <p
-            className="text-mono"
-            style={{ color: "#A8DADC", marginBottom: "0.5rem", fontSize: "0.6rem" }}
-          >
-            Solicitar presupuesto
-          </p>
-
-          <h2
-            style={{
-              fontFamily: "var(--font-space-grotesk), sans-serif",
-              fontSize: "clamp(1.1rem, 1.8vw, 1.5rem)",
-              fontWeight: 700,
-              color: "#F1FAEE",
-              letterSpacing: "-0.025em",
-              lineHeight: 1.2,
-              marginBottom: "1.125rem",
-            }}
-          >
-            Te llamamos gratis.{" "}
-            <span style={{ color: "#A8DADC", fontWeight: 400 }}>Sin compromiso.</span>
-          </h2>
-
-          <form
-            onSubmit={(e) => e.preventDefault()}
-            style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}
-          >
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.5rem" }}>
-              <input
-                type="text"
-                name="nombre"
-                placeholder="Tu nombre"
-                required
-                style={{
-                  background: "rgba(255,255,255,0.07)",
-                  border: "1px solid rgba(168,218,220,0.22)",
-                  borderRadius: "6px",
-                  padding: "0.625rem 0.75rem",
-                  color: "#F1FAEE",
-                  fontFamily: "var(--font-hanken), sans-serif",
-                  fontSize: "0.875rem",
-                  outline: "none",
-                  transition: "border-color 0.16s",
-                }}
-                onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(168,218,220,0.65)")}
-                onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(168,218,220,0.22)")}
-              />
-              <input
-                type="tel"
-                name="telefono"
-                placeholder="Teléfono"
-                required
-                style={{
-                  background: "rgba(255,255,255,0.07)",
-                  border: "1px solid rgba(168,218,220,0.22)",
-                  borderRadius: "6px",
-                  padding: "0.625rem 0.75rem",
-                  color: "#F1FAEE",
-                  fontFamily: "var(--font-hanken), sans-serif",
-                  fontSize: "0.875rem",
-                  outline: "none",
-                  transition: "border-color 0.16s",
-                }}
-                onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(168,218,220,0.65)")}
-                onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(168,218,220,0.22)")}
-              />
-            </div>
-
-            <div style={{ position: "relative" }}>
-              <select
-                name="tipo"
-                defaultValue=""
-                style={{
-                  background: "rgba(8,22,34,0.90)",
-                  border: "1px solid rgba(168,218,220,0.22)",
-                  borderRadius: "6px",
-                  padding: "0.625rem 2.25rem 0.625rem 0.75rem",
-                  color: "#F1FAEE",
-                  fontFamily: "var(--font-hanken), sans-serif",
-                  fontSize: "0.875rem",
-                  outline: "none",
-                  width: "100%",
-                  appearance: "none",
-                  cursor: "pointer",
-                  transition: "border-color 0.16s",
-                }}
-                onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(168,218,220,0.65)")}
-                onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(168,218,220,0.22)")}
-              >
-                <option value="" disabled>¿Qué quieres reformar?</option>
-                <option value="cocina">Cocina</option>
-                <option value="bano">Baño</option>
-                <option value="integral">Piso completo</option>
-                <option value="local">Local comercial</option>
-                <option value="otro">Otro</option>
-              </select>
-              <svg
-                width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"
-                style={{ position: "absolute", right: "0.75rem", top: "50%", transform: "translateY(-50%)", pointerEvents: "none" }}
-              >
-                <path d="M3 5l4 4 4-4" stroke="rgba(168,218,220,0.6)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </div>
-
-            <button
-              type="submit"
-              style={{
-                background: "#1D6A72",
-                color: "#F1FAEE",
-                fontFamily: "var(--font-space-grotesk), sans-serif",
-                fontSize: "0.875rem",
-                fontWeight: 600,
-                letterSpacing: "-0.01em",
-                border: "none",
-                borderRadius: "6px",
-                padding: "0.75rem 1rem",
-                cursor: "pointer",
-                width: "100%",
-                transition: "background 0.16s",
-                marginTop: "0.125rem",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.background = "#155961")}
-              onMouseLeave={(e) => (e.currentTarget.style.background = "#1D6A72")}
+          {formState === "success" ? (
+            /* Estado de éxito */
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0, transition: { duration: 0.5, ease: EASE_EXPO } }}
+              style={{ textAlign: "center", padding: "1rem 0" }}
+              role="status"
             >
-              Quiero mi presupuesto gratis
-            </button>
+              <div
+                style={{
+                  width: 48,
+                  height: 48,
+                  borderRadius: "50%",
+                  background: "rgba(168,218,220,0.15)",
+                  border: "1.5px solid rgba(168,218,220,0.4)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  margin: "0 auto 1rem",
+                }}
+              >
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M4 12l5 5L20 7" stroke="#A8DADC" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
+              <p
+                style={{
+                  fontFamily: "var(--font-space-grotesk), sans-serif",
+                  fontSize: "1.125rem",
+                  fontWeight: 700,
+                  color: "#F1FAEE",
+                  letterSpacing: "-0.02em",
+                  marginBottom: "0.5rem",
+                }}
+              >
+                Recibido.
+              </p>
+              <p
+                style={{
+                  fontFamily: "var(--font-hanken), sans-serif",
+                  fontSize: "0.875rem",
+                  color: "rgba(241,250,238,0.65)",
+                  lineHeight: 1.55,
+                }}
+              >
+                Te llamamos en menos de 24 horas. Si prefieres, escríbenos por{" "}
+                <a
+                  href="https://wa.me/34600000000"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "#A8DADC", textDecoration: "underline", textUnderlineOffset: "2px" }}
+                >
+                  WhatsApp
+                </a>
+                .
+              </p>
+            </motion.div>
+          ) : (
+            <>
+              <p
+                className="text-mono"
+                style={{ color: "#A8DADC", marginBottom: "0.5rem", fontSize: "0.6rem" }}
+              >
+                Solicitar presupuesto
+              </p>
 
-            <p
-              style={{
-                fontFamily: "var(--font-space-mono), monospace",
-                fontSize: "0.5rem",
-                letterSpacing: "0.10em",
-                textTransform: "uppercase",
-                color: "rgba(241,250,238,0.35)",
-                textAlign: "center",
-              }}
-            >
-              Sin spam · respuesta en menos de 24 h
-            </p>
-          </form>
+              <h2
+                style={{
+                  fontFamily: "var(--font-space-grotesk), sans-serif",
+                  fontSize: "clamp(1.1rem, 1.8vw, 1.5rem)",
+                  fontWeight: 700,
+                  color: "#F1FAEE",
+                  letterSpacing: "-0.025em",
+                  lineHeight: 1.2,
+                  marginBottom: "1.125rem",
+                }}
+              >
+                Te llamamos gratis.{" "}
+                <span style={{ color: "#A8DADC", fontWeight: 400 }}>Sin compromiso.</span>
+              </h2>
+
+              <form
+                onSubmit={handleSubmit}
+                noValidate
+                style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}
+              >
+                {/* Fila nombre + teléfono */}
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.5rem" }}>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem" }}>
+                    <input
+                      type="text"
+                      name="nombre"
+                      placeholder="Tu nombre"
+                      autoComplete="given-name"
+                      required
+                      aria-label="Tu nombre"
+                      aria-invalid={!!errors.nombre}
+                      aria-describedby={errors.nombre ? "err-nombre" : undefined}
+                      disabled={isBusy}
+                      style={{
+                        ...inputBase,
+                        borderColor: errors.nombre ? "rgba(230,57,70,0.7)" : "rgba(168,218,220,0.25)",
+                        opacity: isBusy ? 0.55 : 1,
+                      }}
+                      onFocus={(e) => {
+                        if (!errors.nombre) e.currentTarget.style.borderColor = "rgba(168,218,220,0.65)";
+                      }}
+                      onBlur={(e) => {
+                        handleBlur(e);
+                      }}
+                    />
+                    {errors.nombre && (
+                      <span id="err-nombre" role="alert" style={{ fontSize: "0.6875rem", color: "#E63946", fontFamily: "var(--font-hanken), sans-serif" }}>
+                        {errors.nombre}
+                      </span>
+                    )}
+                  </div>
+
+                  <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem" }}>
+                    <input
+                      type="tel"
+                      name="telefono"
+                      placeholder="Teléfono"
+                      autoComplete="tel"
+                      required
+                      aria-label="Teléfono de contacto"
+                      aria-invalid={!!errors.telefono}
+                      aria-describedby={errors.telefono ? "err-telefono" : undefined}
+                      disabled={isBusy}
+                      style={{
+                        ...inputBase,
+                        borderColor: errors.telefono ? "rgba(230,57,70,0.7)" : "rgba(168,218,220,0.25)",
+                        opacity: isBusy ? 0.55 : 1,
+                      }}
+                      onFocus={(e) => {
+                        if (!errors.telefono) e.currentTarget.style.borderColor = "rgba(168,218,220,0.65)";
+                      }}
+                      onBlur={(e) => {
+                        handleBlur(e);
+                      }}
+                    />
+                    {errors.telefono && (
+                      <span id="err-telefono" role="alert" style={{ fontSize: "0.6875rem", color: "#E63946", fontFamily: "var(--font-hanken), sans-serif" }}>
+                        {errors.telefono}
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                {/* Tipo de reforma */}
+                <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem" }}>
+                  <div style={{ position: "relative" }}>
+                    <select
+                      name="tipo"
+                      defaultValue=""
+                      aria-label="Tipo de reforma"
+                      aria-invalid={!!errors.tipo}
+                      aria-describedby={errors.tipo ? "err-tipo" : undefined}
+                      disabled={isBusy}
+                      style={{
+                        background: "rgba(8,22,34,0.90)",
+                        border: `1px solid ${errors.tipo ? "rgba(230,57,70,0.7)" : "rgba(168,218,220,0.25)"}`,
+                        borderRadius: "6px",
+                        padding: "0.625rem 2.25rem 0.625rem 0.75rem",
+                        color: "#F1FAEE",
+                        fontFamily: "var(--font-hanken), sans-serif",
+                        fontSize: "0.875rem",
+                        outline: "none",
+                        width: "100%",
+                        appearance: "none",
+                        cursor: isBusy ? "not-allowed" : "pointer",
+                        transition: "border-color 0.16s",
+                        opacity: isBusy ? 0.55 : 1,
+                      }}
+                      onFocus={(e) => {
+                        if (!errors.tipo) e.currentTarget.style.borderColor = "rgba(168,218,220,0.65)";
+                      }}
+                      onBlur={(e) => {
+                        handleBlur(e);
+                      }}
+                    >
+                      <option value="" disabled>¿Qué quieres reformar?</option>
+                      <option value="cocina">Cocina</option>
+                      <option value="bano">Baño</option>
+                      <option value="integral">Piso completo</option>
+                      <option value="local">Local comercial</option>
+                      <option value="otro">Otro</option>
+                    </select>
+                    <svg
+                      width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"
+                      style={{ position: "absolute", right: "0.75rem", top: "50%", transform: "translateY(-50%)", pointerEvents: "none" }}
+                    >
+                      <path d="M3 5l4 4 4-4" stroke="rgba(168,218,220,0.6)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                  {errors.tipo && (
+                    <span id="err-tipo" role="alert" style={{ fontSize: "0.6875rem", color: "#E63946", fontFamily: "var(--font-hanken), sans-serif" }}>
+                      {errors.tipo}
+                    </span>
+                  )}
+                </div>
+
+                {/* Error global de red */}
+                {formState === "error" && (
+                  <p
+                    role="alert"
+                    style={{
+                      fontSize: "0.75rem",
+                      color: "#E63946",
+                      fontFamily: "var(--font-hanken), sans-serif",
+                      background: "rgba(230,57,70,0.10)",
+                      border: "1px solid rgba(230,57,70,0.25)",
+                      borderRadius: "6px",
+                      padding: "0.5rem 0.75rem",
+                    }}
+                  >
+                    No se pudo enviar. Inténtalo de nuevo o llámanos al{" "}
+                    <a href="tel:+34600000000" style={{ color: "#E63946", fontWeight: 600 }}>600 00 00 00</a>.
+                  </p>
+                )}
+
+                {/* Submit */}
+                <button
+                  type="submit"
+                  disabled={isBusy}
+                  style={{
+                    background: isBusy ? "#155961" : "#1D6A72",
+                    color: "#F1FAEE",
+                    fontFamily: "var(--font-space-grotesk), sans-serif",
+                    fontSize: "0.875rem",
+                    fontWeight: 600,
+                    letterSpacing: "-0.01em",
+                    border: "none",
+                    borderRadius: "6px",
+                    padding: "0.75rem 1rem",
+                    cursor: isBusy ? "not-allowed" : "pointer",
+                    width: "100%",
+                    transition: "background 0.16s, opacity 0.16s",
+                    opacity: isBusy ? 0.8 : 1,
+                    marginTop: "0.125rem",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "0.5rem",
+                  }}
+                  onMouseEnter={(e) => { if (!isBusy) e.currentTarget.style.background = "#155961"; }}
+                  onMouseLeave={(e) => { if (!isBusy) e.currentTarget.style.background = "#1D6A72"; }}
+                >
+                  {isBusy ? (
+                    <>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"
+                        style={{ animation: "spin 0.8s linear infinite" }}>
+                        <circle cx="12" cy="12" r="10" stroke="rgba(241,250,238,0.3)" strokeWidth="2.5" />
+                        <path d="M12 2a10 10 0 0 1 10 10" stroke="#F1FAEE" strokeWidth="2.5" strokeLinecap="round" />
+                      </svg>
+                      Enviando...
+                    </>
+                  ) : (
+                    "Quiero mi presupuesto gratis"
+                  )}
+                </button>
+
+                <p
+                  style={{
+                    fontFamily: "var(--font-space-mono), monospace",
+                    fontSize: "0.5rem",
+                    letterSpacing: "0.10em",
+                    textTransform: "uppercase",
+                    color: "rgba(241,250,238,0.35)",
+                    textAlign: "center",
+                  }}
+                >
+                  Sin spam · respuesta en menos de 24 h
+                </p>
+              </form>
+            </>
+          )}
         </div>
       </motion.div>
+
+      {/* Animación del spinner */}
+      <style>{`
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @media (prefers-reduced-motion: reduce) { @keyframes spin { to { transform: none; } } }
+      `}</style>
     </section>
   );
 }
