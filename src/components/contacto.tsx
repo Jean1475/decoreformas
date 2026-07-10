@@ -35,10 +35,10 @@ const inputStyle: React.CSSProperties = {
 
 const labelStyle: React.CSSProperties = {
   display: "block",
-  fontFamily: "var(--font-space-mono), monospace",
-  fontSize: "0.6875rem",
-  fontWeight: 400,
-  letterSpacing: "0.16em",
+  fontFamily: "var(--font-hanken), sans-serif",
+  fontSize: "0.75rem",
+  fontWeight: 600,
+  letterSpacing: "0.08em",
   textTransform: "uppercase",
   color: "rgba(168,218,220,0.70)",
   marginBottom: "0.5rem",
@@ -46,12 +46,7 @@ const labelStyle: React.CSSProperties = {
 
 export default function Contacto() {
   const reduce = useReducedMotion();
-  const [form, setForm] = useState<FormState>({
-    nombre: "",
-    contacto: "",
-    tipo: "",
-    mensaje: "",
-  });
+  const [form, setForm] = useState<FormState>({ nombre: "", contacto: "", tipo: "", mensaje: "" });
   const [enviado, setEnviado] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -74,12 +69,11 @@ export default function Contacto() {
     setLoading(false);
     setEnviado(true);
 
-    /* Abre WhatsApp con los datos del formulario prellenados */
     const msg = encodeURIComponent(
       `Hola, soy ${form.nombre} (${form.contacto}).\nProyecto: ${form.tipo}${form.mensaje ? `\n${form.mensaje}` : ""}`
     );
     setTimeout(() => {
-      window.open(`https://wa.me/34600000000?text=${msg}`, "_blank", "noopener");
+      window.open(`https://wa.me/34660565324?text=${msg}`, "_blank", "noopener");
     }, 700);
   };
 
@@ -106,10 +100,8 @@ export default function Contacto() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8, ease: EASE }}
           >
-            <p
-              className="text-mono mb-4"
-              style={{ color: "#A8DADC", fontSize: "0.6875rem" }}
-            >
+            {/* Eyebrow deliberado (2 de 2 permitidos en la página) */}
+            <p className="text-eyebrow mb-4" style={{ color: "#A8DADC" }}>
               Contacto
             </p>
             <h2 className="text-headline" style={{ color: "#ffffff" }}>
@@ -128,22 +120,16 @@ export default function Contacto() {
               style={{ borderTop: "1px solid rgba(168,218,220,0.18)" }}
             >
               {/* WhatsApp */}
-              <div
-                className="py-5"
-                style={{ borderBottom: "1px solid rgba(168,218,220,0.12)" }}
-              >
-                <p
-                  className="text-mono"
-                  style={{ color: "rgba(168,218,220,0.55)", fontSize: "0.625rem" }}
-                >
+              <div className="py-5" style={{ borderBottom: "1px solid rgba(168,218,220,0.12)" }}>
+                <p className="text-label" style={{ color: "rgba(168,218,220,0.55)" }}>
                   WhatsApp
                 </p>
                 <a
-                  href="https://wa.me/34XXXXXXXXX"
+                  href="https://wa.me/34660565324"
                   style={{
                     display: "block",
                     marginTop: "0.375rem",
-                    fontFamily: "var(--font-space-grotesk), sans-serif",
+                    fontFamily: "var(--font-hanken), sans-serif",
                     fontSize: "clamp(1.5rem, 3vw, 2rem)",
                     fontWeight: 700,
                     letterSpacing: "-0.03em",
@@ -155,27 +141,21 @@ export default function Contacto() {
                   onMouseEnter={(e) => (e.currentTarget.style.color = "#A8DADC")}
                   onMouseLeave={(e) => (e.currentTarget.style.color = "#ffffff")}
                 >
-                  +34 XXX XXX XXX
+                  +34 660 56 53 24
                 </a>
               </div>
 
               {/* Email */}
-              <div
-                className="py-5"
-                style={{ borderBottom: "1px solid rgba(168,218,220,0.12)" }}
-              >
-                <p
-                  className="text-mono"
-                  style={{ color: "rgba(168,218,220,0.55)", fontSize: "0.625rem" }}
-                >
+              <div className="py-5" style={{ borderBottom: "1px solid rgba(168,218,220,0.12)" }}>
+                <p className="text-label" style={{ color: "rgba(168,218,220,0.55)" }}>
                   Email
                 </p>
                 <a
-                  href="mailto:info@decoreformas.es"
+                  href="mailto:decorpinto@gmail.com"
                   style={{
                     display: "block",
                     marginTop: "0.375rem",
-                    fontFamily: "var(--font-space-grotesk), sans-serif",
+                    fontFamily: "var(--font-hanken), sans-serif",
                     fontSize: "clamp(1.125rem, 2vw, 1.5rem)",
                     fontWeight: 600,
                     letterSpacing: "-0.02em",
@@ -187,16 +167,13 @@ export default function Contacto() {
                   onMouseEnter={(e) => (e.currentTarget.style.color = "#A8DADC")}
                   onMouseLeave={(e) => (e.currentTarget.style.color = "#ffffff")}
                 >
-                  info@decoreformas.es
+                  decorpinto@gmail.com
                 </a>
               </div>
 
-              {/* Hours */}
+              {/* Horario */}
               <div className="py-5">
-                <p
-                  className="text-mono"
-                  style={{ color: "rgba(168,218,220,0.55)", fontSize: "0.625rem" }}
-                >
+                <p className="text-label" style={{ color: "rgba(168,218,220,0.55)" }}>
                   Horario
                 </p>
                 <p
@@ -209,7 +186,7 @@ export default function Contacto() {
                     lineHeight: 1.4,
                   }}
                 >
-                  Lunes a viernes, 9 h — 18 h
+                  Lunes a viernes, 9 h a 18 h
                 </p>
               </div>
             </div>
@@ -228,36 +205,25 @@ export default function Contacto() {
                   className="w-12 h-12 rounded-full flex items-center justify-center"
                   style={{ background: "rgba(168,218,220,0.18)" }}
                 >
-                  <svg
-                    width="22"
-                    height="22"
-                    viewBox="0 0 22 22"
-                    fill="none"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M4 11l5 5 9-9"
-                      stroke="#A8DADC"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
+                  <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+                    <path d="M4 11l5 5 9-9" stroke="#A8DADC" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
                 <h3 className="text-headline" style={{ color: "#ffffff" }}>
                   Mensaje recibido
                 </h3>
                 <p className="text-body" style={{ color: "rgba(241,250,238,0.72)" }}>
-                  Te respondemos en menos de 24 horas. Si el proyecto encaja,
-                  coordinamos una visita gratuita.
+                  Te estamos redirigiendo a WhatsApp para completar el envío. Si no se abre,
+                  escríbenos directamente al{" "}
+                  <a href="https://wa.me/34660565324" style={{ color: "#A8DADC", textDecoration: "underline" }}>
+                    +34 660 56 53 24
+                  </a>.
                 </p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5">
                 <div>
-                  <label htmlFor="nombre" style={labelStyle}>
-                    Nombre *
-                  </label>
+                  <label htmlFor="nombre" style={labelStyle}>Nombre *</label>
                   <input
                     id="nombre"
                     name="nombre"
@@ -274,9 +240,7 @@ export default function Contacto() {
                 </div>
 
                 <div>
-                  <label htmlFor="contacto" style={labelStyle}>
-                    Teléfono o email *
-                  </label>
+                  <label htmlFor="contacto" style={labelStyle}>Teléfono o email *</label>
                   <input
                     id="contacto"
                     name="contacto"
@@ -293,9 +257,7 @@ export default function Contacto() {
                 </div>
 
                 <div>
-                  <label htmlFor="tipo" style={labelStyle}>
-                    Tipo de proyecto *
-                  </label>
+                  <label htmlFor="tipo" style={labelStyle}>Tipo de proyecto *</label>
                   <select
                     id="tipo"
                     name="tipo"
@@ -318,9 +280,7 @@ export default function Contacto() {
                 </div>
 
                 <div>
-                  <label htmlFor="mensaje" style={labelStyle}>
-                    Cuéntanos el proyecto
-                  </label>
+                  <label htmlFor="mensaje" style={labelStyle}>Cuéntanos el proyecto</label>
                   <textarea
                     id="mensaje"
                     name="mensaje"
@@ -334,11 +294,16 @@ export default function Contacto() {
                   />
                 </div>
 
+                {/* Aviso de redirect WhatsApp */}
+                <p className="text-label" style={{ color: "rgba(168,218,220,0.55)" }}>
+                  Al enviar, abriremos WhatsApp con tus datos para que puedas completar el mensaje directamente.
+                </p>
+
                 {error && (
                   <p
                     role="alert"
                     className="text-label"
-                    style={{ color: "#A8DADC" }}
+                    style={{ color: "#E63946" }}
                   >
                     {error}
                   </p>
@@ -351,7 +316,7 @@ export default function Contacto() {
                   style={{
                     background: loading ? "rgba(230,57,70,0.6)" : "#E63946",
                     color: "#ffffff",
-                    fontFamily: "var(--font-space-grotesk), sans-serif",
+                    fontFamily: "var(--font-hanken), sans-serif",
                     fontSize: "0.9375rem",
                     fontWeight: 600,
                     borderRadius: "6px",
@@ -360,32 +325,19 @@ export default function Contacto() {
                     letterSpacing: "-0.01em",
                     transition: "opacity 0.2s",
                   }}
-                  onMouseEnter={(e) => {
-                    if (!loading) e.currentTarget.style.opacity = "0.88";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.opacity = "1";
-                  }}
+                  onMouseEnter={(e) => { if (!loading) e.currentTarget.style.opacity = "0.88"; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.opacity = "1"; }}
                 >
                   {loading ? (
                     <>
-                      <span
-                        className="w-4 h-4 rounded-full border-2 border-current border-t-transparent animate-spin"
-                        aria-hidden="true"
-                      />
+                      <span className="w-4 h-4 rounded-full border-2 border-current border-t-transparent animate-spin" aria-hidden="true" />
                       Enviando…
                     </>
                   ) : (
                     <>
                       Enviar solicitud
                       <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
-                        <path
-                          d="M2.5 7.5h10m0 0L8.5 3.5m4 4-4 4"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
+                        <path d="M2.5 7.5h10m0 0L8.5 3.5m4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     </>
                   )}
@@ -397,57 +349,6 @@ export default function Contacto() {
               </form>
             )}
           </motion.div>
-        </div>
-      </div>
-
-      {/* Footer strip */}
-      <div
-        className="max-w-7xl mx-auto px-6 lg:px-8 mt-24 pt-8"
-        style={{ borderTop: "1px solid rgba(168,218,220,0.14)" }}
-      >
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <p
-            style={{
-              fontFamily: "var(--font-space-grotesk), sans-serif",
-              fontWeight: 600,
-              fontSize: "1rem",
-              color: "rgba(241,250,238,0.45)",
-              letterSpacing: "-0.025em",
-            }}
-          >
-            decoreformas
-          </p>
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
-            <p className="text-label" style={{ color: "rgba(241,250,238,0.30)" }}>
-              &copy; {new Date().getFullYear()} Decoreformas. Todos los derechos reservados.
-            </p>
-            <a
-              href="/privacidad"
-              className="text-label"
-              style={{
-                color: "rgba(241,250,238,0.30)",
-                textDecoration: "none",
-                transition: "color 0.2s",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(241,250,238,0.65)")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(241,250,238,0.30)")}
-            >
-              Política de privacidad
-            </a>
-            <a
-              href="/cookies"
-              className="text-label"
-              style={{
-                color: "rgba(241,250,238,0.30)",
-                textDecoration: "none",
-                transition: "color 0.2s",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(241,250,238,0.65)")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(241,250,238,0.30)")}
-            >
-              Cookies
-            </a>
-          </div>
         </div>
       </div>
     </section>

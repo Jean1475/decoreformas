@@ -8,8 +8,8 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 interface SliderCard {
   titulo: string;
-  zona: string;
-  tipo: string;
+  detalle: string;
+  año: string;
   srcAntes: string;
   srcDespues: string;
   altAntes: string;
@@ -18,37 +18,26 @@ interface SliderCard {
 
 const obras: SliderCard[] = [
   {
-    titulo: "Cocina abierta · 90 m²",
-    zona: "Leganés · 2025",
-    tipo: "Reforma integral",
-    srcAntes:
-      "https://images.unsplash.com/photo-1556909172-54557c7e4fb7?auto=format&fit=crop&w=1200&q=80",
-    srcDespues:
-      "https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=1200&q=80",
-    altAntes: "Cocina antes de la reforma en Leganés",
-    altDespues: "Cocina abierta reformada con isla en Leganés 2025",
+    titulo: "De bañera a ducha",
+    detalle: "Reforma completa de baño",
+    año: "2025",
+    srcAntes: "/obras/reforma-bano-antes-banera.webp",
+    srcDespues: "/obras/reforma-bano-despues-ducha.webp",
+    altAntes:
+      "Baño antiguo con bañera y azulejo color crema de los años 80, antes de la reforma",
+    altDespues:
+      "El mismo baño reformado: ducha con mampara de cristal, mueble suspendido de madera y suelo porcelánico efecto roble",
   },
   {
-    titulo: "Baño · microcemento",
-    zona: "Getafe · 2025",
-    tipo: "Reforma de baño",
-    srcAntes:
-      "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=1200&q=80",
-    srcDespues:
-      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80",
-    altAntes: "Baño antiguo antes de la reforma en Getafe",
-    altDespues: "Baño reformado con microcemento y ducha de obra en Getafe 2025",
-  },
-  {
-    titulo: "Reforma integral · 110 m²",
-    zona: "Alcorcón · 2024",
-    tipo: "Obra completa",
-    srcAntes:
-      "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1200&q=80",
-    srcDespues:
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80",
-    altAntes: "Vivienda sin reformar en Alcorcón",
-    altDespues: "Vivienda reformada con acabados modernos en Alcorcón 2024",
+    titulo: "Ducha nueva, obra mínima",
+    detalle: "Cambio de bañera por plato de ducha",
+    año: "2025",
+    srcAntes: "/obras/reforma-bano-2-antes-demolicion.webp",
+    srcDespues: "/obras/reforma-bano-2-despues-mosaico.webp",
+    altAntes:
+      "Rincón del baño durante la demolición de la bañera, con el suelo levantado y la pared abierta",
+    altDespues:
+      "El mismo rincón terminado: plato de ducha extraplano, frente de mosaico gris y mueble de lavabo nuevo, conservando el azulejo original",
   },
 ];
 
@@ -64,6 +53,7 @@ function BeforeAfterSlider({
   const frameRef = useRef<HTMLDivElement>(null);
   const posRef = useRef(50);
   const [gripHover, setGripHover] = useState(false);
+  const [ariaValue, setAriaValue] = useState(50);
 
   const setPos = useCallback((clientX: number) => {
     if (!frameRef.current) return;
@@ -71,6 +61,7 @@ function BeforeAfterSlider({
     const pct = Math.max(4, Math.min(96, ((clientX - r.left) / r.width) * 100));
     posRef.current = pct;
     frameRef.current.style.setProperty("--pos", `${pct}%`);
+    setAriaValue(Math.round(pct));
   }, []);
 
   const handlePointerDown = useCallback(
@@ -96,12 +87,14 @@ function BeforeAfterSlider({
         const next = Math.max(4, cur - 5);
         posRef.current = next;
         frameRef.current?.style.setProperty("--pos", `${next}%`);
+        setAriaValue(Math.round(next));
         e.preventDefault();
       }
       if (e.key === "ArrowRight") {
         const next = Math.min(96, cur + 5);
         posRef.current = next;
         frameRef.current?.style.setProperty("--pos", `${next}%`);
+        setAriaValue(Math.round(next));
         e.preventDefault();
       }
     },
@@ -109,12 +102,12 @@ function BeforeAfterSlider({
   );
 
   const labelBase: React.CSSProperties = {
-    fontFamily: "var(--font-space-mono), monospace",
-    fontSize: "0.5625rem",
-    letterSpacing: "0.16em",
-    textTransform: "uppercase",
+    fontFamily: "var(--font-hanken), sans-serif",
+    fontSize: "0.625rem",
     fontWeight: 600,
-    padding: "4px 9px",
+    letterSpacing: "0.10em",
+    textTransform: "uppercase",
+    padding: "5px 11px",
     borderRadius: 999,
     backdropFilter: "blur(4px)",
     WebkitBackdropFilter: "blur(4px)",
@@ -126,7 +119,7 @@ function BeforeAfterSlider({
       initial={{ opacity: reduce ? 1 : 0, y: reduce ? 0 : 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.7, ease: EASE, delay: reduce ? 0 : index * 0.1 }}
+      transition={{ duration: 0.7, ease: EASE, delay: reduce ? 0 : index * 0.12 }}
     >
       {/* Frame */}
       <div
@@ -134,7 +127,7 @@ function BeforeAfterSlider({
         className="relative overflow-hidden select-none"
         style={
           {
-            aspectRatio: "4/3",
+            aspectRatio: "4/5",
             borderRadius: 6,
             "--pos": "50%",
             isolation: "isolate",
@@ -142,25 +135,18 @@ function BeforeAfterSlider({
           } as React.CSSProperties
         }
       >
-        {/* ANTES — capa base completa */}
+        {/* ANTES */}
         <div className="absolute inset-0">
           <Image
             src={card.srcAntes}
             alt={card.altAntes}
             fill
-            sizes="(max-width: 768px) 100vw, 33vw"
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover"
-          />
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(180deg, transparent 50%, rgba(29,53,87,0.65) 100%)",
-            }}
           />
         </div>
 
-        {/* DESPUÉS — recortado por --pos */}
+        {/* DESPUÉS */}
         <div
           className="absolute inset-0"
           style={{ clipPath: "inset(0 0 0 var(--pos))" }}
@@ -170,43 +156,28 @@ function BeforeAfterSlider({
             src={card.srcDespues}
             alt={card.altDespues}
             fill
-            sizes="(max-width: 768px) 100vw, 33vw"
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover"
-          />
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(180deg, transparent 50%, rgba(29,53,87,0.55) 100%)",
-            }}
           />
         </div>
 
-        {/* Label ANTES — esquina inferior izquierda */}
+        {/* Label ANTES */}
         <span
           className="absolute bottom-3 left-3 z-10"
-          style={{
-            ...labelBase,
-            background: "rgba(29,53,87,0.70)",
-            color: "#F1FAEE",
-          }}
+          style={{ ...labelBase, background: "rgba(29,53,87,0.70)", color: "#F1FAEE" }}
         >
           Antes
         </span>
 
-        {/* Label DESPUÉS — esquina inferior derecha */}
+        {/* Label DESPUÉS */}
         <span
           className="absolute bottom-3 right-3 z-10"
-          style={{
-            ...labelBase,
-            background: "#E63946",
-            color: "#ffffff",
-          }}
+          style={{ ...labelBase, background: "#E63946", color: "#ffffff" }}
         >
           Después
         </span>
 
-        {/* Divider line */}
+        {/* Divider */}
         <div
           className="absolute top-0 bottom-0 z-20 pointer-events-none"
           style={{
@@ -219,11 +190,11 @@ function BeforeAfterSlider({
           aria-hidden="true"
         />
 
-        {/* Grip handle */}
+        {/* Grip */}
         <span
           role="slider"
-          aria-label="Comparar antes y después"
-          aria-valuenow={50}
+          aria-label={`Comparar antes y después: ${card.titulo}`}
+          aria-valuenow={ariaValue}
           aria-valuemin={4}
           aria-valuemax={96}
           tabIndex={0}
@@ -237,8 +208,8 @@ function BeforeAfterSlider({
             left: "var(--pos)",
             top: "50%",
             transform: `translate(-50%, -50%) scale(${gripHover ? 1.1 : 1})`,
-            width: 38,
-            height: 38,
+            width: 44,
+            height: 44,
             background: "#ffffff",
             border: `2px solid ${gripHover ? "#E63946" : "#1D3557"}`,
             cursor: "ew-resize",
@@ -251,14 +222,8 @@ function BeforeAfterSlider({
           }}
         >
           <svg
-            width="15"
-            height="15"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+            width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
             aria-hidden="true"
           >
             <path d="M9 6l-4 6 4 6M15 6l4 6-4 6" />
@@ -266,13 +231,13 @@ function BeforeAfterSlider({
         </span>
       </div>
 
-      {/* Info debajo */}
+      {/* Info */}
       <div className="mt-4 flex items-start justify-between gap-4">
         <div>
           <h3
             style={{
-              fontFamily: "var(--font-space-grotesk), sans-serif",
-              fontSize: "1rem",
+              fontFamily: "var(--font-hanken), sans-serif",
+              fontSize: "1.125rem",
               fontWeight: 600,
               color: "#1D3557",
               letterSpacing: "-0.015em",
@@ -285,29 +250,28 @@ function BeforeAfterSlider({
           <p
             style={{
               marginTop: 4,
-              fontFamily: "var(--font-space-mono), monospace",
-              fontSize: "0.625rem",
-              letterSpacing: "0.14em",
-              textTransform: "uppercase",
+              fontFamily: "var(--font-hanken), sans-serif",
+              fontSize: "0.8125rem",
+              fontWeight: 500,
               color: "#6b7889",
+              letterSpacing: "0.03em",
             }}
           >
-            {card.tipo}
+            {card.detalle}
           </p>
         </div>
         <span
           style={{
             flexShrink: 0,
             marginTop: 2,
-            fontFamily: "var(--font-space-mono), monospace",
-            fontSize: "0.625rem",
-            letterSpacing: "0.10em",
+            fontFamily: "var(--font-hanken), sans-serif",
+            fontSize: "0.8125rem",
+            fontWeight: 500,
             color: "#457B9D",
-            textTransform: "uppercase",
             whiteSpace: "nowrap",
           }}
         >
-          {card.zona}
+          {card.año}
         </span>
       </div>
     </motion.article>
@@ -320,6 +284,7 @@ export default function ObrasSlider() {
   return (
     <section
       id="obras"
+      aria-label="Antes y después de nuestras reformas"
       className="py-16 lg:py-24"
       style={{ background: "#ffffff", borderTop: "1px solid rgba(29,53,87,0.08)" }}
     >
@@ -335,23 +300,25 @@ export default function ObrasSlider() {
             <h2 className="text-headline" style={{ color: "#1D3557" }}>
               Antes y después
             </h2>
-            <p
-              className="text-body mt-3"
-              style={{ color: "#42526a", maxWidth: "52ch" }}
-            >
-              Arrastra el círculo sobre cada imagen para comparar el estado
-              antes y después de la reforma.
+            <p className="text-body mt-3" style={{ color: "#42526a", maxWidth: "52ch" }}>
+              Obras reales, fotografiadas por nuestro propio equipo. Desliza el
+              círculo sobre cada imagen para comparar.
             </p>
           </div>
           <p
-            className="text-mono shrink-0"
-            style={{ color: "#457B9D", fontSize: "0.6875rem" }}
+            style={{
+              fontFamily: "var(--font-hanken), sans-serif",
+              fontSize: "0.8125rem",
+              fontWeight: 500,
+              color: "#457B9D",
+              flexShrink: 0,
+            }}
           >
             +800 obras entregadas
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
           {obras.map((card, i) => (
             <BeforeAfterSlider
               key={card.titulo}

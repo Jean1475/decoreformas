@@ -2,11 +2,7 @@
 
 import { Fragment } from "react";
 
-/* Marcas y proveedores con los que trabaja DecorReformas.
-   Tratamientos tipográficos variados para dar ritmo editorial
-   sin necesidad de logos reales. */
-
-type BrandVariant = "pill" | "mono" | "italic" | "spaced" | "stamp" | "plain";
+type BrandVariant = "pill" | "bold" | "italic" | "spaced" | "stamp" | "plain";
 
 interface Brand {
   name: string;
@@ -15,16 +11,16 @@ interface Brand {
 }
 
 const brands: Brand[] = [
-  { name: "PORCELANOSA", variant: "mono" },
+  { name: "PORCELANOSA", variant: "spaced" },
   { name: "Roca & Co.", variant: "italic" },
-  { name: "KNAUF", variant: "spaced" },
+  { name: "KNAUF", variant: "bold" },
   { name: "HANSGROHE", sub: "Est. 1901", variant: "stamp" },
   { name: "BTicino", variant: "pill" },
   { name: "Grohe", variant: "italic" },
   { name: "JUNG", variant: "spaced" },
   { name: "ROCKWOOL", sub: "Desde 1937", variant: "stamp" },
   { name: "Leroy Merlin Pro", variant: "plain" },
-  { name: "SCHNEIDER Electric", variant: "mono" },
+  { name: "SCHNEIDER Electric", variant: "bold" },
   { name: "Saunier Duval", variant: "italic" },
   { name: "SIEMENS HOME", variant: "pill" },
 ];
@@ -44,18 +40,18 @@ function BrandItem({ name, sub, variant }: Brand) {
         padding: "5px 12px",
         border: "1px solid currentColor",
         borderRadius: 999,
-        fontFamily: "var(--font-space-mono), monospace",
+        fontFamily: "var(--font-hanken), sans-serif",
         fontSize: "0.6875rem",
-        letterSpacing: "0.16em",
+        fontWeight: 600,
+        letterSpacing: "0.12em",
         textTransform: "uppercase",
-        fontWeight: 500,
       }}>
         {name}
       </span>
     );
   }
 
-  if (variant === "mono") {
+  if (variant === "bold") {
     return (
       <span style={{
         display: "inline-flex",
@@ -65,9 +61,10 @@ function BrandItem({ name, sub, variant }: Brand) {
         padding: "5px 11px",
         border: "1px dashed currentColor",
         borderRadius: 3,
-        fontFamily: "var(--font-space-mono), monospace",
+        fontFamily: "var(--font-hanken), sans-serif",
         fontSize: "0.6875rem",
-        letterSpacing: "0.08em",
+        fontWeight: 700,
+        letterSpacing: "0.06em",
       }}>
         {name}
       </span>
@@ -81,7 +78,7 @@ function BrandItem({ name, sub, variant }: Brand) {
         alignItems: "center",
         whiteSpace: "nowrap",
         color: COLOR,
-        fontFamily: "var(--font-space-grotesk), sans-serif",
+        fontFamily: "var(--font-hanken), sans-serif",
         fontStyle: "italic",
         fontWeight: 500,
         fontSize: "1.375rem",
@@ -102,7 +99,7 @@ function BrandItem({ name, sub, variant }: Brand) {
         fontFamily: "var(--font-hanken), sans-serif",
         fontWeight: 600,
         fontSize: "0.75rem",
-        letterSpacing: "0.28em",
+        letterSpacing: "0.22em",
         textTransform: "uppercase",
       }}>
         {name}
@@ -122,7 +119,7 @@ function BrandItem({ name, sub, variant }: Brand) {
         gap: 3,
       }}>
         <span style={{
-          fontFamily: "var(--font-space-grotesk), sans-serif",
+          fontFamily: "var(--font-hanken), sans-serif",
           fontWeight: 700,
           fontSize: "1rem",
           letterSpacing: "-0.015em",
@@ -131,9 +128,10 @@ function BrandItem({ name, sub, variant }: Brand) {
         </span>
         {sub && (
           <span style={{
-            fontFamily: "var(--font-space-mono), monospace",
+            fontFamily: "var(--font-hanken), sans-serif",
             fontSize: "0.5rem",
-            letterSpacing: "0.20em",
+            fontWeight: 500,
+            letterSpacing: "0.16em",
             textTransform: "uppercase",
             opacity: 0.55,
           }}>
@@ -151,7 +149,7 @@ function BrandItem({ name, sub, variant }: Brand) {
       alignItems: "center",
       whiteSpace: "nowrap",
       color: COLOR,
-      fontFamily: "var(--font-space-grotesk), sans-serif",
+      fontFamily: "var(--font-hanken), sans-serif",
       fontWeight: 600,
       fontSize: "0.9375rem",
       letterSpacing: "-0.01em",

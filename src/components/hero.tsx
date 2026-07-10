@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
+import Image from "next/image";
 import { useState } from "react";
 
 const EASE_EXPO = [0.16, 1, 0.3, 1] as const;
@@ -73,21 +74,20 @@ export default function Hero() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
-    const nombre = fd.get("nombre") as string;
+    const nombre   = fd.get("nombre") as string;
     const telefono = fd.get("telefono") as string;
-    const tipo = fd.get("tipo") as string;
+    const tipo     = fd.get("tipo") as string;
 
     const newErrors = {
-      nombre: validateField("nombre", nombre),
+      nombre:   validateField("nombre", nombre),
       telefono: validateField("telefono", telefono),
-      tipo: validateField("tipo", tipo),
+      tipo:     validateField("tipo", tipo),
     };
     setErrors(newErrors);
     if (Object.values(newErrors).some(Boolean)) return;
 
     setFormState("sending");
     try {
-      /* Aquí conectar con el endpoint real (Formspree, API, etc.) */
       await new Promise((res) => setTimeout(res, 1200));
       setFormState("success");
     } catch {
@@ -110,7 +110,7 @@ export default function Hero() {
         position: "relative",
       }}
     >
-      {/* ── IZQUIERDA — contenido ── */}
+      {/* LEFT — contenido */}
       <div
         style={{
           display: "flex",
@@ -124,30 +124,32 @@ export default function Hero() {
           variants={stagger}
           initial="initial"
           animate="animate"
-          style={{
-            width: "100%",
-            maxWidth: 620,
-            padding: "2rem 3.5rem 2.5rem",
-          }}
+          style={{ width: "100%", maxWidth: 620, padding: "2rem 3.5rem 2.5rem" }}
         >
-          {/* Kicker */}
+          {/* Location strip — texto plano, sin eyebrow */}
           <motion.p
             variants={fadeUp}
-            className="text-mono"
-            style={{ color: "#A8DADC", marginBottom: "1.5rem", fontSize: "0.75rem" }}
+            style={{
+              fontFamily: "var(--font-hanken), sans-serif",
+              fontSize: "0.8125rem",
+              fontWeight: 500,
+              color: "rgba(168,218,220,0.70)",
+              marginBottom: "1.5rem",
+              letterSpacing: "0.04em",
+            }}
           >
-            Reformas integrales · Leganés · Getafe · Alcorcón · Móstoles
+            Leganés · Getafe · Alcorcón · Móstoles
           </motion.p>
 
           {/* Headline */}
           <motion.h1
             variants={fadeUp}
             style={{
-              fontFamily: "var(--font-space-grotesk), sans-serif",
+              fontFamily: "var(--font-hanken), sans-serif",
               fontSize: "clamp(2.5rem, 5vw, 5rem)",
-              fontWeight: 700,
+              fontWeight: 800,
               lineHeight: 1.03,
-              letterSpacing: "-0.03em",
+              letterSpacing: "-0.035em",
               color: "#ffffff",
               textWrap: "balance" as never,
               margin: 0,
@@ -161,13 +163,14 @@ export default function Hero() {
           {/* Body */}
           <motion.p
             variants={fadeUp}
-            className="text-body"
             style={{
+              fontFamily: "var(--font-hanken), sans-serif",
               color: "rgba(241,250,238,0.75)",
               lineHeight: 1.7,
               marginTop: "1.375rem",
               fontSize: "1.0625rem",
               maxWidth: "52ch",
+              fontWeight: 400,
             }}
           >
             Presupuesto cerrado desde el primer día, un único interlocutor de principio
@@ -183,7 +186,7 @@ export default function Hero() {
             style={{ display: "flex", flexWrap: "wrap", gap: "0.875rem", marginTop: "2.25rem" }}
           >
             <a
-              href="https://wa.me/34600000000?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20un%20presupuesto."
+              href="https://wa.me/34660565324?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20un%20presupuesto."
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -193,7 +196,7 @@ export default function Hero() {
                 padding: "0.9rem 1.625rem",
                 background: "#25D366",
                 color: "#ffffff",
-                fontFamily: "var(--font-space-grotesk), sans-serif",
+                fontFamily: "var(--font-hanken), sans-serif",
                 fontSize: "1rem",
                 fontWeight: 600,
                 borderRadius: "6px",
@@ -211,7 +214,7 @@ export default function Hero() {
             </a>
 
             <a
-              href="tel:+34600000000"
+              href="tel:+34660565324"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -219,7 +222,7 @@ export default function Hero() {
                 padding: "0.9rem 1.5rem",
                 border: "1.5px solid rgba(168,218,220,0.32)",
                 color: "#F1FAEE",
-                fontFamily: "var(--font-space-grotesk), sans-serif",
+                fontFamily: "var(--font-hanken), sans-serif",
                 fontSize: "1rem",
                 fontWeight: 500,
                 borderRadius: "6px",
@@ -238,7 +241,7 @@ export default function Hero() {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a1 1 0 0 0-1.02.24l-1.57 1.97a15.05 15.05 0 0 1-6.92-6.92l1.97-1.57c.27-.27.35-.67.24-1.02A11.5 11.5 0 0 1 8.62 4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1c0 9.39 7.61 17 17 17a1 1 0 0 0 1-1v-3.62c0-.55-.45-1-1-1z" />
               </svg>
-              600 00 00 00
+              660 56 53 24
             </a>
           </motion.div>
 
@@ -256,12 +259,12 @@ export default function Hero() {
           >
             {[
               { type: "check", text: "Presupuesto cerrado desde el primer día" },
-              { type: "check", text: "25 años de oficio · +800 obras entregadas" },
-              { type: "stars", text: "4.9 en Google · 127 reseñas", href: "https://g.co/kgs/decoreformas" },
+              { type: "check", text: "25 años de oficio, más de 800 obras entregadas" },
+              { type: "stars", text: "4,9 en Google · 127 reseñas", href: "https://g.co/kgs/decoreformas" },
             ].map((row, i) => (
               <div key={i} style={{ display: "flex", alignItems: "center", gap: "0.625rem" }}>
                 {row.type === "stars" ? (
-                  <span style={{ display: "flex", gap: "1px" }} aria-label="4.9 de 5 estrellas">
+                  <span style={{ display: "flex", gap: "1px" }} aria-label="4,9 de 5 estrellas">
                     <StarIcon /><StarIcon /><StarIcon /><StarIcon /><StarIcon />
                   </span>
                 ) : (
@@ -272,11 +275,11 @@ export default function Hero() {
                     href={row.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-mono"
                     style={{
-                      color: "rgba(241,250,238,0.58)",
-                      fontSize: "0.6rem",
-                      letterSpacing: "0.12em",
+                      fontFamily: "var(--font-hanken), sans-serif",
+                      fontSize: "0.75rem",
+                      fontWeight: 500,
+                      color: "rgba(241,250,238,0.62)",
                       textDecoration: "underline",
                       textUnderlineOffset: "2px",
                       textDecorationColor: "rgba(168,218,220,0.30)",
@@ -286,8 +289,12 @@ export default function Hero() {
                   </a>
                 ) : (
                   <span
-                    className="text-mono"
-                    style={{ color: "rgba(241,250,238,0.58)", fontSize: "0.7rem", letterSpacing: "0.12em" }}
+                    style={{
+                      fontFamily: "var(--font-hanken), sans-serif",
+                      fontSize: "0.75rem",
+                      fontWeight: 500,
+                      color: "rgba(241,250,238,0.62)",
+                    }}
                   >
                     {row.text}
                   </span>
@@ -298,7 +305,7 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* ── DERECHA — imagen full + formulario ── */}
+      {/* RIGHT — imagen + formulario */}
       <motion.div
         initial={{ opacity: reduce ? 1 : 0 }}
         animate={{ opacity: 1, transition: { duration: 1.1, delay: 0.15, ease: EASE_EXPO } }}
@@ -310,25 +317,25 @@ export default function Hero() {
           justifyContent: "flex-end",
         }}
       >
-        {/* Imagen: espacio reformado real — salón Madrid 2024 */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=85&auto=format&fit=crop"
-          alt="Salón reformado, suelo de madera clara y cocina integrada en tonos neutros"
+        <div
           style={{
             position: "absolute",
             top: 72,
             left: 0,
             right: 0,
             bottom: 0,
-            width: "100%",
-            height: "calc(100% - 72px)",
-            objectFit: "cover",
-            objectPosition: "center 30%",
           }}
-        />
+        >
+          <Image
+            src="/obras/cocina-blanca-peninsula-hero.webp"
+            alt="Cocina blanca reformada con península, encimera de piedra, electrodomésticos integrados y frente iluminado"
+            fill
+            priority
+            sizes="(max-width: 1023px) 100vw, 50vw"
+            style={{ objectFit: "cover", objectPosition: "center" }}
+          />
+        </div>
 
-        {/* Degradado: foto visible arriba, oscuro en zona del formulario */}
         <div
           aria-hidden="true"
           style={{
@@ -343,15 +350,8 @@ export default function Hero() {
         />
 
         {/* Formulario */}
-        <div
-          style={{
-            position: "relative",
-            zIndex: 1,
-            padding: "2rem 2.5rem",
-          }}
-        >
+        <div style={{ position: "relative", zIndex: 1, padding: "2rem 2.5rem" }}>
           {formState === "success" ? (
-            /* Estado de éxito */
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0, transition: { duration: 0.5, ease: EASE_EXPO } }}
@@ -375,50 +375,21 @@ export default function Hero() {
                   <path d="M4 12l5 5L20 7" stroke="#A8DADC" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </div>
-              <p
-                style={{
-                  fontFamily: "var(--font-space-grotesk), sans-serif",
-                  fontSize: "1.125rem",
-                  fontWeight: 700,
-                  color: "#F1FAEE",
-                  letterSpacing: "-0.02em",
-                  marginBottom: "0.5rem",
-                }}
-              >
+              <p style={{ fontFamily: "var(--font-hanken), sans-serif", fontSize: "1.125rem", fontWeight: 700, color: "#F1FAEE", letterSpacing: "-0.02em", marginBottom: "0.5rem" }}>
                 Recibido.
               </p>
-              <p
-                style={{
-                  fontFamily: "var(--font-hanken), sans-serif",
-                  fontSize: "0.875rem",
-                  color: "rgba(241,250,238,0.65)",
-                  lineHeight: 1.55,
-                }}
-              >
+              <p style={{ fontFamily: "var(--font-hanken), sans-serif", fontSize: "0.875rem", color: "rgba(241,250,238,0.65)", lineHeight: 1.55 }}>
                 Te llamamos en menos de 24 horas. Si prefieres, escríbenos por{" "}
-                <a
-                  href="https://wa.me/34600000000"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ color: "#A8DADC", textDecoration: "underline", textUnderlineOffset: "2px" }}
-                >
+                <a href="https://wa.me/34660565324" target="_blank" rel="noopener noreferrer" style={{ color: "#A8DADC", textDecoration: "underline", textUnderlineOffset: "2px" }}>
                   WhatsApp
-                </a>
-                .
+                </a>.
               </p>
             </motion.div>
           ) : (
             <>
-              <p
-                className="text-mono"
-                style={{ color: "#A8DADC", marginBottom: "0.5rem", fontSize: "0.6rem" }}
-              >
-                Solicitar presupuesto
-              </p>
-
               <h2
                 style={{
-                  fontFamily: "var(--font-space-grotesk), sans-serif",
+                  fontFamily: "var(--font-hanken), sans-serif",
                   fontSize: "clamp(1.1rem, 1.8vw, 1.5rem)",
                   fontWeight: 700,
                   color: "#F1FAEE",
@@ -431,12 +402,8 @@ export default function Hero() {
                 <span style={{ color: "#A8DADC", fontWeight: 400 }}>Sin compromiso.</span>
               </h2>
 
-              <form
-                onSubmit={handleSubmit}
-                noValidate
-                style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}
-              >
-                {/* Fila nombre + teléfono */}
+              <form onSubmit={handleSubmit} noValidate style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                {/* Nombre + teléfono */}
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.5rem" }}>
                   <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem" }}>
                     <input
@@ -454,12 +421,8 @@ export default function Hero() {
                         borderColor: errors.nombre ? "rgba(230,57,70,0.7)" : "rgba(168,218,220,0.25)",
                         opacity: isBusy ? 0.55 : 1,
                       }}
-                      onFocus={(e) => {
-                        if (!errors.nombre) e.currentTarget.style.borderColor = "rgba(168,218,220,0.65)";
-                      }}
-                      onBlur={(e) => {
-                        handleBlur(e);
-                      }}
+                      onFocus={(e) => { if (!errors.nombre) e.currentTarget.style.borderColor = "rgba(168,218,220,0.65)"; }}
+                      onBlur={handleBlur}
                     />
                     {errors.nombre && (
                       <span id="err-nombre" role="alert" style={{ fontSize: "0.6875rem", color: "#E63946", fontFamily: "var(--font-hanken), sans-serif" }}>
@@ -484,12 +447,8 @@ export default function Hero() {
                         borderColor: errors.telefono ? "rgba(230,57,70,0.7)" : "rgba(168,218,220,0.25)",
                         opacity: isBusy ? 0.55 : 1,
                       }}
-                      onFocus={(e) => {
-                        if (!errors.telefono) e.currentTarget.style.borderColor = "rgba(168,218,220,0.65)";
-                      }}
-                      onBlur={(e) => {
-                        handleBlur(e);
-                      }}
+                      onFocus={(e) => { if (!errors.telefono) e.currentTarget.style.borderColor = "rgba(168,218,220,0.65)"; }}
+                      onBlur={handleBlur}
                     />
                     {errors.telefono && (
                       <span id="err-telefono" role="alert" style={{ fontSize: "0.6875rem", color: "#E63946", fontFamily: "var(--font-hanken), sans-serif" }}>
@@ -524,12 +483,8 @@ export default function Hero() {
                         transition: "border-color 0.16s",
                         opacity: isBusy ? 0.55 : 1,
                       }}
-                      onFocus={(e) => {
-                        if (!errors.tipo) e.currentTarget.style.borderColor = "rgba(168,218,220,0.65)";
-                      }}
-                      onBlur={(e) => {
-                        handleBlur(e);
-                      }}
+                      onFocus={(e) => { if (!errors.tipo) e.currentTarget.style.borderColor = "rgba(168,218,220,0.65)"; }}
+                      onBlur={handleBlur}
                     >
                       <option value="" disabled>¿Qué quieres reformar?</option>
                       <option value="cocina">Cocina</option>
@@ -538,10 +493,8 @@ export default function Hero() {
                       <option value="local">Local comercial</option>
                       <option value="otro">Otro</option>
                     </select>
-                    <svg
-                      width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"
-                      style={{ position: "absolute", right: "0.75rem", top: "50%", transform: "translateY(-50%)", pointerEvents: "none" }}
-                    >
+                    <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"
+                      style={{ position: "absolute", right: "0.75rem", top: "50%", transform: "translateY(-50%)", pointerEvents: "none" }}>
                       <path d="M3 5l4 4 4-4" stroke="rgba(168,218,220,0.6)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </div>
@@ -552,7 +505,7 @@ export default function Hero() {
                   )}
                 </div>
 
-                {/* Error global de red */}
+                {/* Error de red */}
                 {formState === "error" && (
                   <p
                     role="alert"
@@ -567,7 +520,7 @@ export default function Hero() {
                     }}
                   >
                     No se pudo enviar. Inténtalo de nuevo o llámanos al{" "}
-                    <a href="tel:+34600000000" style={{ color: "#E63946", fontWeight: 600 }}>600 00 00 00</a>.
+                    <a href="tel:+34660565324" style={{ color: "#E63946", fontWeight: 600 }}>660 56 53 24</a>.
                   </p>
                 )}
 
@@ -576,9 +529,9 @@ export default function Hero() {
                   type="submit"
                   disabled={isBusy}
                   style={{
-                    background: isBusy ? "#155961" : "#1D6A72",
+                    background: isBusy ? "#c8313d" : "#E63946",
                     color: "#F1FAEE",
-                    fontFamily: "var(--font-space-grotesk), sans-serif",
+                    fontFamily: "var(--font-hanken), sans-serif",
                     fontSize: "0.875rem",
                     fontWeight: 600,
                     letterSpacing: "-0.01em",
@@ -595,8 +548,8 @@ export default function Hero() {
                     justifyContent: "center",
                     gap: "0.5rem",
                   }}
-                  onMouseEnter={(e) => { if (!isBusy) e.currentTarget.style.background = "#155961"; }}
-                  onMouseLeave={(e) => { if (!isBusy) e.currentTarget.style.background = "#1D6A72"; }}
+                  onMouseEnter={(e) => { if (!isBusy) e.currentTarget.style.background = "#c8313d"; }}
+                  onMouseLeave={(e) => { if (!isBusy) e.currentTarget.style.background = "#E63946"; }}
                 >
                   {isBusy ? (
                     <>
@@ -612,16 +565,7 @@ export default function Hero() {
                   )}
                 </button>
 
-                <p
-                  style={{
-                    fontFamily: "var(--font-space-mono), monospace",
-                    fontSize: "0.5rem",
-                    letterSpacing: "0.10em",
-                    textTransform: "uppercase",
-                    color: "rgba(241,250,238,0.35)",
-                    textAlign: "center",
-                  }}
-                >
+                <p style={{ fontFamily: "var(--font-hanken), sans-serif", fontSize: "0.6875rem", fontWeight: 500, color: "rgba(241,250,238,0.35)", textAlign: "center" }}>
                   Sin spam · respuesta en menos de 24 h
                 </p>
               </form>
@@ -629,12 +573,6 @@ export default function Hero() {
           )}
         </div>
       </motion.div>
-
-      {/* Animación del spinner */}
-      <style>{`
-        @keyframes spin { to { transform: rotate(360deg); } }
-        @media (prefers-reduced-motion: reduce) { @keyframes spin { to { transform: none; } } }
-      `}</style>
     </section>
   );
 }

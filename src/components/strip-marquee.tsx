@@ -43,7 +43,7 @@ function Pill({ nombre, zona, año }: { nombre: string; zona: string; año: stri
       <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
         <span
           style={{
-            fontFamily: "var(--font-space-grotesk), sans-serif",
+            fontFamily: "var(--font-hanken), sans-serif",
             fontSize: "0.875rem",
             fontWeight: 500,
             color: "#F1FAEE",
@@ -56,7 +56,7 @@ function Pill({ nombre, zona, año }: { nombre: string; zona: string; año: stri
         </span>
         <span
           style={{
-            fontFamily: "var(--font-space-mono), monospace",
+            fontFamily: "var(--font-hanken), sans-serif",
             fontSize: "0.625rem",
             letterSpacing: "0.16em",
             textTransform: "uppercase" as const,

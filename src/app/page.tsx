@@ -8,6 +8,7 @@ import Proceso from "@/components/proceso";
 import Testimonios from "@/components/testimonios";
 import Nosotros from "@/components/nosotros";
 import Contacto from "@/components/contacto";
+import Footer from "@/components/footer";
 import Whatsapp from "@/components/whatsapp";
 
 export default function Home() {
@@ -17,14 +18,15 @@ export default function Home() {
       <main>
         <Hero />
         <BrandMarquee />
-        <Servicios />
         <Proyectos />
+        <Servicios />
         <ObrasSlider />
         <Proceso />
         <Testimonios />
         <Nosotros />
         <Contacto />
       </main>
+      <Footer />
       <Whatsapp />
     </>
   );

@@ -7,7 +7,7 @@ export default function Whatsapp() {
 
   return (
     <motion.a
-      href="https://wa.me/34XXXXXXXXX"
+      href="https://wa.me/34660565324"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Contactar por WhatsApp"

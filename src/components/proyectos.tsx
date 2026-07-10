@@ -7,35 +7,35 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 const proyectos = [
   {
-    nombre: "Reforma integral piso centro",
-    ubicacion: "MADRID · 2024",
-    tipo: "REFORMA INTEGRAL · 85 M²",
-    src: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80",
-    alt: "Salón reformado con apertura al jardín, sofá gris claro y madera natural, Madrid 2024",
+    nombre: "Cocina blanca con península",
+    ubicacion: "Vivienda",
+    tipo: "Cocina",
+    src: "/obras/cocina-blanca-peninsula.webp",
+    alt: "Cocina blanca reformada con península, encimera de piedra, suelo porcelánico efecto madera y electrodomésticos integrados",
     tall: true,
   },
   {
-    nombre: "Cocina abierta al salón",
-    ubicacion: "BARCELONA · 2024",
-    tipo: "COCINA · 32 M²",
-    src: "https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=1200&q=80",
-    alt: "Salón abierto con suelo de microcemento y cocina integrada en azul marino, Barcelona 2024",
+    nombre: "Dúplex con escalera flotante",
+    ubicacion: "Vivienda dúplex",
+    tipo: "Reforma integral",
+    src: "/obras/reforma-duplex-escalera-flotante.webp",
+    alt: "Salón de dúplex reformado con escalera flotante de madera y barandilla de vidrio",
     tall: true,
   },
   {
-    nombre: "Baño principal en blanco",
-    ubicacion: "VALENCIA · 2023",
-    tipo: "BAÑO · 9 M²",
-    src: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80",
-    alt: "Baño reformado con ducha de obra, azulejo blanco metro y mueble lacado gris, Valencia 2023",
+    nombre: "Reforma integral de piso clásico",
+    ubicacion: "Vivienda",
+    tipo: "Reforma integral",
+    src: "/obras/reforma-integral-salon-clasico.webp",
+    alt: "Salón reformado con tarima de roble, molduras clásicas y puertas correderas blancas abiertas hacia la sala de estar",
     tall: false,
   },
   {
-    nombre: "Vivienda unifamiliar completa",
-    ubicacion: "SEVILLA · 2023",
-    tipo: "OBRA INTEGRAL · 160 M²",
-    src: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1600&q=80",
-    alt: "Vivienda unifamiliar reformada con revestimiento de madera y fachada negra, Sevilla 2023",
+    nombre: "Local comercial listo para abrir",
+    ubicacion: "Obrador y tienda",
+    tipo: "Espacio comercial",
+    src: "/obras/reforma-local-comercial.webp",
+    alt: "Local comercial reformado con mobiliario de madera, vitrina expositora e iluminación técnica",
     tall: false,
   },
 ];
@@ -58,7 +58,7 @@ function ProyectoCard({
   return (
     <div
       className="relative overflow-hidden w-full group"
-      style={{ aspectRatio: tall ? "4/3" : "16/9" }}
+      style={{ aspectRatio: tall ? "4/3" : "16/9", height: "100%" }}
     >
       <Image
         src={src}
@@ -68,7 +68,6 @@ function ProyectoCard({
         className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
       />
 
-      {/* Overlay */}
       <div
         className="absolute inset-0 transition-opacity duration-300"
         style={{
@@ -78,18 +77,23 @@ function ProyectoCard({
         }}
       />
 
-      {/* Info */}
       <div className="absolute inset-x-0 bottom-0 px-5 py-5">
         <p
-          className="text-mono"
-          style={{ color: "#A8DADC", fontSize: "0.6875rem", letterSpacing: "0.18em" }}
+          style={{
+            fontFamily: "var(--font-hanken), sans-serif",
+            fontSize: "0.6875rem",
+            fontWeight: 500,
+            color: "#A8DADC",
+            letterSpacing: "0.06em",
+            textTransform: "uppercase",
+          }}
         >
           {tipo} · {ubicacion}
         </p>
         <p
           className="mt-1.5"
           style={{
-            fontFamily: "var(--font-space-grotesk), sans-serif",
+            fontFamily: "var(--font-hanken), sans-serif",
             fontWeight: 600,
             fontSize: "1.0625rem",
             color: "#ffffff",
@@ -127,13 +131,18 @@ export default function Proyectos() {
               Proyectos recientes
             </h2>
             <p className="text-body mt-3" style={{ color: "#6b7889", maxWidth: "52ch" }}>
-              Una selección de obras entregadas. Cada foto la sube el cliente
-              cuando quiere, sin prisa de nuestra parte.
+              Una selección de obras entregadas, fotografiadas tal cual
+              quedaron el día de la entrega. Sin retoques ni fotos de catálogo.
             </p>
           </div>
           <p
-            className="text-mono shrink-0"
-            style={{ color: "#457B9D", fontSize: "0.6875rem" }}
+            style={{
+              fontFamily: "var(--font-hanken), sans-serif",
+              fontSize: "0.8125rem",
+              fontWeight: 500,
+              color: "#457B9D",
+              flexShrink: 0,
+            }}
           >
             +300 proyectos entregados
           </p>
@@ -152,7 +161,7 @@ export default function Proyectos() {
           </motion.div>
 
           <motion.div
-            className="lg:col-span-1"
+            className="lg:col-span-1 h-full"
             initial={{ opacity: reduce ? 1 : 0, y: reduce ? 0 : 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
@@ -162,7 +171,7 @@ export default function Proyectos() {
           </motion.div>
 
           <motion.div
-            className="lg:col-span-1"
+            className="lg:col-span-1 h-full"
             initial={{ opacity: reduce ? 1 : 0, y: reduce ? 0 : 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}

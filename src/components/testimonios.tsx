@@ -36,7 +36,7 @@ export default function Testimonios() {
       style={{ background: "#ffffff", borderTop: "1px solid rgba(29,53,87,0.08)" }}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Featured quote */}
+        {/* Cita principal */}
         <motion.blockquote
           initial={{ opacity: reduce ? 1 : 0, y: reduce ? 0 : 28 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -44,13 +44,12 @@ export default function Testimonios() {
           transition={{ duration: 0.85, ease: EASE }}
           className="mb-20"
         >
-          {/* Large quotemark */}
           <span
             aria-hidden="true"
             style={{
-              fontFamily: "var(--font-space-grotesk), sans-serif",
+              fontFamily: "var(--font-hanken), sans-serif",
               fontSize: "5rem",
-              fontWeight: 700,
+              fontWeight: 800,
               lineHeight: 0.7,
               color: "#1D3557",
               opacity: 0.14,
@@ -78,16 +77,12 @@ export default function Testimonios() {
           </p>
 
           <footer className="mt-8 flex items-center gap-4">
-            <div
-              className="w-8 h-px"
-              style={{ background: "#E63946" }}
-              aria-hidden="true"
-            />
+            <div className="w-8 h-px" style={{ background: "#E63946" }} aria-hidden="true" />
             <div>
               <cite
                 className="not-italic"
                 style={{
-                  fontFamily: "var(--font-space-grotesk), sans-serif",
+                  fontFamily: "var(--font-hanken), sans-serif",
                   fontWeight: 600,
                   fontSize: "1rem",
                   color: "#1D3557",
@@ -97,8 +92,8 @@ export default function Testimonios() {
                 {principal.autor}
               </cite>
               <p
-                className="text-mono mt-1"
-                style={{ color: "#6b7889", fontSize: "0.6875rem" }}
+                className="text-label mt-1"
+                style={{ color: "#6b7889" }}
               >
                 {principal.lugar} · {principal.proyecto}
               </p>
@@ -106,7 +101,7 @@ export default function Testimonios() {
           </footer>
         </motion.blockquote>
 
-        {/* Supporting quotes */}
+        {/* Citas secundarias */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
           {secundarios.map((t, i) => (
             <motion.blockquote
@@ -117,8 +112,10 @@ export default function Testimonios() {
               transition={{ duration: 0.65, ease: EASE, delay: reduce ? 0 : i * 0.12 }}
               className="flex flex-col"
               style={{
-                borderTop: "3px solid #1D3557",
-                paddingTop: "1.5rem",
+                background: "rgba(29,53,87,0.03)",
+                border: "1px solid rgba(29,53,87,0.08)",
+                borderRadius: "6px",
+                padding: "1.75rem",
               }}
             >
               <p
@@ -136,7 +133,7 @@ export default function Testimonios() {
                   style={{
                     background: "#F1FAEE",
                     color: "#1D3557",
-                    fontFamily: "var(--font-space-grotesk), sans-serif",
+                    fontFamily: "var(--font-hanken), sans-serif",
                     fontWeight: 700,
                     fontSize: "0.6875rem",
                     letterSpacing: "0.04em",
@@ -151,7 +148,7 @@ export default function Testimonios() {
                     className="not-italic"
                     style={{
                       display: "block",
-                      fontFamily: "var(--font-space-grotesk), sans-serif",
+                      fontFamily: "var(--font-hanken), sans-serif",
                       fontWeight: 600,
                       fontSize: "0.9375rem",
                       color: "#1D3557",
@@ -159,10 +156,7 @@ export default function Testimonios() {
                   >
                     {t.autor}
                   </cite>
-                  <p
-                    className="text-mono mt-0.5"
-                    style={{ color: "#6b7889", fontSize: "0.6875rem" }}
-                  >
+                  <p className="text-label mt-0.5" style={{ color: "#6b7889" }}>
                     {t.lugar} · {t.proyecto}
                   </p>
                 </div>

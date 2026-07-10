@@ -6,12 +6,11 @@ import Image from "next/image";
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 const datos = [
-  { valor: "+10", desc: "años de oficio" },
-  { valor: "+300", desc: "proyectos entregados" },
-  { valor: "4,8 / 5", desc: "valoración de clientes" },
+  { valor: "+25", desc: "años de oficio" },
+  { valor: "+800", desc: "proyectos entregados" },
+  { valor: "4,9 / 5", desc: "valoración de clientes" },
 ];
 
-/* Cerulean bloom rendered in SVG for the decorative left-side element */
 function BloomDecor() {
   return (
     <svg
@@ -22,17 +21,13 @@ function BloomDecor() {
       aria-hidden="true"
       style={{ opacity: 0.18 }}
     >
-      {/* Simplified 9×9 bloom scaled up */}
       <g>
-        {/* Top petals */}
         <rect x="44" y="0" width="44" height="22" rx="6" />
         <rect x="112" y="0" width="44" height="22" rx="6" />
         <rect x="0" y="44" width="88" height="44" rx="6" />
         <rect x="112" y="44" width="88" height="44" rx="6" />
-        {/* Cross center gaps */}
         <rect x="44" y="89" width="44" height="22" rx="6" />
         <rect x="112" y="89" width="44" height="22" rx="6" />
-        {/* Bottom petals */}
         <rect x="44" y="111" width="44" height="22" rx="6" />
         <rect x="112" y="111" width="44" height="22" rx="6" />
         <rect x="0" y="112" width="88" height="44" rx="6" />
@@ -55,7 +50,7 @@ export default function Nosotros() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          {/* Image + decoration */}
+          {/* Imagen */}
           <motion.div
             initial={{ opacity: reduce ? 1 : 0, x: reduce ? 0 : -32 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -63,7 +58,6 @@ export default function Nosotros() {
             transition={{ duration: 0.9, ease: EASE }}
             className="relative order-2 lg:order-1"
           >
-            {/* Decorative blooms behind the photo */}
             <div className="absolute -top-8 -left-8 pointer-events-none">
               <BloomDecor />
             </div>
@@ -79,44 +73,40 @@ export default function Nosotros() {
               style={{ aspectRatio: "4 / 5", borderRadius: "4px" }}
             >
               <Image
-                src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80"
-                alt="Arquitecto técnico de Decoreformas revisando planos de distribución sobre mesa de trabajo"
+                src="/obras/equipo-decoreformas-en-obra.webp"
+                alt="Pintor del equipo de Decoreformas repasando la pared de una vivienda en obra"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
               />
             </div>
 
-            {/* Floating stat chip */}
+            {/* Stat chip */}
             <div
               className="absolute -bottom-5 -right-4 px-5 py-3.5"
-              style={{
-                background: "#1D3557",
-                color: "#ffffff",
-                borderRadius: "4px",
-              }}
+              style={{ background: "#1D3557", color: "#ffffff", borderRadius: "4px" }}
             >
               <p
                 style={{
-                  fontFamily: "var(--font-space-grotesk), sans-serif",
+                  fontFamily: "var(--font-hanken), sans-serif",
                   fontSize: "2rem",
-                  fontWeight: 700,
+                  fontWeight: 800,
                   lineHeight: 1,
                   letterSpacing: "-0.04em",
                 }}
               >
-                +10
+                +25
               </p>
               <p
-                className="text-mono mt-0.5"
-                style={{ color: "#A8DADC", fontSize: "0.625rem" }}
+                className="text-label mt-0.5"
+                style={{ color: "#A8DADC" }}
               >
                 años de oficio
               </p>
             </div>
           </motion.div>
 
-          {/* Text */}
+          {/* Texto */}
           <motion.div
             initial={{ opacity: reduce ? 1 : 0, x: reduce ? 0 : 32 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -130,10 +120,7 @@ export default function Nosotros() {
 
             <p
               className="text-body mt-6 prose-width"
-              style={{
-                color: "#42526a",
-                textWrap: "pretty",
-              } as React.CSSProperties}
+              style={{ color: "#42526a", textWrap: "pretty" } as React.CSSProperties}
             >
               Somos un equipo de arquitectos técnicos, diseñadores y jefes de
               obra con base en Madrid. Fundamos Decoreformas porque la reforma
@@ -142,17 +129,14 @@ export default function Nosotros() {
             </p>
             <p
               className="text-body mt-4 prose-width"
-              style={{
-                color: "#6b7889",
-                textWrap: "pretty",
-              } as React.CSSProperties}
+              style={{ color: "#6b7889", textWrap: "pretty" } as React.CSSProperties}
             >
               Construimos una empresa donde todas las fases de la obra pasan
               por nosotros. El mismo equipo que firma el presupuesto es el que
               ejecuta y entrega. Sin sorpresas en el precio ni en el calendario.
             </p>
 
-            {/* Stats — inline list, not a metric dashboard */}
+            {/* Stats */}
             <div
               className="mt-12 flex flex-col gap-3"
               style={{ borderTop: "1px solid rgba(29,53,87,0.12)", paddingTop: "1.5rem" }}
@@ -161,7 +145,7 @@ export default function Nosotros() {
                 <div key={d.desc} className="flex items-baseline gap-3">
                   <span
                     style={{
-                      fontFamily: "var(--font-space-grotesk), sans-serif",
+                      fontFamily: "var(--font-hanken), sans-serif",
                       fontSize: "1.125rem",
                       fontWeight: 700,
                       color: "#1D3557",
@@ -172,10 +156,7 @@ export default function Nosotros() {
                   >
                     {d.valor}
                   </span>
-                  <span
-                    className="text-label"
-                    style={{ color: "#6b7889" }}
-                  >
+                  <span className="text-label" style={{ color: "#6b7889" }}>
                     {d.desc}
                   </span>
                 </div>

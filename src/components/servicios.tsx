@@ -10,28 +10,24 @@ const servicios = [
     description:
       "Gestionamos el proyecto completo, de la demolición al acabado final. Fontanería, electricidad, carpintería: un único interlocutor desde el primer día, sin subcontratas que escapen a tu control.",
     detail: "Viviendas · Locales · Obra nueva",
-    accentColor: "#1D3557",
   },
   {
     title: "Decoración de Interiores",
     description:
       "Diseño de espacios desde la distribución de planta hasta la selección de materiales, mobiliario y textiles. El resultado que imaginas, trasladado a planos y luego a tu espacio.",
     detail: "Residencial · Corporativo",
-    accentColor: "#457B9D",
   },
   {
     title: "Cocinas y Baños",
     description:
       "Los dos cuartos que más impactan en el valor y el uso diario de una vivienda. Trabajamos con fabricantes de garantía, tiempos ajustados y un acabado que aguanta.",
     detail: "Cocinas · Baños · Lavanderías",
-    accentColor: "#A8DADC",
   },
   {
     title: "Espacios Comerciales",
     description:
       "Locales, oficinas, hostelería. Cada semana cerrado tiene un coste, y eso se refleja en la planificación: fases de obra que minimizan la interrupción de tu negocio.",
     detail: "Hostelería · Retail · Oficinas",
-    accentColor: "#E63946",
   },
 ];
 
@@ -63,7 +59,7 @@ export default function Servicios() {
           </p>
         </motion.div>
 
-        {/* Service rows */}
+        {/* Service rows — sin números 01/02 decorativos */}
         <div style={{ borderTop: "1px solid rgba(29,53,87,0.10)" }}>
           {servicios.map((s, i) => (
             <motion.div
@@ -76,46 +72,19 @@ export default function Servicios() {
               style={{ borderBottom: "1px solid rgba(29,53,87,0.10)" }}
             >
               <div className="flex items-start gap-8 py-10 lg:py-12">
-                {/* Service index */}
-                <div
-                  className="shrink-0 hidden lg:flex flex-col items-center gap-2 mt-1"
-                  aria-hidden="true"
-                >
-                  <span
-                    style={{
-                      fontFamily: "var(--font-space-mono), monospace",
-                      fontSize: "0.6875rem",
-                      fontWeight: 400,
-                      color: "rgba(29,53,87,0.30)",
-                      letterSpacing: "0.08em",
-                      lineHeight: 1,
-                    }}
-                  >
-                    0{i + 1}
-                  </span>
-                  <span
-                    style={{
-                      width: 6,
-                      height: 6,
-                      borderRadius: "50%",
-                      background: s.accentColor,
-                      flexShrink: 0,
-                      display: "block",
-                    }}
-                  />
-                </div>
-
                 <div className="flex-1 min-w-0">
-                  <div className="flex flex-col lg:flex-row lg:items-baseline lg:gap-6">
+                  <div className="flex flex-col lg:flex-row lg:items-baseline lg:gap-5">
                     <h3 className="text-title shrink-0" style={{ color: "#1D3557" }}>
                       {s.title}
                     </h3>
                     <span
-                      className="text-mono mt-1 lg:mt-0"
                       style={{
-                        color: s.accentColor,
-                        letterSpacing: "0.14em",
-                        fontSize: "0.6875rem",
+                        fontFamily: "var(--font-hanken), sans-serif",
+                        fontSize: "0.8125rem",
+                        fontWeight: 500,
+                        color: "#457B9D",
+                        letterSpacing: "0.01em",
+                        marginTop: "0.125rem",
                       }}
                     >
                       {s.detail}

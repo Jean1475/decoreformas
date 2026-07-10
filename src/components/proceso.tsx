@@ -6,22 +6,22 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 const pasos = [
   {
-    n: "01",
+    n: 1,
     titulo: "Consulta gratuita",
     desc: "Nos cuentas el proyecto. Visitamos el espacio y analizamos el alcance sin coste ni compromiso.",
   },
   {
-    n: "02",
+    n: 2,
     titulo: "Propuesta detallada",
     desc: "Presupuesto cerrado, calendario de obra y selección de materiales. Todo por escrito antes de empezar.",
   },
   {
-    n: "03",
+    n: 3,
     titulo: "Ejecución",
     desc: "Un encargado de obra dedicado y actualizaciones semanales con fotos. Sabes qué pasa en tu espacio.",
   },
   {
-    n: "04",
+    n: 4,
     titulo: "Entrega",
     desc: "Revisión final contigo, documentación de garantías y servicio posventa durante doce meses.",
   },
@@ -36,7 +36,7 @@ export default function Proceso() {
       className="relative py-20 lg:py-32 overflow-hidden pattern-navy"
     >
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Header */}
+        {/* Header — eyebrow deliberado (1 de 2 permitidos en la página) */}
         <motion.div
           initial={{ opacity: reduce ? 1 : 0, y: reduce ? 0 : 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -44,10 +44,7 @@ export default function Proceso() {
           transition={{ duration: 0.7, ease: EASE }}
           className="mb-16 lg:mb-20"
         >
-          <p
-            className="text-mono mb-4"
-            style={{ color: "#A8DADC", fontSize: "0.6875rem" }}
-          >
+          <p className="text-eyebrow mb-4" style={{ color: "#A8DADC" }}>
             Cómo trabajamos
           </p>
           <h2 className="text-headline" style={{ color: "#ffffff", maxWidth: "28ch" }}>
@@ -55,7 +52,7 @@ export default function Proceso() {
           </h2>
         </motion.div>
 
-        {/* Steps grid */}
+        {/* Steps grid — números semánticos como prefijo, no watermark decorativo */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0">
           {pasos.map((p, i) => (
             <motion.div
@@ -71,28 +68,25 @@ export default function Proceso() {
                 borderTop: "2px solid rgba(168,218,220,0.25)",
               }}
             >
-              {/* Step number */}
+              {/* Número semántico pequeño, no watermark */}
               <span
-                aria-hidden="true"
                 style={{
-                  fontFamily: "var(--font-space-grotesk), sans-serif",
-                  fontSize: "3.5rem",
+                  display: "inline-block",
+                  fontFamily: "var(--font-hanken), sans-serif",
+                  fontSize: "0.6875rem",
                   fontWeight: 700,
-                  lineHeight: 1,
+                  letterSpacing: "0.10em",
                   color: "#A8DADC",
-                  opacity: 0.30,
-                  display: "block",
-                  marginBottom: "1.25rem",
-                  letterSpacing: "-0.04em",
+                  opacity: 0.60,
+                  marginBottom: "1rem",
+                  textTransform: "uppercase",
                 }}
+                aria-hidden="true"
               >
-                {p.n}
+                Paso {p.n}
               </span>
 
-              <h3
-                className="text-title"
-                style={{ color: "#F1FAEE" }}
-              >
+              <h3 className="text-title" style={{ color: "#F1FAEE" }}>
                 {p.titulo}
               </h3>
               <p
@@ -122,7 +116,7 @@ export default function Proceso() {
             style={{
               background: "#E63946",
               color: "#ffffff",
-              fontFamily: "var(--font-space-grotesk), sans-serif",
+              fontFamily: "var(--font-hanken), sans-serif",
               fontSize: "0.9375rem",
               fontWeight: 600,
               borderRadius: "6px",
@@ -135,13 +129,7 @@ export default function Proceso() {
           >
             Empezar con una consulta gratuita
             <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
-              <path
-                d="M2.5 7.5h10m0 0L8.5 3.5m4 4-4 4"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
+              <path d="M2.5 7.5h10m0 0L8.5 3.5m4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </a>
         </motion.div>
