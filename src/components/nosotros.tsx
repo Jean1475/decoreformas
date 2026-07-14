@@ -6,8 +6,8 @@ import Image from "next/image";
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 const datos = [
-  { valor: "+25", desc: "años de oficio" },
-  { valor: "+800", desc: "proyectos entregados" },
+  { valor: "+20", desc: "años de oficio" },
+  { valor: "+100", desc: "proyectos entregados" },
   { valor: "4,9 / 5", desc: "valoración de clientes" },
 ];
 
@@ -122,18 +122,19 @@ export default function Nosotros() {
               className="text-body mt-6 prose-width"
               style={{ color: "#42526a", textWrap: "pretty" } as React.CSSProperties}
             >
-              Somos un equipo de arquitectos técnicos, diseñadores y jefes de
-              obra con base en Madrid. Fundamos Decoreformas porque la reforma
-              media tiene demasiadas fricciones: presupuestos que se inflan,
-              plazos que se alargan, comunicación fragmentada.
+              Somos un equipo pequeño con base en Madrid Sur, con más de 20
+              años de oficio a nuestras espaldas. Fundamos Decoreformas porque
+              la reforma media tiene demasiadas fricciones: presupuestos que
+              se inflan, plazos que se alargan, comunicación fragmentada.
             </p>
             <p
               className="text-body mt-4 prose-width"
               style={{ color: "#6b7889", textWrap: "pretty" } as React.CSSProperties}
             >
-              Construimos una empresa donde todas las fases de la obra pasan
-              por nosotros. El mismo equipo que firma el presupuesto es el que
-              ejecuta y entrega. Sin sorpresas en el precio ni en el calendario.
+              Al ser un equipo reducido, todas las fases de la obra pasan por
+              nosotros. La misma persona que firma el presupuesto es la que
+              ejecuta y entrega. Sin intermediarios ni sorpresas en el precio
+              ni en el calendario.
             </p>
 
             {/* Stats */}

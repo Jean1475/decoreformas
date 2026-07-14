@@ -7,9 +7,11 @@ import ObrasSlider from "@/components/obras-slider";
 import Proceso from "@/components/proceso";
 import Testimonios from "@/components/testimonios";
 import Nosotros from "@/components/nosotros";
+import Faq from "@/components/faq";
 import Contacto from "@/components/contacto";
 import Footer from "@/components/footer";
 import Whatsapp from "@/components/whatsapp";
+import { faqGeneral } from "@/lib/faq-general";
 
 export default function Home() {
   return (
@@ -24,6 +26,11 @@ export default function Home() {
         <Proceso />
         <Testimonios />
         <Nosotros />
+        <Faq
+          items={faqGeneral}
+          titulo="Preguntas frecuentes"
+          descripcion="Lo que más nos preguntan antes de empezar una obra."
+        />
         <Contacto />
       </main>
       <Footer />

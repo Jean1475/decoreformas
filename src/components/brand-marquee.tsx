@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Fragment } from "react";
 
 type BrandVariant = "pill" | "bold" | "italic" | "spaced" | "stamp" | "plain";
@@ -8,28 +9,51 @@ interface Brand {
   name: string;
   sub?: string;
   variant: BrandVariant;
+  logo?: { src: string; width: number; height: number };
 }
 
 const brands: Brand[] = [
-  { name: "PORCELANOSA", variant: "spaced" },
-  { name: "Roca & Co.", variant: "italic" },
-  { name: "KNAUF", variant: "bold" },
-  { name: "HANSGROHE", sub: "Est. 1901", variant: "stamp" },
-  { name: "BTicino", variant: "pill" },
-  { name: "Grohe", variant: "italic" },
-  { name: "JUNG", variant: "spaced" },
+  { name: "Porcelanosa", variant: "spaced", logo: { src: "/logos/porcelanosa_logo.svg", width: 130, height: 14 } },
+  { name: "Roca", variant: "italic", logo: { src: "/logos/RocaLogo.svg.webp", width: 70, height: 34 } },
+  { name: "KNAUF", variant: "bold", logo: { src: "/logos/knauf.svg", width: 84, height: 54 } },
+  { name: "HANSGROHE", sub: "Est. 1901", variant: "stamp", logo: { src: "/logos/hansgrohe.svg", width: 130, height: 20 } },
+  { name: "BTicino", variant: "pill", logo: { src: "/logos/bticino.svg", width: 96, height: 26 } },
+  { name: "Grohe", variant: "italic", logo: { src: "/logos/grohe.svg", width: 60, height: 46 } },
+  { name: "JUNG", variant: "spaced", logo: { src: "/logos/jung.svg", width: 84, height: 22 } },
   { name: "ROCKWOOL", sub: "Desde 1937", variant: "stamp" },
-  { name: "Leroy Merlin Pro", variant: "plain" },
-  { name: "SCHNEIDER Electric", variant: "bold" },
-  { name: "Saunier Duval", variant: "italic" },
-  { name: "SIEMENS HOME", variant: "pill" },
+  { name: "Leroy Merlin Pro", variant: "plain", logo: { src: "/logos/leroy-merlin.svg", width: 44, height: 26 } },
+  { name: "SCHNEIDER Electric", variant: "bold", logo: { src: "/logos/schneider-electric.svg", width: 118, height: 54 } },
+  { name: "Saunier Duval", variant: "italic", logo: { src: "/logos/Saunier-duval-logo.svg", width: 90, height: 49 } },
+  { name: "SIEMENS", variant: "pill", logo: { src: "/logos/siemens.svg", width: 96, height: 15 } },
 ];
 
 const items = [...brands, ...brands];
 
 const COLOR = "rgba(29,53,87,0.40)";
 
-function BrandItem({ name, sub, variant }: Brand) {
+function BrandItem({ name, sub, variant, logo }: Brand) {
+  if (logo) {
+    return (
+      <span
+        style={{
+          display: "inline-flex",
+          alignItems: "center",
+          whiteSpace: "nowrap",
+          opacity: 0.55,
+          filter: "grayscale(1)",
+        }}
+      >
+        <Image
+          src={logo.src}
+          alt={name}
+          width={logo.width}
+          height={logo.height}
+          style={{ width: "auto", height: logo.height, maxWidth: logo.width }}
+        />
+      </span>
+    );
+  }
+
   if (variant === "pill") {
     return (
       <span style={{

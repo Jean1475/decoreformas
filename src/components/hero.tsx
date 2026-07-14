@@ -8,14 +8,6 @@ const EASE_EXPO = [0.16, 1, 0.3, 1] as const;
 
 type FormState = "idle" | "sending" | "success" | "error";
 
-function StarIcon() {
-  return (
-    <svg width="12" height="12" viewBox="0 0 14 14" fill="#A8DADC" aria-hidden="true">
-      <path d="M7 1l1.545 3.09L12 4.635l-2.5 2.44.59 3.425L7 8.91l-3.09 1.59L4.5 7.075 2 4.635l3.455-.545L7 1z" />
-    </svg>
-  );
-}
-
 function CheckIcon() {
   return (
     <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
@@ -194,20 +186,27 @@ export default function Hero() {
                 alignItems: "center",
                 gap: "0.625rem",
                 padding: "0.9rem 1.625rem",
-                background: "#25D366",
-                color: "#ffffff",
+                background: "rgba(168,218,220,0.10)",
+                border: "1.5px solid rgba(168,218,220,0.35)",
+                color: "#F1FAEE",
                 fontFamily: "var(--font-hanken), sans-serif",
                 fontSize: "1rem",
                 fontWeight: 600,
                 borderRadius: "6px",
                 textDecoration: "none",
                 letterSpacing: "-0.01em",
-                transition: "opacity 0.18s",
+                transition: "border-color 0.18s, background 0.18s",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
-              onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = "rgba(168,218,220,0.7)";
+                e.currentTarget.style.background = "rgba(168,218,220,0.16)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = "rgba(168,218,220,0.35)";
+                e.currentTarget.style.background = "rgba(168,218,220,0.10)";
+              }}
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true">
                 <path d="M19.11 4.91A9.82 9.82 0 0 0 12.05 2C6.58 2 2.13 6.45 2.13 11.92c0 1.75.46 3.46 1.32 4.97L2 22l5.25-1.38a9.92 9.92 0 0 0 4.79 1.22h.01c5.47 0 9.92-4.45 9.92-9.92 0-2.65-1.03-5.14-2.86-7.01zM12.05 20.18h-.01a8.27 8.27 0 0 1-4.21-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.25 8.25 0 0 1-1.27-4.4c0-4.55 3.71-8.26 8.27-8.26 2.21 0 4.28.86 5.84 2.42a8.21 8.21 0 0 1 2.42 5.84c.01 4.56-3.7 8.26-8.25 8.26zm4.53-6.18c-.25-.13-1.47-.73-1.7-.81-.23-.08-.39-.13-.56.13s-.64.81-.79.97c-.15.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.15-.25-.02-.39.11-.51.12-.11.25-.29.38-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.42-.15 0-.31-.02-.48-.02s-.44.06-.67.31c-.23.25-.88.86-.88 2.09s.9 2.43 1.03 2.59c.13.17 1.78 2.72 4.32 3.81.6.26 1.07.41 1.44.53.61.19 1.16.17 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.16-.48-.29z" />
               </svg>
               Presupuesto gratis por WhatsApp
@@ -258,47 +257,21 @@ export default function Hero() {
             }}
           >
             {[
-              { type: "check", text: "Presupuesto cerrado desde el primer día" },
-              { type: "check", text: "25 años de oficio, más de 800 obras entregadas" },
-              { type: "stars", text: "4,9 en Google · 127 reseñas", href: "https://g.co/kgs/decoreformas" },
-            ].map((row, i) => (
+              "Presupuesto cerrado desde el primer día",
+              "20 años de oficio, más de 100 obras entregadas",
+            ].map((text, i) => (
               <div key={i} style={{ display: "flex", alignItems: "center", gap: "0.625rem" }}>
-                {row.type === "stars" ? (
-                  <span style={{ display: "flex", gap: "1px" }} aria-label="4,9 de 5 estrellas">
-                    <StarIcon /><StarIcon /><StarIcon /><StarIcon /><StarIcon />
-                  </span>
-                ) : (
-                  <span style={{ flexShrink: 0, display: "flex" }}><CheckIcon /></span>
-                )}
-                {row.href ? (
-                  <a
-                    href={row.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      fontFamily: "var(--font-hanken), sans-serif",
-                      fontSize: "0.75rem",
-                      fontWeight: 500,
-                      color: "rgba(241,250,238,0.62)",
-                      textDecoration: "underline",
-                      textUnderlineOffset: "2px",
-                      textDecorationColor: "rgba(168,218,220,0.30)",
-                    }}
-                  >
-                    {row.text}
-                  </a>
-                ) : (
-                  <span
-                    style={{
-                      fontFamily: "var(--font-hanken), sans-serif",
-                      fontSize: "0.75rem",
-                      fontWeight: 500,
-                      color: "rgba(241,250,238,0.62)",
-                    }}
-                  >
-                    {row.text}
-                  </span>
-                )}
+                <span style={{ flexShrink: 0, display: "flex" }}><CheckIcon /></span>
+                <span
+                  style={{
+                    fontFamily: "var(--font-hanken), sans-serif",
+                    fontSize: "0.75rem",
+                    fontWeight: 500,
+                    color: "rgba(241,250,238,0.62)",
+                  }}
+                >
+                  {text}
+                </span>
               </div>
             ))}
           </motion.div>
@@ -350,7 +323,18 @@ export default function Hero() {
         />
 
         {/* Formulario */}
-        <div style={{ position: "relative", zIndex: 1, padding: "2rem 2.5rem" }}>
+        <div style={{ position: "relative", zIndex: 1, padding: "0 2.5rem 2.5rem" }}>
+          <div
+            style={{
+              background: "rgba(8,22,34,0.45)",
+              backdropFilter: "blur(16px)",
+              WebkitBackdropFilter: "blur(16px)",
+              border: "1px solid rgba(168,218,220,0.18)",
+              borderRadius: "12px",
+              padding: "1.75rem 2rem",
+              boxShadow: "0 8px 32px rgba(0,0,0,0.25)",
+            }}
+          >
           {formState === "success" ? (
             <motion.div
               initial={{ opacity: 0, y: 12 }}
@@ -571,6 +555,7 @@ export default function Hero() {
               </form>
             </>
           )}
+          </div>
         </div>
       </motion.div>
     </section>

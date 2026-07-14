@@ -73,7 +73,7 @@ const jsonLd = {
     "Empresa de reformas integrales de viviendas, cocinas, baños y locales comerciales en Madrid Sur. Presupuesto cerrado, un único interlocutor y seguimiento semanal de obra.",
   url: SITE_URL,
   telephone: "+34660565324",
-  email: "decorpinto@gmail.com",
+  email: "decorpinto@hotmail.com",
   image: `${SITE_URL}/opengraph-image.jpg`,
   logo: `${SITE_URL}/decoreformas-house-hammer-navy.png`,
   priceRange: "€€",

@@ -15,13 +15,13 @@ const secundarios = [
   {
     cita: "Reformaron nuestro local en seis semanas cuando otros nos pedían cuatro meses. Abrimos a tiempo para la temporada de verano.",
     autor: "Roberto A.",
-    lugar: "Barcelona",
+    lugar: "Getafe",
     proyecto: "Local hostelería, 140 m²",
   },
   {
     cita: "Lo que más valoré fue tener un único interlocutor durante toda la obra. Sin llamadas de múltiples empresas preguntando por materiales que ya habíamos elegido.",
     autor: "Sofía M.",
-    lugar: "Valencia",
+    lugar: "Alcorcón",
     proyecto: "Cocina y baño, 48 m²",
   },
 ];

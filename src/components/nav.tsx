@@ -1,22 +1,247 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { serviciosInfo } from "@/lib/servicios-data";
+import { zonas } from "@/lib/zonas";
+import { catalogo, categoriasOrden } from "@/lib/catalogo";
 
 const links = [
-  { href: "#proyectos", label: "Proyectos" },
-  { href: "#servicios", label: "Servicios" },
-  { href: "#proceso", label: "Cómo trabajamos" },
-  { href: "#nosotros", label: "Nosotros" },
+  { href: "/#proyectos", label: "Proyectos" },
+  { href: "/blog", label: "Blog" },
+  { href: "/conocenos/quienes-somos", label: "Conócenos" },
 ];
 
 const TEL_DISPLAY = "660 56 53 24";
 const TEL_HREF = "tel:+34660565324";
 
+function ChevronIcon({ open }: { open: boolean }) {
+  return (
+    <svg
+      width="10"
+      height="10"
+      viewBox="0 0 10 10"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      style={{
+        flexShrink: 0,
+        marginTop: 1,
+        transform: open ? "rotate(180deg)" : "none",
+        transition: "transform 0.2s ease",
+      }}
+    >
+      <polyline points="2,3.5 5,6.5 8,3.5" />
+    </svg>
+  );
+}
+
+interface ColumnItem {
+  href: string;
+  label: string;
+}
+
+interface Column {
+  titulo: string;
+  items: ColumnItem[];
+}
+
+function ServiciosMegaMenu({
+  columns,
+  ink,
+  inkSoft,
+  active,
+  onEnter,
+  onLeave,
+}: {
+  columns: Column[];
+  ink: string;
+  inkSoft: string;
+  active: boolean;
+  onEnter: () => void;
+  onLeave: () => void;
+}) {
+  return (
+    <div className="relative" onMouseEnter={onEnter} onMouseLeave={onLeave}>
+      <button
+        className="flex items-center gap-1"
+        style={{
+          fontFamily: "var(--font-hanken), sans-serif",
+          fontSize: "0.9375rem",
+          fontWeight: 600,
+          color: active ? ink : inkSoft,
+          background: "none",
+          border: "none",
+          cursor: "pointer",
+          padding: 0,
+          transition: "color 0.2s ease",
+          whiteSpace: "nowrap",
+        }}
+        aria-expanded={active}
+      >
+        Servicios
+        <ChevronIcon open={active} />
+      </button>
+
+      <div
+        className="absolute left-1/2"
+        style={{
+          top: "100%",
+          transform: "translateX(-50%)",
+          paddingTop: "1rem",
+          opacity: active ? 1 : 0,
+          visibility: active ? "visible" : "hidden",
+          transition: "opacity 0.18s ease",
+        }}
+      >
+        <div
+          className="grid grid-cols-2 lg:grid-cols-3"
+          style={{
+            background: "#ffffff",
+            borderRadius: 8,
+            boxShadow: "0 1px 3px rgba(29,53,87,0.08), 0 20px 48px -12px rgba(29,53,87,0.30)",
+            border: "1px solid rgba(29,53,87,0.08)",
+            padding: "1.25rem",
+            gap: "0.5rem 2rem",
+            width: "min(760px, 90vw)",
+          }}
+        >
+          {columns.map((col) => (
+            <div key={col.titulo}>
+              <p
+                className="text-label"
+                style={{ color: "#457B9D", marginBottom: "0.5rem", paddingLeft: "0.75rem" }}
+              >
+                {col.titulo}
+              </p>
+              <ul className="flex flex-col">
+                {col.items.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      style={{
+                        display: "block",
+                        padding: "0.4375rem 0.75rem",
+                        borderRadius: 6,
+                        fontFamily: "var(--font-hanken), sans-serif",
+                        fontSize: "0.875rem",
+                        fontWeight: 500,
+                        color: "#1D3557",
+                        textDecoration: "none",
+                        transition: "background 0.15s ease",
+                      }}
+                      onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(29,53,87,0.05)")}
+                      onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ZonasMegaMenu({
+  items,
+  ink,
+  inkSoft,
+  active,
+  onEnter,
+  onLeave,
+}: {
+  items: ColumnItem[];
+  ink: string;
+  inkSoft: string;
+  active: boolean;
+  onEnter: () => void;
+  onLeave: () => void;
+}) {
+  return (
+    <div className="relative" onMouseEnter={onEnter} onMouseLeave={onLeave}>
+      <button
+        className="flex items-center gap-1"
+        style={{
+          fontFamily: "var(--font-hanken), sans-serif",
+          fontSize: "0.9375rem",
+          fontWeight: 600,
+          color: active ? ink : inkSoft,
+          background: "none",
+          border: "none",
+          cursor: "pointer",
+          padding: 0,
+          transition: "color 0.2s ease",
+          whiteSpace: "nowrap",
+        }}
+        aria-expanded={active}
+      >
+        Zonas
+        <ChevronIcon open={active} />
+      </button>
+
+      <div
+        className="absolute left-1/2"
+        style={{
+          top: "100%",
+          transform: "translateX(-50%)",
+          paddingTop: "1rem",
+          opacity: active ? 1 : 0,
+          visibility: active ? "visible" : "hidden",
+          transition: "opacity 0.18s ease",
+        }}
+      >
+        <div
+          style={{
+            background: "#ffffff",
+            borderRadius: 8,
+            boxShadow: "0 1px 3px rgba(29,53,87,0.08), 0 16px 40px -12px rgba(29,53,87,0.28)",
+            border: "1px solid rgba(29,53,87,0.08)",
+            padding: "0.75rem",
+            minWidth: 220,
+          }}
+        >
+          {items.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              style={{
+                display: "block",
+                padding: "0.625rem 0.75rem",
+                borderRadius: 6,
+                fontFamily: "var(--font-hanken), sans-serif",
+                fontSize: "0.9375rem",
+                fontWeight: 600,
+                color: "#1D3557",
+                textDecoration: "none",
+                transition: "background 0.15s ease",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(29,53,87,0.05)")}
+              onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileServiciosOpen, setMobileServiciosOpen] = useState(false);
+  const [mobileZonasOpen, setMobileZonasOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState<"servicios" | "zonas" | null>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 48);
@@ -25,9 +250,38 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  function openMenuNow(menu: "servicios" | "zonas") {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setOpenMenu(menu);
+  }
+
+  function scheduleClose() {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setOpenMenu(null), 120);
+  }
+
   const ink = scrolled ? "#1D3557" : "#ffffff";
   const inkSoft = scrolled ? "#42526a" : "rgba(255,255,255,0.78)";
   const borderColor = scrolled ? "rgba(29,53,87,0.10)" : "rgba(255,255,255,0.12)";
+
+  const reformasColumn: Column = {
+    titulo: "Reformas",
+    items: serviciosInfo.map((s) => ({ href: `/reformas/${s.slug}`, label: s.nombreCorto })),
+  };
+
+  const categoriaColumns: Column[] = categoriasOrden.map((cat) => ({
+    titulo: cat,
+    items: catalogo
+      .filter((c) => c.categoria === cat)
+      .map((c) => ({ href: `/${slugCategoria(cat)}/${c.slug}`, label: c.nombreCorto })),
+  }));
+
+  const servicioColumns: Column[] = [reformasColumn, ...categoriaColumns];
+
+  const zonasItems: ColumnItem[] = zonas.map((z) => ({
+    href: `/zonas/${z.slug}`,
+    label: `Reformas en ${z.nombre}`,
+  }));
 
   return (
     <nav
@@ -80,40 +334,64 @@ export default function Nav() {
           className="hidden md:flex items-center gap-6"
           style={{ position: "absolute", left: "50%", transform: "translateX(-50%)" }}
         >
-          {links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="flex items-center gap-1"
-              style={{
-                fontFamily: "var(--font-hanken), sans-serif",
-                fontSize: "0.9375rem",
-                fontWeight: 600,
-                color: inkSoft,
-                textDecoration: "none",
-                transition: "color 0.2s ease",
-                whiteSpace: "nowrap",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = ink)}
-              onMouseLeave={(e) => (e.currentTarget.style.color = inkSoft)}
-            >
-              {l.label}
-              <svg
-                width="10"
-                height="10"
-                viewBox="0 0 10 10"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-                style={{ flexShrink: 0, marginTop: 1 }}
+          <Link
+            href="/#proyectos"
+            className="flex items-center gap-1"
+            style={{
+              fontFamily: "var(--font-hanken), sans-serif",
+              fontSize: "0.9375rem",
+              fontWeight: 600,
+              color: inkSoft,
+              textDecoration: "none",
+              transition: "color 0.2s ease",
+              whiteSpace: "nowrap",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = ink)}
+            onMouseLeave={(e) => (e.currentTarget.style.color = inkSoft)}
+          >
+            Proyectos
+          </Link>
+
+          <ServiciosMegaMenu
+            columns={servicioColumns}
+            ink={ink}
+            inkSoft={inkSoft}
+            active={openMenu === "servicios"}
+            onEnter={() => openMenuNow("servicios")}
+            onLeave={scheduleClose}
+          />
+
+          <ZonasMegaMenu
+            items={zonasItems}
+            ink={ink}
+            inkSoft={inkSoft}
+            active={openMenu === "zonas"}
+            onEnter={() => openMenuNow("zonas")}
+            onLeave={scheduleClose}
+          />
+
+          {links
+            .filter((l) => l.href !== "/#proyectos")
+            .map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                className="flex items-center gap-1"
+                style={{
+                  fontFamily: "var(--font-hanken), sans-serif",
+                  fontSize: "0.9375rem",
+                  fontWeight: 600,
+                  color: inkSoft,
+                  textDecoration: "none",
+                  transition: "color 0.2s ease",
+                  whiteSpace: "nowrap",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = ink)}
+                onMouseLeave={(e) => (e.currentTarget.style.color = inkSoft)}
               >
-                <polyline points="2,3.5 5,6.5 8,3.5" />
-              </svg>
-            </Link>
-          ))}
+                {l.label}
+              </Link>
+            ))}
         </div>
 
         {/* Right: phone + CTA */}
@@ -143,7 +421,7 @@ export default function Nav() {
           <span aria-hidden="true" style={{ display: "block", width: 1, height: 18, background: borderColor, transition: "background 0.35s ease" }} />
 
           <Link
-            href="#contacto"
+            href="/#contacto"
             className="inline-flex items-center gap-2 px-4 py-2"
             style={{
               background: "#E63946",
@@ -205,28 +483,158 @@ export default function Nav() {
           borderBottom: mobileOpen ? "1px solid rgba(29,53,87,0.10)" : "none",
           clipPath: mobileOpen ? "inset(0 0 0 0)" : "inset(0 0 100% 0)",
           transition: "clip-path 0.35s cubic-bezier(0.16,1,0.3,1)",
+          maxHeight: mobileOpen ? "80vh" : 0,
+          overflowY: "auto",
         }}
       >
         <div className="px-6 pt-3 pb-6 flex flex-col gap-0">
-          {links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              onClick={() => setMobileOpen(false)}
+          <Link
+            href="/#proyectos"
+            onClick={() => setMobileOpen(false)}
+            style={{
+              fontFamily: "var(--font-hanken), sans-serif",
+              color: "#42526a",
+              fontWeight: 500,
+              fontSize: "1rem",
+              textDecoration: "none",
+              borderBottom: "1px solid rgba(29,53,87,0.07)",
+              display: "block",
+              padding: "14px 0",
+            }}
+          >
+            Proyectos
+          </Link>
+
+          {/* Servicios collapsible */}
+          <div style={{ borderBottom: "1px solid rgba(29,53,87,0.07)" }}>
+            <button
+              onClick={() => setMobileServiciosOpen((v) => !v)}
+              className="w-full flex items-center justify-between"
               style={{
                 fontFamily: "var(--font-hanken), sans-serif",
                 color: "#42526a",
                 fontWeight: 500,
                 fontSize: "1rem",
-                textDecoration: "none",
-                borderBottom: "1px solid rgba(29,53,87,0.07)",
-                display: "block",
+                background: "none",
+                border: "none",
                 padding: "14px 0",
+                cursor: "pointer",
+              }}
+              aria-expanded={mobileServiciosOpen}
+            >
+              Servicios
+              <ChevronIcon open={mobileServiciosOpen} />
+            </button>
+            <div
+              style={{
+                maxHeight: mobileServiciosOpen ? 2000 : 0,
+                overflow: "hidden",
+                transition: "max-height 0.3s ease",
               }}
             >
-              {l.label}
-            </Link>
-          ))}
+              <div className="flex flex-col gap-0 pb-2">
+                {servicioColumns.map((col) => (
+                  <div key={col.titulo} className="mt-2">
+                    <p
+                      className="text-label"
+                      style={{ color: "#457B9D", padding: "6px 0 6px 1rem" }}
+                    >
+                      {col.titulo}
+                    </p>
+                    {col.items.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        onClick={() => setMobileOpen(false)}
+                        style={{
+                          fontFamily: "var(--font-hanken), sans-serif",
+                          color: "#6b7889",
+                          fontWeight: 500,
+                          fontSize: "0.9375rem",
+                          textDecoration: "none",
+                          padding: "8px 0 8px 1.5rem",
+                          display: "block",
+                        }}
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Zonas collapsible */}
+          <div style={{ borderBottom: "1px solid rgba(29,53,87,0.07)" }}>
+            <button
+              onClick={() => setMobileZonasOpen((v) => !v)}
+              className="w-full flex items-center justify-between"
+              style={{
+                fontFamily: "var(--font-hanken), sans-serif",
+                color: "#42526a",
+                fontWeight: 500,
+                fontSize: "1rem",
+                background: "none",
+                border: "none",
+                padding: "14px 0",
+                cursor: "pointer",
+              }}
+              aria-expanded={mobileZonasOpen}
+            >
+              Zonas
+              <ChevronIcon open={mobileZonasOpen} />
+            </button>
+            <div
+              style={{
+                maxHeight: mobileZonasOpen ? 300 : 0,
+                overflow: "hidden",
+                transition: "max-height 0.3s ease",
+              }}
+            >
+              <div className="flex flex-col gap-0 pb-2">
+                {zonasItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setMobileOpen(false)}
+                    style={{
+                      fontFamily: "var(--font-hanken), sans-serif",
+                      color: "#6b7889",
+                      fontWeight: 500,
+                      fontSize: "0.9375rem",
+                      textDecoration: "none",
+                      padding: "10px 0 10px 1rem",
+                    }}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {links
+            .filter((l) => l.href !== "/#proyectos")
+            .map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                onClick={() => setMobileOpen(false)}
+                style={{
+                  fontFamily: "var(--font-hanken), sans-serif",
+                  color: "#42526a",
+                  fontWeight: 500,
+                  fontSize: "1rem",
+                  textDecoration: "none",
+                  borderBottom: "1px solid rgba(29,53,87,0.07)",
+                  display: "block",
+                  padding: "14px 0",
+                }}
+              >
+                {l.label}
+              </Link>
+            ))}
 
           <a
             href={TEL_HREF}
@@ -250,7 +658,7 @@ export default function Nav() {
           </a>
 
           <Link
-            href="#contacto"
+            href="/#contacto"
             onClick={() => setMobileOpen(false)}
             style={{
               marginTop: 16,
@@ -272,4 +680,16 @@ export default function Nav() {
       </div>
     </nav>
   );
+}
+
+function slugCategoria(categoria: string): string {
+  const map: Record<string, string> = {
+    Baños: "banos",
+    Cocina: "cocina",
+    Parquet: "parquet",
+    "Servicios del hogar": "servicios",
+    Climatización: "climatizacion",
+    Interiorismo: "interiorismo",
+  };
+  return map[categoria] ?? categoria.toLowerCase();
 }

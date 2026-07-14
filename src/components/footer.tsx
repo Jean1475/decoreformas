@@ -2,29 +2,30 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion, useReducedMotion } from "motion/react";
-
-const EASE = [0.16, 1, 0.3, 1] as const;
 
 const navegacion = [
-  { href: "#proyectos", label: "Proyectos" },
-  { href: "#servicios", label: "Servicios" },
-  { href: "#proceso", label: "Cómo trabajamos" },
-  { href: "#nosotros", label: "Nosotros" },
+  { href: "/#proyectos", label: "Proyectos" },
+  { href: "/#servicios", label: "Servicios" },
+  { href: "/#proceso", label: "Cómo trabajamos" },
+  { href: "/#nosotros", label: "Nosotros" },
+  { href: "/blog", label: "Blog" },
 ];
 
 const servicios = [
-  { href: "#servicios", label: "Reformas integrales" },
-  { href: "#servicios", label: "Decoración de interiores" },
-  { href: "#servicios", label: "Cocinas y baños" },
-  { href: "#servicios", label: "Espacios comerciales" },
+  { href: "/reformas/reforma-integral", label: "Reforma integral" },
+  { href: "/banos/mamparas-de-ducha", label: "Baños" },
+  { href: "/cocina/encimera-de-cocina", label: "Cocina" },
+  { href: "/parquet/tarima-flotante", label: "Parquet" },
+  { href: "/servicios/fontaneros", label: "Servicios del hogar" },
+  { href: "/climatizacion/aire-acondicionado", label: "Climatización" },
+  { href: "/interiorismo", label: "Interiorismo" },
 ];
 
 const zonas = [
-  "Leganés",
-  "Getafe",
-  "Alcorcón",
-  "Móstoles",
+  { href: "/zonas/leganes", label: "Leganés" },
+  { href: "/zonas/getafe", label: "Getafe" },
+  { href: "/zonas/alcorcon", label: "Alcorcón" },
+  { href: "/zonas/mostoles", label: "Móstoles" },
 ];
 
 const linkStyle: React.CSSProperties = {
@@ -50,14 +51,8 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
 }
 
 export default function Footer() {
-  const reduce = useReducedMotion();
-
   return (
-    <motion.footer
-      initial={{ opacity: reduce ? 1 : 0, y: reduce ? 0 : 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.7, ease: EASE }}
+    <footer
       className="relative"
       style={{
         background: "#16283F",
@@ -202,12 +197,12 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="mailto:decorpinto@gmail.com"
+                  href="mailto:decorpinto@hotmail.com"
                   style={linkStyle}
                   onMouseEnter={(e) => (e.currentTarget.style.color = "#ffffff")}
                   onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(241,250,238,0.62)")}
                 >
-                  decorpinto@gmail.com
+                  decorpinto@hotmail.com
                 </a>
               </li>
               <li className="text-body" style={{ color: "rgba(241,250,238,0.45)", fontSize: "0.9375rem" }}>
@@ -218,9 +213,16 @@ export default function Footer() {
             <p className="text-label mt-7 mb-3" style={{ color: "rgba(168,218,220,0.55)" }}>
               Zonas de trabajo
             </p>
-            <p style={{ color: "rgba(241,250,238,0.45)", fontSize: "0.9375rem", lineHeight: 1.6 }}>
-              {zonas.join(" · ")}
-            </p>
+            <ul className="flex flex-wrap gap-x-2 gap-y-1">
+              {zonas.map((z, i) => (
+                <li key={z.href} style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                  <FooterLink href={z.href}>{z.label}</FooterLink>
+                  {i < zonas.length - 1 && (
+                    <span aria-hidden="true" style={{ color: "rgba(241,250,238,0.30)" }}>·</span>
+                  )}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
@@ -254,6 +256,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-    </motion.footer>
+    </footer>
   );
 }

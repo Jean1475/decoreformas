@@ -39,6 +39,17 @@ const obras: SliderCard[] = [
     altDespues:
       "El mismo rincón terminado: plato de ducha extraplano, frente de mosaico gris y mueble de lavabo nuevo, conservando el azulejo original",
   },
+  {
+    titulo: "Cocina en espiga, de obra a estreno",
+    detalle: "Reforma integral de cocina",
+    año: "2025",
+    srcAntes: "/obras/reforma-cocina-espiga-antes-obra.webp",
+    srcDespues: "/obras/reforma-cocina-espiga-despues.webp",
+    altAntes:
+      "Cocina en obra con alicatado en espiga recién colocado, techo de pladur sin pintar y cubos de material en el suelo",
+    altDespues:
+      "La misma cocina terminada: encimera blanca en L, campana extractora de acero, estanterías de madera y alicatado en espiga acabado",
+  },
 ];
 
 function BeforeAfterSlider({
@@ -314,11 +325,11 @@ export default function ObrasSlider() {
               flexShrink: 0,
             }}
           >
-            +800 obras entregadas
+            +100 obras entregadas
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 max-w-7xl mx-auto">
           {obras.map((card, i) => (
             <BeforeAfterSlider
               key={card.titulo}

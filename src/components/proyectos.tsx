@@ -144,7 +144,7 @@ export default function Proyectos() {
               flexShrink: 0,
             }}
           >
-            +300 proyectos entregados
+            +100 proyectos entregados
           </p>
         </motion.div>
 

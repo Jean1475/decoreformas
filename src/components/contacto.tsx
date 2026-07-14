@@ -151,7 +151,7 @@ export default function Contacto() {
                   Email
                 </p>
                 <a
-                  href="mailto:decorpinto@gmail.com"
+                  href="mailto:decorpinto@hotmail.com"
                   style={{
                     display: "block",
                     marginTop: "0.375rem",
@@ -167,7 +167,7 @@ export default function Contacto() {
                   onMouseEnter={(e) => (e.currentTarget.style.color = "#A8DADC")}
                   onMouseLeave={(e) => (e.currentTarget.style.color = "#ffffff")}
                 >
-                  decorpinto@gmail.com
+                  decorpinto@hotmail.com
                 </a>
               </div>
 
