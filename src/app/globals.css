@@ -91,6 +91,15 @@ select {
   font-weight: 400;
 }
 
+.scrollbar-hidden {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
 .text-small {
   font-family: var(--font-hanken), sans-serif;
   font-size: 0.9375rem;
@@ -135,6 +144,36 @@ select {
 }
 @media (prefers-reduced-motion: reduce) {
   @keyframes spin { to { transform: none; } }
+}
+
+/* ─── Hero AI status pulse ───────────────────────────────────────── */
+@keyframes heroPulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.35; }
+}
+@media (prefers-reduced-motion: reduce) {
+  @keyframes heroPulse { 0%, 100% { opacity: 1; } }
+}
+
+/* ─── Liquid glass panel ──────────────────────────────────────────
+   Frosted, translucent surface with a bright top-edge highlight and
+   a soft ambient shadow — mimics refractive glass over photography. */
+.liquid-glass {
+  background:
+    linear-gradient(
+      165deg,
+      rgba(20, 38, 54, 0.62) 0%,
+      rgba(8, 22, 34, 0.72) 45%,
+      rgba(8, 22, 34, 0.80) 100%
+    );
+  backdrop-filter: blur(32px) saturate(160%);
+  -webkit-backdrop-filter: blur(32px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-top-color: rgba(255, 255, 255, 0.50);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.40),
+    inset 0 1px 0 rgba(255, 255, 255, 0.30),
+    inset 0 0 40px rgba(255, 255, 255, 0.025);
 }
 
 /* ─── Isotipo pixel pattern (hero, proceso, contacto dark sections) ── */

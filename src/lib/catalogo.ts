@@ -777,6 +777,10 @@ export function getCatalogoItem(slug: string): CategoriaInfo | undefined {
   return catalogo.find((c) => c.slug === slug);
 }
 
+export function getCatalogoImagen(slug: string): string {
+  return `/obras/catalogo/${slug}.jpg`;
+}
+
 export function getCategoria(categoria: string): CategoriaInfo[] {
   return catalogo.filter((c) => c.categoria === categoria);
 }

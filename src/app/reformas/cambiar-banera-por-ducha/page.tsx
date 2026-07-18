@@ -6,7 +6,7 @@ import PageHero from "@/components/page-hero";
 import ServicioIntro from "@/components/servicio-page";
 import Faq from "@/components/faq";
 import Contacto from "@/components/contacto";
-import { getCatalogoItem } from "@/lib/catalogo";
+import { getCatalogoItem, getCatalogoImagen } from "@/lib/catalogo";
 
 const item = getCatalogoItem("cambiar-banera-por-ducha")!;
 
@@ -27,7 +27,7 @@ export default function CambiarBaneraPorDuchaPage() {
           titulo={item.nombre}
           descripcion={item.resumen}
         />
-        <ServicioIntro servicio={item} />
+        <ServicioIntro servicio={item} imagen={getCatalogoImagen(item.slug)} url="/reformas/cambiar-banera-por-ducha" />
         <Faq items={item.faq} titulo="Preguntas frecuentes" />
         <Contacto />
       </main>

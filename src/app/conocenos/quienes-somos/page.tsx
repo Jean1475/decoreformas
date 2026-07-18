@@ -9,7 +9,7 @@ import Contacto from "@/components/contacto";
 export const metadata: Metadata = {
   title: "Quiénes Somos | Decoreformas",
   description:
-    "Equipo pequeño de reformas con base en Madrid Sur, con más de 20 años de oficio. Presupuesto cerrado y un único interlocutor de principio a fin.",
+    "Equipo pequeño de reformas con base en Madrid Sur, con más de 25 años de oficio. Presupuesto cerrado y un único interlocutor de principio a fin.",
   alternates: { canonical: "/conocenos/quienes-somos" },
 };
 
@@ -21,7 +21,7 @@ export default function QuienesSomosPage() {
         <PageHero
           eyebrow="Conócenos"
           titulo="Quiénes somos"
-          descripcion="Un equipo pequeño con base en Madrid Sur, con más de 20 años de oficio a nuestras espaldas."
+          descripcion="Un equipo pequeño con base en Madrid Sur, con más de 25 años de oficio a nuestras espaldas."
         />
         <Nosotros />
         <Contacto />

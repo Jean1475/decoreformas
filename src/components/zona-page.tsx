@@ -26,6 +26,9 @@ export default function ZonaContent({ zona }: { zona: Zona }) {
             <p className="text-body mt-5 prose-width" style={{ color: "#42526a" }}>
               {zona.detalle}
             </p>
+            <p className="text-body mt-5 prose-width" style={{ color: "#42526a" }}>
+              {zona.porQueElegirnos}
+            </p>
 
             <div className="mt-10">
               <Link

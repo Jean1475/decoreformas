@@ -6,7 +6,7 @@ import Image from "next/image";
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 const datos = [
-  { valor: "+20", desc: "años de oficio" },
+  { valor: "+25", desc: "años de oficio" },
   { valor: "+100", desc: "proyectos entregados" },
   { valor: "4,9 / 5", desc: "valoración de clientes" },
 ];
@@ -73,8 +73,8 @@ export default function Nosotros() {
               style={{ aspectRatio: "4 / 5", borderRadius: "4px" }}
             >
               <Image
-                src="/obras/equipo-decoreformas-en-obra.webp"
-                alt="Pintor del equipo de Decoreformas repasando la pared de una vivienda en obra"
+                src="/obras/equipo-decoreformas-planos.jpg"
+                alt="Arquitecto técnico de Decoreformas revisando planos de distribución sobre mesa de trabajo"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
@@ -122,7 +122,7 @@ export default function Nosotros() {
               className="text-body mt-6 prose-width"
               style={{ color: "#42526a", textWrap: "pretty" } as React.CSSProperties}
             >
-              Somos un equipo pequeño con base en Madrid Sur, con más de 20
+              Somos un equipo pequeño con base en Madrid Sur, con más de 25
               años de oficio a nuestras espaldas. Fundamos Decoreformas porque
               la reforma media tiene demasiadas fricciones: presupuestos que
               se inflan, plazos que se alargan, comunicación fragmentada.

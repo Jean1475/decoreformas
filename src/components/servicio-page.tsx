@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -18,11 +19,44 @@ function CheckIcon() {
   );
 }
 
-export default function ServicioIntro({ servicio }: { servicio: ServicioLike }) {
+interface ServicioConNombre extends ServicioLike {
+  nombre?: string;
+}
+
+const SITE_URL = "https://decorreformas.com";
+
+export default function ServicioIntro({
+  servicio,
+  imagen,
+  url,
+}: {
+  servicio: ServicioConNombre;
+  imagen?: string;
+  /** Ruta relativa de la página actual (p. ej. "/reformas/reforma-integral"), para el schema Service. */
+  url?: string;
+}) {
   const reduce = useReducedMotion();
+
+  const jsonLd = url && servicio.nombre
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: servicio.nombre,
+        description: servicio.intro,
+        url: `${SITE_URL}${url}`,
+        provider: { "@id": `${SITE_URL}/#negocio` },
+        areaServed: "Madrid",
+      }
+    : null;
 
   return (
     <section className="py-16 lg:py-24" style={{ background: "#ffffff" }}>
+      {jsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      )}
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-16">
           <motion.div
@@ -63,23 +97,44 @@ export default function ServicioIntro({ servicio }: { servicio: ServicioLike }) 
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7, ease: EASE, delay: reduce ? 0 : 0.1 }}
-            style={{ background: "#F1FAEE", borderRadius: 8, padding: "2rem" }}
           >
-            <p className="text-eyebrow mb-5" style={{ color: "#457B9D" }}>
-              Qué incluye
-            </p>
-            <ul className="flex flex-col gap-3.5">
-              {servicio.incluye.map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <span style={{ flexShrink: 0, marginTop: 3 }}>
-                    <CheckIcon />
-                  </span>
-                  <span className="text-small" style={{ color: "#1D3557" }}>
-                    {item}
-                  </span>
-                </li>
-              ))}
-            </ul>
+            {imagen && (
+              <div
+                style={{
+                  position: "relative",
+                  width: "100%",
+                  aspectRatio: "4 / 3",
+                  borderRadius: 8,
+                  overflow: "hidden",
+                  marginBottom: "1.5rem",
+                }}
+              >
+                <Image
+                  src={imagen}
+                  alt={servicio.nombre ?? ""}
+                  fill
+                  sizes="(min-width: 1024px) 400px, 100vw"
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
+            )}
+            <div style={{ background: "#F1FAEE", borderRadius: 8, padding: "2rem" }}>
+              <p className="text-eyebrow mb-5" style={{ color: "#457B9D" }}>
+                Qué incluye
+              </p>
+              <ul className="flex flex-col gap-3.5">
+                {servicio.incluye.map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span style={{ flexShrink: 0, marginTop: 3 }}>
+                      <CheckIcon />
+                    </span>
+                    <span className="text-small" style={{ color: "#1D3557" }}>
+                      {item}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </motion.div>
         </div>
       </div>

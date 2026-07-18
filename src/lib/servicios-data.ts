@@ -3,6 +3,7 @@ export interface ServicioInfo {
   nombre: string;
   nombreCorto: string;
   resumen: string;
+  precioDesde?: string;
   intro: string;
   incluye: string[];
   faq: { pregunta: string; respuesta: string }[];
@@ -15,6 +16,7 @@ export const serviciosInfo: ServicioInfo[] = [
     nombreCorto: "Reforma integral",
     resumen:
       "Gestionamos el proyecto completo, de la demolición al acabado final: fontanería, electricidad, carpintería y distribución.",
+    precioDesde: "Desde 35.000 € (piso de 80 m²)",
     intro:
       "Una reforma integral toca todas las instalaciones y acabados de la vivienda a la vez. Es la opción con más sentido cuando el piso lleva décadas sin renovarse o cuando quieres cambiar la distribución de raíz. Coordinamos todos los oficios bajo un único interlocutor, así que no tienes que gestionar tú los tiempos entre fontanero, electricista y alicatador.",
     incluye: [
@@ -49,6 +51,7 @@ export const serviciosInfo: ServicioInfo[] = [
     nombreCorto: "Cocinas",
     resumen:
       "Cambiamos distribución, mobiliario, encimera y electrodomésticos con un acabado que aguanta el uso diario.",
+    precioDesde: "Desde 6.000 €",
     intro:
       "La cocina es la estancia que más se usa y la que más rápido se nota si está mal resuelta. Trabajamos la distribución antes que el mobiliario: primero decidimos dónde van fuegos, fregadero y almacenaje según cómo cocinas de verdad, y luego elegimos materiales con fabricantes de garantía.",
     incluye: [
@@ -82,6 +85,7 @@ export const serviciosInfo: ServicioInfo[] = [
     nombreCorto: "Baños",
     resumen:
       "Del cambio de bañera por ducha a la reforma completa: fontanería, alicatado, sanitarios y mampara.",
+    precioDesde: "Desde 3.000 €",
     intro:
       "La reforma de baño más habitual que hacemos es cambiar la bañera por un plato de ducha, algo que gana espacio y accesibilidad sin tocar toda la estancia. También hacemos reformas completas cuando hay que renovar fontanería antigua, cambiar la distribución o simplemente actualizar un baño que se ha quedado desfasado.",
     incluye: [

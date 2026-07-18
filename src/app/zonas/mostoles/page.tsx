@@ -4,6 +4,7 @@ import Footer from "@/components/footer";
 import Whatsapp from "@/components/whatsapp";
 import PageHero from "@/components/page-hero";
 import ZonaContent from "@/components/zona-page";
+import Faq from "@/components/faq";
 import Contacto from "@/components/contacto";
 import { getZona } from "@/lib/zonas";
 
@@ -27,6 +28,7 @@ export default function MostolesPage() {
           descripcion={zona.intro}
         />
         <ZonaContent zona={zona} />
+        <Faq items={zona.faq} titulo={`Preguntas frecuentes sobre reformas en ${zona.nombre}`} />
         <Contacto />
       </main>
       <Footer />

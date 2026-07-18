@@ -6,7 +6,7 @@ import PageHero from "@/components/page-hero";
 import ServicioIntro from "@/components/servicio-page";
 import Faq from "@/components/faq";
 import Contacto from "@/components/contacto";
-import { getCatalogoItem } from "@/lib/catalogo";
+import { getCatalogoItem, getCatalogoImagen } from "@/lib/catalogo";
 
 const item = getCatalogoItem("encimera-de-cocina")!;
 
@@ -46,7 +46,7 @@ export default function EncimeraDeCocinaPage() {
       <Nav />
       <main>
         <PageHero eyebrow="Cocina" titulo={item.nombre} descripcion={item.resumen} />
-        <ServicioIntro servicio={item} />
+        <ServicioIntro servicio={item} imagen={getCatalogoImagen(item.slug)} url="/cocina/encimera-de-cocina" />
 
         <section className="py-16 lg:py-24" style={{ background: "#F1FAEE", borderTop: "1px solid rgba(29,53,87,0.08)" }}>
           <div className="max-w-7xl mx-auto px-6 lg:px-8">

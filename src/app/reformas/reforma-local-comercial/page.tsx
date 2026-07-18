@@ -27,7 +27,7 @@ export default function ReformaLocalPage() {
           titulo="Reforma de locales comerciales en Madrid Sur"
           descripcion={servicio.resumen}
         />
-        <ServicioIntro servicio={servicio} />
+        <ServicioIntro servicio={servicio} url="/reformas/reforma-local-comercial" />
         <Faq
           items={servicio.faq}
           titulo="Preguntas frecuentes sobre reforma de locales"

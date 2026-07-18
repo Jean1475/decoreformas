@@ -24,8 +24,8 @@ export default function TrabajosRealizadosPage() {
           titulo="Trabajos realizados"
           descripcion="Una selección de obras entregadas, fotografiadas tal cual quedaron el día de la entrega."
         />
-        <Proyectos />
         <ObrasSlider />
+        <Proyectos />
         <Contacto />
       </main>
       <Footer />

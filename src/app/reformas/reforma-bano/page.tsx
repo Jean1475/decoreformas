@@ -26,8 +26,9 @@ export default function ReformaBanoPage() {
           eyebrow="Reforma de baño"
           titulo="Reforma de baños en Madrid Sur"
           descripcion={servicio.resumen}
+          precioDesde={servicio.precioDesde}
         />
-        <ServicioIntro servicio={servicio} />
+        <ServicioIntro servicio={servicio} url="/reformas/reforma-bano" />
         <Faq
           items={servicio.faq}
           titulo="Preguntas frecuentes sobre reforma de baño"

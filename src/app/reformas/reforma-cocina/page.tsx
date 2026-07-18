@@ -26,8 +26,9 @@ export default function ReformaCocinaPage() {
           eyebrow="Reforma de cocina"
           titulo="Reforma de cocinas en Madrid Sur"
           descripcion={servicio.resumen}
+          precioDesde={servicio.precioDesde}
         />
-        <ServicioIntro servicio={servicio} />
+        <ServicioIntro servicio={servicio} url="/reformas/reforma-cocina" />
         <Faq
           items={servicio.faq}
           titulo="Preguntas frecuentes sobre reforma de cocina"

@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://decoreformas.es/sitemap.xml",
+    sitemap: "https://decorreformas.com/sitemap.xml",
   };
 }

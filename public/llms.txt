@@ -1,0 +1,31 @@
+# Decoreformas
+
+> Empresa de reformas integrales de viviendas, cocinas, baños y locales comerciales en Madrid y área metropolitana (Leganés, Getafe, Alcorcón, Móstoles, Pozuelo de Alarcón, Alcobendas y La Moraleja). Presupuesto cerrado desde el primer día, un único interlocutor y seguimiento semanal de obra.
+
+## Servicios principales
+
+- [Reformas Integrales en Madrid](https://decoreformas.es/reformas/reforma-integral): reforma integral de viviendas, de la demolición al acabado final.
+- [Reforma de Cocinas](https://decoreformas.es/reformas/reforma-cocina): distribución, mobiliario, encimera y electrodomésticos.
+- [Reforma de Baños](https://decoreformas.es/reformas/reforma-bano): del cambio de bañera por ducha a la reforma completa.
+- [Reforma de Locales Comerciales](https://decoreformas.es/reformas/reforma-local-comercial): locales, oficinas y hostelería con fases pensadas para minimizar el cierre del negocio.
+- [Interiorismo en Madrid](https://decoreformas.es/interiorismo): diseño de espacios, de la distribución de planta a la selección de materiales y mobiliario.
+
+## Zonas de trabajo
+
+- [Reformas en Leganés](https://decoreformas.es/zonas/leganes)
+- [Reformas en Getafe](https://decoreformas.es/zonas/getafe)
+- [Reformas en Alcorcón](https://decoreformas.es/zonas/alcorcon)
+- [Reformas en Móstoles](https://decoreformas.es/zonas/mostoles)
+- [Reformas en Pozuelo de Alarcón](https://decoreformas.es/zonas/pozuelo-de-alarcon)
+- [Reformas en Alcobendas y La Moraleja](https://decoreformas.es/zonas/alcobendas)
+
+## Catálogo de servicios especializados
+
+Baños (mamparas de ducha, platos de ducha, muebles de baño), cocina (encimeras, muebles de cocina), parquet (acuchillado, reparación, instalación, tarima flotante), servicios del hogar (fontaneros, electricistas, pintores, carpinteros, ventanas de aluminio y PVC, montador de pladur, techos desmontables) y climatización (aire acondicionado, calefacción). Índice completo en [decoreformas.es/sitemap.xml](https://decoreformas.es/sitemap.xml).
+
+## Sobre la empresa
+
+- [Quiénes somos](https://decoreformas.es/conocenos/quienes-somos)
+- [Trabajos realizados](https://decoreformas.es/conocenos/trabajos-realizados)
+- [Blog](https://decoreformas.es/blog): artículos sobre permisos de obra, materiales y proceso de reforma.
+- [Contacto](https://decoreformas.es/contacto)

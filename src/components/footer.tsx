@@ -26,6 +26,8 @@ const zonas = [
   { href: "/zonas/getafe", label: "Getafe" },
   { href: "/zonas/alcorcon", label: "Alcorcón" },
   { href: "/zonas/mostoles", label: "Móstoles" },
+  { href: "/zonas/pozuelo-de-alarcon", label: "Pozuelo de Alarcón" },
+  { href: "/zonas/alcobendas", label: "Alcobendas y La Moraleja" },
 ];
 
 const linkStyle: React.CSSProperties = {

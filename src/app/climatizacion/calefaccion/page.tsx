@@ -6,7 +6,7 @@ import PageHero from "@/components/page-hero";
 import ServicioIntro from "@/components/servicio-page";
 import Faq from "@/components/faq";
 import Contacto from "@/components/contacto";
-import { getCatalogoItem } from "@/lib/catalogo";
+import { getCatalogoItem, getCatalogoImagen } from "@/lib/catalogo";
 
 const item = getCatalogoItem("calefaccion")!;
 
@@ -23,7 +23,7 @@ export default function CalefaccionPage() {
       <Nav />
       <main>
         <PageHero eyebrow="Climatización" titulo={item.nombre} descripcion={item.resumen} />
-        <ServicioIntro servicio={item} />
+        <ServicioIntro servicio={item} imagen={getCatalogoImagen(item.slug)} url="/climatizacion/calefaccion" />
         <Faq items={item.faq} titulo="Preguntas frecuentes" />
         <Contacto />
       </main>

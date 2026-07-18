@@ -20,9 +20,9 @@ export default function Home() {
       <main>
         <Hero />
         <BrandMarquee />
+        <ObrasSlider />
         <Proyectos />
         <Servicios />
-        <ObrasSlider />
         <Proceso />
         <Testimonios />
         <Nosotros />

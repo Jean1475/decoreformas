@@ -9,25 +9,27 @@ const hankenGrotesk = Hanken_Grotesk({
   display: "swap",
 });
 
-// Actualizar si el dominio definitivo es otro (p. ej. www.decoreformas.es)
-const SITE_URL = "https://decoreformas.es";
+const SITE_URL = "https://decorreformas.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: "Decoreformas — Reformas integrales en Madrid | Presupuesto cerrado",
   description:
-    "Reformas integrales de viviendas, cocinas, baños y locales comerciales en Madrid Sur: Leganés, Getafe, Alcorcón y Móstoles. Presupuesto cerrado desde el primer día, seguimiento semanal y entrega en plazo. Pide tu presupuesto gratis.",
+    "Reformas integrales de viviendas, cocinas, baños y locales comerciales en Madrid y área metropolitana: Leganés, Getafe, Alcorcón, Móstoles, Pozuelo de Alarcón y Alcobendas. Presupuesto cerrado desde el primer día, seguimiento semanal y entrega en plazo. Pide tu presupuesto gratis.",
   keywords: [
     "reformas integrales Madrid",
     "reformas Leganés",
     "reformas Getafe",
     "reformas Alcorcón",
     "reformas Móstoles",
+    "reformas Pozuelo de Alarcón",
+    "reformas Alcobendas",
+    "reformas La Moraleja",
     "reforma de baño",
     "reforma de cocina",
     "cambio de bañera por ducha",
     "reforma local comercial",
-    "empresa de reformas Madrid Sur",
+    "empresa de reformas Madrid",
   ],
   alternates: {
     canonical: "/",
@@ -35,7 +37,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Decoreformas — Reformas integrales en Madrid",
     description:
-      "Reforma integral de viviendas y espacios comerciales en Madrid Sur. Presupuesto cerrado, seguimiento semanal, entrega en plazo.",
+      "Reforma integral de viviendas y espacios comerciales en Madrid y área metropolitana. Presupuesto cerrado, seguimiento semanal, entrega en plazo.",
     url: "/",
     type: "website",
     locale: "es_ES",
@@ -45,7 +47,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Decoreformas — Reformas integrales en Madrid",
     description:
-      "Reforma integral en Madrid Sur. Presupuesto cerrado desde el primer día.",
+      "Reforma integral en Madrid y área metropolitana. Presupuesto cerrado desde el primer día.",
   },
   robots: {
     index: true,
@@ -88,6 +90,8 @@ const jsonLd = {
     { "@type": "City", name: "Getafe" },
     { "@type": "City", name: "Alcorcón" },
     { "@type": "City", name: "Móstoles" },
+    { "@type": "City", name: "Pozuelo de Alarcón" },
+    { "@type": "City", name: "Alcobendas" },
     { "@type": "City", name: "Madrid" },
   ],
   openingHoursSpecification: {

@@ -8,10 +8,12 @@ export default function PageHero({
   eyebrow,
   titulo,
   descripcion,
+  precioDesde,
 }: {
   eyebrow: string;
   titulo: string;
   descripcion: string;
+  precioDesde?: string;
 }) {
   const reduce = useReducedMotion();
 
@@ -41,6 +43,26 @@ export default function PageHero({
           >
             {descripcion}
           </p>
+
+          {precioDesde && (
+            <p
+              className="text-small"
+              style={{
+                marginTop: "1.25rem",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                padding: "0.5rem 0.9rem",
+                background: "rgba(168,218,220,0.14)",
+                border: "1px solid rgba(168,218,220,0.32)",
+                borderRadius: "6px",
+                color: "#F1FAEE",
+                fontWeight: 600,
+              }}
+            >
+              {precioDesde}
+            </p>
+          )}
 
           <div style={{ display: "flex", flexWrap: "wrap", gap: "0.875rem", marginTop: "2rem" }}>
             <a

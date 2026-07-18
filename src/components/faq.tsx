@@ -82,29 +82,12 @@ export default function Faq({
 }) {
   const reduce = useReducedMotion();
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: items.map((item) => ({
-      "@type": "Question",
-      name: item.pregunta,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.respuesta,
-      },
-    })),
-  };
-
   return (
     <section
       id={id}
       className="py-16 lg:py-24"
       style={{ background: "#ffffff", borderTop: "1px solid rgba(29,53,87,0.08)" }}
     >
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: reduce ? 1 : 0, y: reduce ? 0 : 24 }}
