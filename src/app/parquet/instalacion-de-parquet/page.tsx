@@ -15,6 +15,14 @@ export const metadata: Metadata = {
   description:
     "Instalación de parquet macizo o multicapa en Leganés, Getafe, Alcorcón y Móstoles, con preparación de base incluida.",
   alternates: { canonical: "/parquet/instalacion-de-parquet" },
+  openGraph: {
+    title: "Instalación de Parquet en Madrid Sur | Decoreformas",
+    description: "Instalación de parquet macizo o multicapa en Leganés, Getafe, Alcorcón y Móstoles, con preparación de base incluida.",
+    url: "/parquet/instalacion-de-parquet",
+    type: "website",
+    locale: "es_ES",
+    siteName: "Decoreformas",
+  },
 };
 
 export default function InstalacionDeParquetPage() {

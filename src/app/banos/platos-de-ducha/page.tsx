@@ -15,6 +15,14 @@ export const metadata: Metadata = {
   description:
     "Instalación de platos de ducha extraplanos o a ras de suelo en Leganés, Getafe, Alcorcón y Móstoles.",
   alternates: { canonical: "/banos/platos-de-ducha" },
+  openGraph: {
+    title: "Platos de Ducha en Madrid Sur | Decoreformas",
+    description: "Instalación de platos de ducha extraplanos o a ras de suelo en Leganés, Getafe, Alcorcón y Móstoles.",
+    url: "/banos/platos-de-ducha",
+    type: "website",
+    locale: "es_ES",
+    siteName: "Decoreformas",
+  },
 };
 
 export default function PlatosDeDuchaPage() {

@@ -15,6 +15,14 @@ export const metadata: Metadata = {
   description:
     "Fontanería en Leganés, Getafe, Alcorcón y Móstoles: averías, renovación de tuberías y adaptación de instalaciones.",
   alternates: { canonical: "/servicios/fontaneros" },
+  openGraph: {
+    title: "Fontaneros en Madrid Sur | Decoreformas",
+    description: "Fontanería en Leganés, Getafe, Alcorcón y Móstoles: averías, renovación de tuberías y adaptación de instalaciones.",
+    url: "/servicios/fontaneros",
+    type: "website",
+    locale: "es_ES",
+    siteName: "Decoreformas",
+  },
 };
 
 export default function FontanerosPage() {

@@ -15,6 +15,14 @@ export const metadata: Metadata = {
   description:
     "Instalación de mamparas de ducha a medida en Leganés, Getafe, Alcorcón y Móstoles. Cristal templado y distintos sistemas de apertura.",
   alternates: { canonical: "/banos/mamparas-de-ducha" },
+  openGraph: {
+    title: "Mamparas de Ducha en Madrid Sur | Decoreformas",
+    description: "Instalación de mamparas de ducha a medida en Leganés, Getafe, Alcorcón y Móstoles. Cristal templado y distintos sistemas de apertura.",
+    url: "/banos/mamparas-de-ducha",
+    type: "website",
+    locale: "es_ES",
+    siteName: "Decoreformas",
+  },
 };
 
 export default function MamparasDeDuchaPage() {

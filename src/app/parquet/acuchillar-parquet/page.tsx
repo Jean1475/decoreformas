@@ -15,6 +15,14 @@ export const metadata: Metadata = {
   description:
     "Lijado y acuchillado de suelos de madera en Leganés, Getafe, Alcorcón y Móstoles, con barnizado final.",
   alternates: { canonical: "/parquet/acuchillar-parquet" },
+  openGraph: {
+    title: "Acuchillado de Parquet en Madrid Sur | Decoreformas",
+    description: "Lijado y acuchillado de suelos de madera en Leganés, Getafe, Alcorcón y Móstoles, con barnizado final.",
+    url: "/parquet/acuchillar-parquet",
+    type: "website",
+    locale: "es_ES",
+    siteName: "Decoreformas",
+  },
 };
 
 export default function AcuchillarParquetPage() {

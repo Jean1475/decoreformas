@@ -11,6 +11,14 @@ export const metadata: Metadata = {
   description:
     "Guías prácticas sobre reformas: permisos, instalaciones, materiales y plazos, escritas por el equipo de Decoreformas.",
   alternates: { canonical: "/blog" },
+  openGraph: {
+    title: "Blog de reformas | Decoreformas",
+    description: "Guías prácticas sobre reformas: permisos, instalaciones, materiales y plazos, escritas por el equipo de Decoreformas.",
+    url: "/blog",
+    type: "website",
+    locale: "es_ES",
+    siteName: "Decoreformas",
+  },
 };
 
 function formatFecha(iso: string) {

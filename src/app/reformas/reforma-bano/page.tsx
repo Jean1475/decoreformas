@@ -15,6 +15,14 @@ export const metadata: Metadata = {
   description:
     "Reforma de baños y cambio de bañera por ducha en Leganés, Getafe, Alcorcón y Móstoles. Presupuesto cerrado y obra sin sorpresas.",
   alternates: { canonical: "/reformas/reforma-bano" },
+  openGraph: {
+    title: "Reforma de Baños en Madrid Sur | Decoreformas",
+    description: "Reforma de baños y cambio de bañera por ducha en Leganés, Getafe, Alcorcón y Móstoles. Presupuesto cerrado y obra sin sorpresas.",
+    url: "/reformas/reforma-bano",
+    type: "website",
+    locale: "es_ES",
+    siteName: "Decoreformas",
+  },
 };
 
 export default function ReformaBanoPage() {

@@ -15,6 +15,14 @@ export const metadata: Metadata = {
   description:
     "Reforma de locales, oficinas y hostelería en Leganés, Getafe, Alcorcón y Móstoles. Fases de obra pensadas para minimizar el cierre del negocio.",
   alternates: { canonical: "/reformas/reforma-local-comercial" },
+  openGraph: {
+    title: "Reforma de Locales Comerciales en Madrid Sur | Decoreformas",
+    description: "Reforma de locales, oficinas y hostelería en Leganés, Getafe, Alcorcón y Móstoles. Fases de obra pensadas para minimizar el cierre del negocio.",
+    url: "/reformas/reforma-local-comercial",
+    type: "website",
+    locale: "es_ES",
+    siteName: "Decoreformas",
+  },
 };
 
 export default function ReformaLocalPage() {

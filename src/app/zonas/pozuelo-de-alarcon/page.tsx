@@ -15,6 +15,14 @@ export const metadata: Metadata = {
   description:
     "Empresa de reformas integrales, cocinas y baños en Pozuelo de Alarcón. Presupuesto cerrado, un único interlocutor y seguimiento semanal de obra.",
   alternates: { canonical: "/zonas/pozuelo-de-alarcon" },
+  openGraph: {
+    title: "Reformas en Pozuelo de Alarcón | Decoreformas",
+    description: "Empresa de reformas integrales, cocinas y baños en Pozuelo de Alarcón. Presupuesto cerrado, un único interlocutor y seguimiento semanal de obra.",
+    url: "/zonas/pozuelo-de-alarcon",
+    type: "website",
+    locale: "es_ES",
+    siteName: "Decoreformas",
+  },
 };
 
 export default function PozueloPage() {

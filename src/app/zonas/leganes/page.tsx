@@ -15,6 +15,14 @@ export const metadata: Metadata = {
   description:
     "Empresa de reformas integrales, cocinas y baños en Leganés. Presupuesto cerrado, un único interlocutor y seguimiento semanal de obra.",
   alternates: { canonical: "/zonas/leganes" },
+  openGraph: {
+    title: "Reformas en Leganés | Decoreformas",
+    description: "Empresa de reformas integrales, cocinas y baños en Leganés. Presupuesto cerrado, un único interlocutor y seguimiento semanal de obra.",
+    url: "/zonas/leganes",
+    type: "website",
+    locale: "es_ES",
+    siteName: "Decoreformas",
+  },
 };
 
 export default function LeganesPage() {

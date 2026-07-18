@@ -38,6 +38,14 @@ export const metadata: Metadata = {
   description:
     "Encimeras de cocina en cuarzo, porcelánico, granito, Corian y laminado en Leganés, Getafe, Alcorcón y Móstoles. Fabricación a medida.",
   alternates: { canonical: "/cocina/encimera-de-cocina" },
+  openGraph: {
+    title: "Encimeras de Cocina en Madrid Sur | Decoreformas",
+    description: "Encimeras de cocina en cuarzo, porcelánico, granito, Corian y laminado en Leganés, Getafe, Alcorcón y Móstoles. Fabricación a medida.",
+    url: "/cocina/encimera-de-cocina",
+    type: "website",
+    locale: "es_ES",
+    siteName: "Decoreformas",
+  },
 };
 
 export default function EncimeraDeCocinaPage() {

@@ -15,6 +15,14 @@ export const metadata: Metadata = {
   description:
     "Reforma de cocinas en Leganés, Getafe, Alcorcón y Móstoles. Distribución, mobiliario, encimera y electrodomésticos con presupuesto cerrado.",
   alternates: { canonical: "/reformas/reforma-cocina" },
+  openGraph: {
+    title: "Reforma de Cocinas en Madrid Sur | Decoreformas",
+    description: "Reforma de cocinas en Leganés, Getafe, Alcorcón y Móstoles. Distribución, mobiliario, encimera y electrodomésticos con presupuesto cerrado.",
+    url: "/reformas/reforma-cocina",
+    type: "website",
+    locale: "es_ES",
+    siteName: "Decoreformas",
+  },
 };
 
 export default function ReformaCocinaPage() {

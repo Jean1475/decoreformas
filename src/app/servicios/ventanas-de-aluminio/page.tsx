@@ -15,6 +15,14 @@ export const metadata: Metadata = {
   description:
     "Suministro e instalación de ventanas de aluminio con rotura de puente térmico en Leganés, Getafe, Alcorcón y Móstoles.",
   alternates: { canonical: "/servicios/ventanas-de-aluminio" },
+  openGraph: {
+    title: "Ventanas de Aluminio en Madrid Sur | Decoreformas",
+    description: "Suministro e instalación de ventanas de aluminio con rotura de puente térmico en Leganés, Getafe, Alcorcón y Móstoles.",
+    url: "/servicios/ventanas-de-aluminio",
+    type: "website",
+    locale: "es_ES",
+    siteName: "Decoreformas",
+  },
 };
 
 export default function VentanasDeAluminioPage() {

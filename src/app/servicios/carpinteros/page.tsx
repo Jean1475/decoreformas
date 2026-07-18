@@ -15,6 +15,14 @@ export const metadata: Metadata = {
   description:
     "Carpintería de madera a medida en Leganés, Getafe, Alcorcón y Móstoles: puertas, armarios y carpintería interior.",
   alternates: { canonical: "/servicios/carpinteros" },
+  openGraph: {
+    title: "Carpinteros en Madrid Sur | Decoreformas",
+    description: "Carpintería de madera a medida en Leganés, Getafe, Alcorcón y Móstoles: puertas, armarios y carpintería interior.",
+    url: "/servicios/carpinteros",
+    type: "website",
+    locale: "es_ES",
+    siteName: "Decoreformas",
+  },
 };
 
 export default function CarpinterosPage() {

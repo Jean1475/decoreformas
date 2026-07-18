@@ -15,6 +15,14 @@ export const metadata: Metadata = {
   description:
     "Empresa de reformas integrales, cocinas y baños en Móstoles. Presupuesto cerrado, un único interlocutor y seguimiento semanal de obra.",
   alternates: { canonical: "/zonas/mostoles" },
+  openGraph: {
+    title: "Reformas en Móstoles | Decoreformas",
+    description: "Empresa de reformas integrales, cocinas y baños en Móstoles. Presupuesto cerrado, un único interlocutor y seguimiento semanal de obra.",
+    url: "/zonas/mostoles",
+    type: "website",
+    locale: "es_ES",
+    siteName: "Decoreformas",
+  },
 };
 
 export default function MostolesPage() {

@@ -11,6 +11,14 @@ export const metadata: Metadata = {
   description:
     "Equipo pequeño de reformas con base en Madrid Sur, con más de 25 años de oficio. Presupuesto cerrado y un único interlocutor de principio a fin.",
   alternates: { canonical: "/conocenos/quienes-somos" },
+  openGraph: {
+    title: "Quiénes Somos | Decoreformas",
+    description: "Equipo pequeño de reformas con base en Madrid Sur, con más de 25 años de oficio. Presupuesto cerrado y un único interlocutor de principio a fin.",
+    url: "/conocenos/quienes-somos",
+    type: "website",
+    locale: "es_ES",
+    siteName: "Decoreformas",
+  },
 };
 
 export default function QuienesSomosPage() {

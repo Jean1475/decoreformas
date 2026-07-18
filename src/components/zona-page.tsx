@@ -7,11 +7,27 @@ import { serviciosInfo } from "@/lib/servicios-data";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
+const SITE_URL = "https://decorreformas.com";
+
 export default function ZonaContent({ zona }: { zona: Zona }) {
   const reduce = useReducedMotion();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: `Reformas en ${zona.nombre}`,
+    description: zona.intro,
+    url: `${SITE_URL}/zonas/${zona.slug}`,
+    provider: { "@id": `${SITE_URL}/#negocio` },
+    areaServed: { "@type": "City", name: zona.nombre },
+  };
+
   return (
     <section className="py-16 lg:py-24" style={{ background: "#ffffff" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-16">
           <motion.div

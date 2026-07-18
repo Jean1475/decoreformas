@@ -15,6 +15,14 @@ export const metadata: Metadata = {
   description:
     "Diseño e instalación de muebles de cocina a medida en Leganés, Getafe, Alcorcón y Móstoles.",
   alternates: { canonical: "/cocina/muebles-de-cocina" },
+  openGraph: {
+    title: "Muebles de Cocina en Madrid Sur | Decoreformas",
+    description: "Diseño e instalación de muebles de cocina a medida en Leganés, Getafe, Alcorcón y Móstoles.",
+    url: "/cocina/muebles-de-cocina",
+    type: "website",
+    locale: "es_ES",
+    siteName: "Decoreformas",
+  },
 };
 
 export default function MueblesDeCocinaPage() {

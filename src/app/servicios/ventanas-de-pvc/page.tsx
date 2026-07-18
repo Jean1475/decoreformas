@@ -15,6 +15,14 @@ export const metadata: Metadata = {
   description:
     "Suministro e instalación de ventanas de PVC en Leganés, Getafe, Alcorcón y Móstoles, con buen aislamiento térmico y acústico.",
   alternates: { canonical: "/servicios/ventanas-de-pvc" },
+  openGraph: {
+    title: "Ventanas de PVC en Madrid Sur | Decoreformas",
+    description: "Suministro e instalación de ventanas de PVC en Leganés, Getafe, Alcorcón y Móstoles, con buen aislamiento térmico y acústico.",
+    url: "/servicios/ventanas-de-pvc",
+    type: "website",
+    locale: "es_ES",
+    siteName: "Decoreformas",
+  },
 };
 
 export default function VentanasDePvcPage() {

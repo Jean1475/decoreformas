@@ -15,6 +15,14 @@ export const metadata: Metadata = {
   description:
     "Tabiquería, trasdosados y techos de pladur en Leganés, Getafe, Alcorcón y Móstoles.",
   alternates: { canonical: "/servicios/montador-de-pladur" },
+  openGraph: {
+    title: "Montador de Pladur en Madrid Sur | Decoreformas",
+    description: "Tabiquería, trasdosados y techos de pladur en Leganés, Getafe, Alcorcón y Móstoles.",
+    url: "/servicios/montador-de-pladur",
+    type: "website",
+    locale: "es_ES",
+    siteName: "Decoreformas",
+  },
 };
 
 export default function MontadorDePladurPage() {

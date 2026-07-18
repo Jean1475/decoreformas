@@ -15,6 +15,14 @@ export const metadata: Metadata = {
   description:
     "Reforma integral de pisos y viviendas en Leganés, Getafe, Alcorcón y Móstoles. Presupuesto cerrado, un único interlocutor y seguimiento semanal de obra.",
   alternates: { canonical: "/reformas/reforma-integral" },
+  openGraph: {
+    title: "Reformas Integrales en Madrid | Decoreformas",
+    description: "Reforma integral de pisos y viviendas en Leganés, Getafe, Alcorcón y Móstoles. Presupuesto cerrado, un único interlocutor y seguimiento semanal de obra.",
+    url: "/reformas/reforma-integral",
+    type: "website",
+    locale: "es_ES",
+    siteName: "Decoreformas",
+  },
 };
 
 export default function ReformaIntegralPage() {

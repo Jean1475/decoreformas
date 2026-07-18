@@ -15,6 +15,14 @@ export const metadata: Metadata = {
   description:
     "Suministro e instalación de muebles de baño a medida en Leganés, Getafe, Alcorcón y Móstoles.",
   alternates: { canonical: "/banos/muebles-de-bano" },
+  openGraph: {
+    title: "Muebles de Baño en Madrid Sur | Decoreformas",
+    description: "Suministro e instalación de muebles de baño a medida en Leganés, Getafe, Alcorcón y Móstoles.",
+    url: "/banos/muebles-de-bano",
+    type: "website",
+    locale: "es_ES",
+    siteName: "Decoreformas",
+  },
 };
 
 export default function MueblesDeBanoPage() {

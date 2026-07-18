@@ -15,6 +15,14 @@ export const metadata: Metadata = {
   description:
     "Instalación de tarima flotante laminada o de madera en Leganés, Getafe, Alcorcón y Móstoles.",
   alternates: { canonical: "/parquet/tarima-flotante" },
+  openGraph: {
+    title: "Tarima Flotante en Madrid Sur | Decoreformas",
+    description: "Instalación de tarima flotante laminada o de madera en Leganés, Getafe, Alcorcón y Móstoles.",
+    url: "/parquet/tarima-flotante",
+    type: "website",
+    locale: "es_ES",
+    siteName: "Decoreformas",
+  },
 };
 
 export default function TarimaFlotantePage() {

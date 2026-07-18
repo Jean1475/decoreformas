@@ -15,6 +15,14 @@ export const metadata: Metadata = {
   description:
     "Instalación y renovación de electricidad en Leganés, Getafe, Alcorcón y Móstoles: cuadros, puntos de luz y boletines.",
   alternates: { canonical: "/servicios/electricistas" },
+  openGraph: {
+    title: "Electricistas en Madrid Sur | Decoreformas",
+    description: "Instalación y renovación de electricidad en Leganés, Getafe, Alcorcón y Móstoles: cuadros, puntos de luz y boletines.",
+    url: "/servicios/electricistas",
+    type: "website",
+    locale: "es_ES",
+    siteName: "Decoreformas",
+  },
 };
 
 export default function ElectricistasPage() {

@@ -12,6 +12,14 @@ export const metadata: Metadata = {
   description:
     "Obras reales entregadas por Decoreformas en Madrid Sur: reformas integrales, cocinas, baños y locales comerciales.",
   alternates: { canonical: "/conocenos/trabajos-realizados" },
+  openGraph: {
+    title: "Trabajos Realizados | Decoreformas",
+    description: "Obras reales entregadas por Decoreformas en Madrid Sur: reformas integrales, cocinas, baños y locales comerciales.",
+    url: "/conocenos/trabajos-realizados",
+    type: "website",
+    locale: "es_ES",
+    siteName: "Decoreformas",
+  },
 };
 
 export default function TrabajosRealizadosPage() {

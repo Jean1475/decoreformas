@@ -15,6 +15,14 @@ export const metadata: Metadata = {
   description:
     "Cambio de bañera por plato de ducha en Leganés, Getafe, Alcorcón y Móstoles. Obra mínima, en pocos días y con presupuesto cerrado.",
   alternates: { canonical: "/reformas/cambiar-banera-por-ducha" },
+  openGraph: {
+    title: "Cambiar Bañera por Ducha en Madrid Sur | Decoreformas",
+    description: "Cambio de bañera por plato de ducha en Leganés, Getafe, Alcorcón y Móstoles. Obra mínima, en pocos días y con presupuesto cerrado.",
+    url: "/reformas/cambiar-banera-por-ducha",
+    type: "website",
+    locale: "es_ES",
+    siteName: "Decoreformas",
+  },
 };
 
 export default function CambiarBaneraPorDuchaPage() {

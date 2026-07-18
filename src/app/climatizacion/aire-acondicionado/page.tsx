@@ -15,6 +15,14 @@ export const metadata: Metadata = {
   description:
     "Instalación de aire acondicionado split y multisplit en Leganés, Getafe, Alcorcón y Móstoles, con canalización integrada si hace falta.",
   alternates: { canonical: "/climatizacion/aire-acondicionado" },
+  openGraph: {
+    title: "Aire Acondicionado en Madrid Sur | Decoreformas",
+    description: "Instalación de aire acondicionado split y multisplit en Leganés, Getafe, Alcorcón y Móstoles, con canalización integrada si hace falta.",
+    url: "/climatizacion/aire-acondicionado",
+    type: "website",
+    locale: "es_ES",
+    siteName: "Decoreformas",
+  },
 };
 
 export default function AireAcondicionadoPage() {

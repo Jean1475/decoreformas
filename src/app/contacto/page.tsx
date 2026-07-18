@@ -10,6 +10,14 @@ export const metadata: Metadata = {
   description:
     "Pide tu presupuesto gratis para reformas en Leganés, Getafe, Alcorcón y Móstoles. Sin compromiso.",
   alternates: { canonical: "/contacto" },
+  openGraph: {
+    title: "Contacto | Decoreformas",
+    description: "Pide tu presupuesto gratis para reformas en Leganés, Getafe, Alcorcón y Móstoles. Sin compromiso.",
+    url: "/contacto",
+    type: "website",
+    locale: "es_ES",
+    siteName: "Decoreformas",
+  },
 };
 
 export default function ContactoPage() {

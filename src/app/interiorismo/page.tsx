@@ -15,6 +15,14 @@ export const metadata: Metadata = {
   description:
     "Diseño de interiores en Leganés, Getafe, Alcorcón y Móstoles: distribución, materiales, mobiliario y textiles.",
   alternates: { canonical: "/interiorismo" },
+  openGraph: {
+    title: "Interiorismo en Madrid Sur | Decoreformas",
+    description: "Diseño de interiores en Leganés, Getafe, Alcorcón y Móstoles: distribución, materiales, mobiliario y textiles.",
+    url: "/interiorismo",
+    type: "website",
+    locale: "es_ES",
+    siteName: "Decoreformas",
+  },
 };
 
 export default function InteriorismoPage() {

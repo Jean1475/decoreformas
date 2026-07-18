@@ -15,6 +15,14 @@ export const metadata: Metadata = {
   description:
     "Instalación y renovación de sistemas de calefacción en Leganés, Getafe, Alcorcón y Móstoles: radiadores, suelo radiante y calderas.",
   alternates: { canonical: "/climatizacion/calefaccion" },
+  openGraph: {
+    title: "Calefacción en Madrid Sur | Decoreformas",
+    description: "Instalación y renovación de sistemas de calefacción en Leganés, Getafe, Alcorcón y Móstoles: radiadores, suelo radiante y calderas.",
+    url: "/climatizacion/calefaccion",
+    type: "website",
+    locale: "es_ES",
+    siteName: "Decoreformas",
+  },
 };
 
 export default function CalefaccionPage() {

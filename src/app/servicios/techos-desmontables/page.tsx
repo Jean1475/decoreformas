@@ -15,6 +15,14 @@ export const metadata: Metadata = {
   description:
     "Instalación de techos técnicos desmontables en Leganés, Getafe, Alcorcón y Móstoles, con acceso de mantenimiento a instalaciones.",
   alternates: { canonical: "/servicios/techos-desmontables" },
+  openGraph: {
+    title: "Techos Desmontables en Madrid Sur | Decoreformas",
+    description: "Instalación de techos técnicos desmontables en Leganés, Getafe, Alcorcón y Móstoles, con acceso de mantenimiento a instalaciones.",
+    url: "/servicios/techos-desmontables",
+    type: "website",
+    locale: "es_ES",
+    siteName: "Decoreformas",
+  },
 };
 
 export default function TechosDesmontablesPage() {

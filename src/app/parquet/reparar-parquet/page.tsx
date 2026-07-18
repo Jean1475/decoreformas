@@ -15,6 +15,14 @@ export const metadata: Metadata = {
   description:
     "Reparación de tablas de parquet dañadas o sueltas en Leganés, Getafe, Alcorcón y Móstoles, sin necesidad de acuchillar todo el suelo.",
   alternates: { canonical: "/parquet/reparar-parquet" },
+  openGraph: {
+    title: "Reparación de Parquet en Madrid Sur | Decoreformas",
+    description: "Reparación de tablas de parquet dañadas o sueltas en Leganés, Getafe, Alcorcón y Móstoles, sin necesidad de acuchillar todo el suelo.",
+    url: "/parquet/reparar-parquet",
+    type: "website",
+    locale: "es_ES",
+    siteName: "Decoreformas",
+  },
 };
 
 export default function RepararParquetPage() {
