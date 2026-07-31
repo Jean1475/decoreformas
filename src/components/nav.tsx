@@ -331,7 +331,7 @@ export default function Nav() {
 
         {/* Links desktop */}
         <div
-          className="hidden md:flex items-center gap-6"
+          className="hidden lg:flex items-center gap-6"
           style={{ position: "absolute", left: "50%", transform: "translateX(-50%)" }}
         >
           <Link
@@ -395,7 +395,7 @@ export default function Nav() {
         </div>
 
         {/* Right: phone + CTA */}
-        <div className="hidden md:flex items-center gap-4 shrink-0">
+        <div className="hidden lg:flex items-center gap-4 shrink-0">
           <a
             href={TEL_HREF}
             aria-label={`Llamar al ${TEL_DISPLAY}`}
@@ -445,7 +445,7 @@ export default function Nav() {
         {/* Hamburger */}
         <button
           onClick={() => setMobileOpen((v) => !v)}
-          className="md:hidden flex flex-col justify-center items-center gap-[5px] w-10 h-10 shrink-0"
+          className="lg:hidden flex flex-col justify-center items-center gap-[5px] w-10 h-10 shrink-0"
           aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
           aria-expanded={mobileOpen}
           aria-controls="mobile-menu"
@@ -477,7 +477,7 @@ export default function Nav() {
       {/* Mobile menu — clip-path instead of max-height to avoid layout thrash */}
       <div
         id="mobile-menu"
-        className="md:hidden"
+        className="lg:hidden"
         style={{
           background: "#ffffff",
           borderBottom: mobileOpen ? "1px solid rgba(29,53,87,0.10)" : "none",

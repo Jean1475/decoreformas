@@ -159,7 +159,13 @@ export default function DiagnosticoPanel({ reduce }: { reduce: boolean | null })
     return () => clearInterval(id);
   }, [fase]);
 
+  const huboInteraccion = useRef(false);
+
   useEffect(() => {
+    if (!huboInteraccion.current) {
+      huboInteraccion.current = true;
+      return;
+    }
     if (fase === "tipo" || fase === "detalle" || fase === "situacion" || fase === "urgencia") {
       textareaRef.current?.focus();
     }
