@@ -4,10 +4,9 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
 import type { Zona } from "@/lib/zonas";
 import { serviciosInfo } from "@/lib/servicios-data";
+import { SITE_URL } from "@/lib/urls";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
-
-const SITE_URL = "https://decorreformas.com";
 
 export default function ZonaContent({ zona }: { zona: Zona }) {
   const reduce = useReducedMotion();

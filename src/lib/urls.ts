@@ -1,4 +1,4 @@
-export const SITE_URL = "https://decorreformas.com";
+export const SITE_URL = "https://www.decorreformas.com";
 
 export const CATEGORIA_SLUG: Record<string, string> = {
   Reformas: "reformas",

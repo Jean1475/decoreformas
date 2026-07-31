@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
+import { SITE_URL } from "@/lib/urls";
 
 const hankenGrotesk = Hanken_Grotesk({
   subsets: ["latin"],
@@ -8,8 +9,6 @@ const hankenGrotesk = Hanken_Grotesk({
   variable: "--font-hanken",
   display: "swap",
 });
-
-const SITE_URL = "https://decorreformas.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

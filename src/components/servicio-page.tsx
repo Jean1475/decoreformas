@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
+import { SITE_URL } from "@/lib/urls";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -22,8 +23,6 @@ function CheckIcon() {
 interface ServicioConNombre extends ServicioLike {
   nombre?: string;
 }
-
-const SITE_URL = "https://decorreformas.com";
 
 export default function ServicioIntro({
   servicio,
