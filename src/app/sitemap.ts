@@ -13,7 +13,7 @@ const CONTENT_UPDATED = {
   paginasEstaticas: new Date("2026-06-08"),
   servicios: new Date("2026-07-18"),
   catalogo: new Date("2026-06-08"),
-  zonas: new Date("2026-07-18"),
+  zonas: new Date("2026-08-21"),
 } as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {

@@ -205,6 +205,198 @@ export const zonas: Zona[] = [
       },
     ],
   },
+  {
+    slug: "valdemoro",
+    nombre: "Valdemoro",
+    intro:
+      "Reformamos viviendas y locales en Valdemoro, tanto en el casco antiguo como en los desarrollos de El Restón y La Estación.",
+    detalle:
+      "Valdemoro ha crecido muy rápido en las dos últimas décadas, así que conviven dos parques de vivienda muy distintos: casas bajas y pisos antiguos en el casco, y promociones de obra nueva de los 2000 en El Restón, El Espartal o La Estación. En el casco solemos entrar a renovar instalaciones completas; en la obra nueva el trabajo es casi siempre de actualización de cocina y baño, o de abrir distribuciones que se quedaron muy compartimentadas.",
+    porQueElegirnos:
+      "En Valdemoro nos piden mucho reforma de local comercial, sobre todo en las calles del centro y en los bajos de las promociones nuevas. Sabemos gestionar la obra por fases para que el negocio cierre lo menos posible, y conocemos los plazos reales de licencia en el municipio, que es lo que suele desmontar los calendarios optimistas.",
+    faq: [
+      {
+        pregunta: "¿Reformáis locales comerciales en Valdemoro?",
+        respuesta:
+          "Sí, es uno de los trabajos que más hacemos en la zona. Planificamos la obra por fases y con calendario cerrado para que el cierre del negocio sea el mínimo imprescindible, y te avisamos desde el principio de los plazos de licencia del ayuntamiento.",
+      },
+      {
+        pregunta: "¿Qué diferencia hay entre reformar en el casco de Valdemoro y en El Restón?",
+        respuesta:
+          "En el casco antiguo casi siempre hay que renovar fontanería y electricidad además de acabados, porque la instalación original se queda corta. En El Restón y las promociones de los 2000 las instalaciones suelen estar bien, así que el presupuesto se centra en cocina, baño y distribución.",
+      },
+      {
+        pregunta: "¿Os desplazáis a Valdemoro sin coste adicional?",
+        respuesta:
+          "Sí. Valdemoro entra dentro de nuestra área de trabajo habitual en el corredor sur y el desplazamiento no se repercute en el presupuesto.",
+      },
+      {
+        pregunta: "¿Cuánto tarda una reforma integral de piso en Valdemoro?",
+        respuesta:
+          "Para un piso estándar de 80-90 m² solemos movernos entre 8 y 12 semanas, según si hay que renovar instalaciones completas o solo acabados y distribución. La cifra exacta te la cerramos tras la visita.",
+      },
+    ],
+  },
+  {
+    slug: "arganda-del-rey",
+    nombre: "Arganda del Rey",
+    intro:
+      "Reformas integrales, de cocina, de baño y de local comercial en Arganda del Rey y el resto del corredor del Henares sur.",
+    detalle:
+      "En Arganda trabajamos sobre todo en vivienda de bloque de los años 70 y 80 del centro y en unifamiliares y adosados de las urbanizaciones que rodean el municipio. Son dos encargos muy distintos: en el bloque antiguo el grueso del presupuesto se va en instalaciones y en el adosado suele ir en cocina, baños y climatización, porque la envolvente ya está resuelta.",
+    porQueElegirnos:
+      "Arganda tiene bastante local comercial y nave pequeña, y ahí la diferencia la marca entender el uso al que se destina antes de proyectar: no se acondiciona igual un local de hostelería que uno de retail o un espacio de oficinas. Presupuestamos después de ver el local y de saber qué actividad va dentro, no antes.",
+    faq: [
+      {
+        pregunta: "¿Trabajáis en las urbanizaciones de las afueras de Arganda?",
+        respuesta:
+          "Sí, en adosados y unifamiliares de las urbanizaciones del municipio además de en los pisos del centro. En vivienda unifamiliar los encargos más frecuentes son cocina, baños y climatización.",
+      },
+      {
+        pregunta: "¿Hacéis acondicionamiento de locales y naves pequeñas?",
+        respuesta:
+          "Sí. Es habitual en Arganda por el tejido comercial e industrial de la zona. Necesitamos saber qué actividad va a albergar el espacio para dimensionar bien instalaciones, ventilación y salidas.",
+      },
+      {
+        pregunta: "¿Los pisos del centro de Arganda necesitan cambiar las tuberías?",
+        respuesta:
+          "En los bloques de los 70 y 80 es muy frecuente, sobre todo si conservan bajantes originales. Lo comprobamos en la visita antes de presupuestar para que no aparezca como sobrecoste a mitad de obra.",
+      },
+      {
+        pregunta: "¿Dais presupuesto cerrado también fuera de Madrid Sur?",
+        respuesta:
+          "Sí, el presupuesto cerrado tras la visita es nuestra forma de trabajar en toda la Comunidad de Madrid, Arganda incluida.",
+      },
+    ],
+  },
+  {
+    slug: "majadahonda",
+    nombre: "Majadahonda",
+    intro:
+      "Reformas integrales de vivienda, cocina y baño en Majadahonda, en chalets, adosados y pisos del centro del municipio.",
+    detalle:
+      "Majadahonda es mayoritariamente vivienda unifamiliar y adosado de urbanización, con una parte de piso de bloque concentrada en el centro. En unifamiliar los proyectos suelen ser más largos y con más oficios en juego: además de albañilería y acabados entran carpintería a medida, climatización y, muchas veces, intervención en zonas exteriores o porches.",
+    porQueElegirnos:
+      "En vivienda unifamiliar de Majadahonda el nivel de acabado que se espera es alto y el margen de error en la planificación es más pequeño, porque hay más oficios coordinándose a la vez. Trabajamos con un único interlocutor precisamente para eso: para que no tengas que ir persiguiendo a cinco gremios distintos cuando algo se solapa.",
+    faq: [
+      {
+        pregunta: "¿Hacéis reformas integrales de chalets en Majadahonda?",
+        respuesta:
+          "Sí, es el tipo de encargo más habitual en la zona. Incluye normalmente cocina, baños, carpintería a medida y climatización, con calendario por fases y un único responsable de obra.",
+      },
+      {
+        pregunta: "¿Reformáis también los pisos del centro de Majadahonda?",
+        respuesta:
+          "Sí, con el mismo estándar de presupuesto cerrado y seguimiento semanal. En piso de bloque el proyecto suele ser más corto que en unifamiliar, entre 8 y 12 semanas según alcance.",
+      },
+      {
+        pregunta: "¿Coordináis permisos y accesos en urbanizaciones privadas?",
+        respuesta:
+          "Sí, lo planificamos desde el inicio junto con el calendario de obra: horarios de entrada de material, uso de zonas comunes y avisos a la comunidad, para evitar fricciones durante la obra.",
+      },
+      {
+        pregunta: "¿Trabajáis en Majadahonda estando vuestra base en el sur de Madrid?",
+        respuesta:
+          "Sí. Nos desplazamos por toda la Comunidad de Madrid y Majadahonda es una zona donde trabajamos con regularidad; el desplazamiento no se repercute en el presupuesto.",
+      },
+    ],
+  },
+  {
+    slug: "algete",
+    nombre: "Algete",
+    intro:
+      "Reformas de viviendas, baños y locales en Algete, Santo Domingo y el resto del corredor norte de Madrid.",
+    detalle:
+      "En Algete conviven el casco urbano, con vivienda más tradicional y bastante casa baja, y las urbanizaciones tipo Santo Domingo o Prado Norte, donde predomina el chalet exento con parcela. En el casco los encargos son de reforma de baño y cocina y renovación de instalaciones; en urbanización, reformas integrales de más recorrido y con más peso de climatización y carpintería exterior.",
+    porQueElegirnos:
+      "En zonas como Santo Domingo el chalet suele tener ya sus años y la reforma no es solo estética: aparecen aislamiento, ventanas y climatización, que es donde de verdad se nota la factura después. Lo planteamos desde el principio para que decidas con la cifra completa delante y no por partes.",
+    faq: [
+      {
+        pregunta: "¿Trabajáis en la urbanización Santo Domingo?",
+        respuesta:
+          "Sí, es una de las zonas donde más nos llaman en Algete, normalmente para reformas integrales de chalet que incluyen ventanas, aislamiento y climatización además de cocina y baños.",
+      },
+      {
+        pregunta: "¿Reformáis baños sueltos o solo reformas integrales?",
+        respuesta:
+          "Hacemos ambas cosas. La reforma de baño y el cambio de bañera por ducha son de los encargos más frecuentes en el casco urbano de Algete y se resuelven en pocas semanas.",
+      },
+      {
+        pregunta: "¿Merece la pena cambiar las ventanas en un chalet de Algete?",
+        respuesta:
+          "En la mayoría de chalets con carpintería original sí, porque es donde se pierde la mayor parte del confort térmico. Lo valoramos en la visita y te decimos si compensa antes de meterlo en el presupuesto.",
+      },
+      {
+        pregunta: "¿Cubrís Algete estando en el sur de Madrid?",
+        respuesta:
+          "Sí, nos desplazamos por toda la Comunidad de Madrid. Algete y el corredor norte entran en nuestra área de trabajo, igual que Alcobendas.",
+      },
+    ],
+  },
+  {
+    slug: "madrid-capital",
+    nombre: "Madrid capital",
+    intro:
+      "Reformas integrales, de cocina, de baño y de local comercial en Madrid capital: Villaverde, Carabanchel, Usera, Hortaleza, Valdebebas y centro.",
+    detalle:
+      "Madrid capital no es un solo tipo de obra: un piso de Villaverde o Carabanchel de los años 60-70 pide renovación completa de instalaciones, mientras que en Valdebebas o los desarrollos del noreste la vivienda es prácticamente nueva y el encargo es de personalización y acabados. En los barrios del centro se suma la dificultad logística: portales estrechos, sin ascensor, horarios de carga y descarga restringidos.",
+    porQueElegirnos:
+      "Trabajar en Madrid capital tiene una parte que no se ve en el presupuesto de nadie y luego pesa: permisos de ocupación de vía pública, horarios de obra, retirada de escombro y accesos. Lo tenemos contemplado desde el principio, y por eso el presupuesto cerrado que te damos aguanta hasta el final en lugar de crecer por el camino.",
+    faq: [
+      {
+        pregunta: "¿En qué barrios de Madrid capital trabajáis?",
+        respuesta:
+          "En toda la ciudad. Con más frecuencia en el sur (Villaverde, Carabanchel, Usera) por cercanía a nuestra base, y también en Hortaleza, Valdebebas y los distritos del centro.",
+      },
+      {
+        pregunta: "¿Os encargáis de los permisos de obra en Madrid?",
+        respuesta:
+          "Sí, gestionamos la documentación necesaria y te decimos desde la visita qué tipo de licencia o declaración responsable requiere tu obra y cuánto suele tardar, porque condiciona la fecha de inicio real.",
+      },
+      {
+        pregunta: "¿Cómo gestionáis la obra en un piso del centro sin ascensor?",
+        respuesta:
+          "Se planifica la logística antes de empezar: acopio de material, permisos de ocupación de vía pública si hacen falta y retirada de escombro en los horarios permitidos. Se refleja en el presupuesto desde el principio, no aparece después.",
+      },
+      {
+        pregunta: "¿Reformáis locales comerciales en Madrid capital?",
+        respuesta:
+          "Sí, es una de nuestras especialidades: locales, oficinas y hostelería, con la obra organizada por fases para reducir al mínimo el tiempo de cierre del negocio.",
+      },
+    ],
+  },
+  {
+    slug: "galapagar",
+    nombre: "Galapagar",
+    intro:
+      "Reformas de viviendas y locales en Galapagar, Torrelodones, Colmenarejo, Valdemorillo y la sierra noroeste de Madrid.",
+    detalle:
+      "En la sierra noroeste predomina la vivienda unifamiliar con parcela, muchas veces construida entre los 80 y los 2000, y con un problema recurrente: aislamiento y carpintería que se quedaron cortos para el clima de la zona, que es bastante más duro que el de la capital en invierno. Por eso aquí las reformas integrales incluyen casi siempre ventanas, aislamiento y un sistema de calefacción replanteado.",
+    porQueElegirnos:
+      "En la sierra la reforma puramente estética suele ser dinero mal gastado si antes no se resuelve el comportamiento térmico de la casa. Te lo decimos en la visita aunque implique un presupuesto mayor, porque es la diferencia entre una casa bonita y una casa que además se pueda calentar sin arruinarse.",
+    faq: [
+      {
+        pregunta: "¿Además de Galapagar trabajáis en los municipios de alrededor?",
+        respuesta:
+          "Sí: Torrelodones, Colmenarejo, Valdemorillo, Brunete, El Escorial y el resto de la sierra noroeste entran en nuestra área de trabajo.",
+      },
+      {
+        pregunta: "¿Por qué recomendáis empezar por aislamiento y ventanas en la sierra?",
+        respuesta:
+          "Porque el invierno en la sierra es notablemente más frío que en la capital y la mayoría de las viviendas de los 80 y 90 tienen carpintería y aislamiento insuficientes. Reformar acabados sin tocar eso deja el problema de fondo intacto y la factura de calefacción igual.",
+      },
+      {
+        pregunta: "¿Hacéis reformas de locales comerciales en la sierra noroeste?",
+        respuesta:
+          "Sí, acondicionamiento completo de locales y oficinas en Galapagar y municipios cercanos, organizado por fases para minimizar el cierre del negocio.",
+      },
+      {
+        pregunta: "¿Cuánto cuesta desplazarse hasta la sierra?",
+        respuesta:
+          "Nada adicional. Nos desplazamos por toda la Comunidad de Madrid y el desplazamiento no se repercute como partida en el presupuesto.",
+      },
+    ],
+  },
 ];
 
 export function getZona(slug: string): Zona | undefined {

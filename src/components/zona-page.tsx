@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
 import type { Zona } from "@/lib/zonas";
+import { zonas } from "@/lib/zonas";
 import { serviciosInfo } from "@/lib/servicios-data";
 import { SITE_URL } from "@/lib/urls";
 
@@ -101,6 +102,37 @@ export default function ZonaContent({ zona }: { zona: Zona }) {
                   </Link>
                 </li>
               ))}
+            </ul>
+
+            {/* Enlazado entre zonas: reparte autoridad y da a Google una ruta
+                de rastreo entre todas las páginas de zona. */}
+            <p className="text-eyebrow mt-8 mb-4" style={{ color: "#457B9D" }}>
+              Otras zonas donde trabajamos
+            </p>
+            <ul className="flex flex-wrap gap-x-2 gap-y-2">
+              {zonas
+                .filter((z) => z.slug !== zona.slug)
+                .map((z) => (
+                  <li key={z.slug}>
+                    <Link
+                      href={`/zonas/${z.slug}`}
+                      style={{
+                        display: "inline-block",
+                        padding: "0.3125rem 0.625rem",
+                        borderRadius: 5,
+                        background: "#ffffff",
+                        border: "1px solid rgba(29,53,87,0.12)",
+                        fontFamily: "var(--font-hanken), sans-serif",
+                        fontSize: "0.8125rem",
+                        fontWeight: 500,
+                        color: "#42526a",
+                        textDecoration: "none",
+                      }}
+                    >
+                      {z.nombre}
+                    </Link>
+                  </li>
+                ))}
             </ul>
           </motion.div>
         </div>
