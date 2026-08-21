@@ -114,7 +114,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={hankenGrotesk.variable}>
+    <html lang="es" className={`${hankenGrotesk.variable} no-js`}>
+      <head>
+        {/* Quita .no-js antes del primer pintado: si el JS funciona, las
+            animaciones de entrada se comportan con normalidad; si no,
+            el CSS de fallback deja el contenido visible igualmente. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `document.documentElement.classList.remove('no-js')`,
+          }}
+        />
+      </head>
       <body>
         <script
           type="application/ld+json"

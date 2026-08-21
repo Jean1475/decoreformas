@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { zonas as zonasData } from "@/lib/zonas";
 
 const navegacion = [
   { href: "/#proyectos", label: "Proyectos" },
@@ -13,22 +14,21 @@ const navegacion = [
 
 const servicios = [
   { href: "/reformas/reforma-integral", label: "Reforma integral" },
+  { href: "/reformas/reforma-local-comercial", label: "Locales comerciales" },
   { href: "/banos/mamparas-de-ducha", label: "Baños" },
   { href: "/cocina/encimera-de-cocina", label: "Cocina" },
-  { href: "/parquet/tarima-flotante", label: "Parquet" },
+  { href: "/parquet/reparar-parquet", label: "Parquet" },
   { href: "/servicios/fontaneros", label: "Servicios del hogar" },
   { href: "/climatizacion/aire-acondicionado", label: "Climatización" },
   { href: "/interiorismo", label: "Interiorismo" },
 ];
 
-const zonas = [
-  { href: "/zonas/leganes", label: "Leganés" },
-  { href: "/zonas/getafe", label: "Getafe" },
-  { href: "/zonas/alcorcon", label: "Alcorcón" },
-  { href: "/zonas/mostoles", label: "Móstoles" },
-  { href: "/zonas/pozuelo-de-alarcon", label: "Pozuelo de Alarcón" },
-  { href: "/zonas/alcobendas", label: "Alcobendas y La Moraleja" },
-];
+// Derivado de la fuente de datos: al añadir una zona nueva aparece en el
+// footer automáticamente, sin tener que acordarse de tocar esta lista.
+const zonasFooter = zonasData.map((z) => ({
+  href: `/zonas/${z.slug}`,
+  label: z.nombre,
+}));
 
 const linkStyle: React.CSSProperties = {
   fontFamily: "var(--font-hanken), sans-serif",
@@ -216,10 +216,10 @@ export default function Footer() {
               Zonas de trabajo
             </p>
             <ul className="flex flex-wrap gap-x-2 gap-y-1">
-              {zonas.map((z, i) => (
+              {zonasFooter.map((z, i) => (
                 <li key={z.href} style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
                   <FooterLink href={z.href}>{z.label}</FooterLink>
-                  {i < zonas.length - 1 && (
+                  {i < zonasFooter.length - 1 && (
                     <span aria-hidden="true" style={{ color: "rgba(241,250,238,0.30)" }}>·</span>
                   )}
                 </li>

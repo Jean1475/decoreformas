@@ -215,3 +215,14 @@ select {
 #inicio select option[value=""] {
   color: rgba(241, 250, 238, 0.50);
 }
+
+/* ─── Fallback sin JavaScript ──────────────────────────────────────
+   Las animaciones de entrada (Framer Motion) se sirven con
+   opacity:0 inline y solo se revelan cuando hidrata el JS. Si el JS
+   falla, tarda o el rastreador no lo ejecuta, el contenido quedaría
+   invisible. Este bloque lo fuerza a visible cuando no hay JS. */
+.no-js [style*="opacity:0"],
+.no-js [style*="opacity: 0"] {
+  opacity: 1 !important;
+  transform: none !important;
+}

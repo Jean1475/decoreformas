@@ -125,24 +125,57 @@ export const serviciosInfo: ServicioInfo[] = [
       "Adecuación de instalaciones a normativa",
       "Distribución de espacio comercial",
       "Suelos, revestimientos e iluminación técnica",
-      "Fachada y rótulo, si aplica",
+      "Climatización y ventilación según actividad",
+      "Accesibilidad y aseos adaptados",
+      "Protección contra incendios y salidas de emergencia",
+      "Fachada, escaparate y rótulo",
       "Coordinación con licencias de actividad",
     ],
     faq: [
       {
         pregunta: "¿Cuánto tarda la reforma de un local?",
         respuesta:
-          "Depende mucho del uso y de si hay que tramitar licencia de actividad, que puede ser el factor que más alarga el proyecto. La parte de obra en sí suele ir de 4 a 10 semanas.",
+          "Depende mucho del uso y de si hay que tramitar licencia de actividad, que puede ser el factor que más alarga el proyecto. La parte de obra en sí suele ir de 4 a 10 semanas: un retail sencillo puede quedar en 4-5, mientras que la hostelería, por las instalaciones que exige, se va habitualmente a 8-10.",
+      },
+      {
+        pregunta: "¿Cuánto cuesta reformar un local comercial en Madrid?",
+        respuesta:
+          "Como orden de magnitud, un acondicionamiento medio de retail suele moverse entre 400 y 700 €/m², y la hostelería parte de cifras más altas (a partir de unos 800-1.000 €/m²) porque entran campana extractora, ventilación forzada, insonorización y una instalación de fontanería y electricidad mucho más exigente. Son rangos orientativos: el presupuesto cerrado te lo damos tras ver el local, porque el estado de partida cambia mucho la cifra.",
       },
       {
         pregunta: "¿Gestionáis vosotros la licencia de actividad?",
         respuesta:
-          "Podemos coordinar la documentación técnica necesaria (proyecto, certificados) con el gestor o arquitecto que tramite la licencia, aunque la tramitación administrativa depende del ayuntamiento.",
+          "Podemos coordinar la documentación técnica necesaria (proyecto, certificados) con el gestor o arquitecto que tramite la licencia, aunque la tramitación administrativa depende del ayuntamiento. Lo importante es empezarla cuanto antes: es lo que más suele retrasar la apertura, bastante más que la obra en sí.",
+      },
+      {
+        pregunta: "¿Qué diferencia hay entre declaración responsable y licencia de actividad?",
+        respuesta:
+          "En muchas actividades inocuas basta una declaración responsable, que permite iniciar la actividad al presentarla junto con la documentación técnica. Las actividades calificadas (hostelería, pública concurrencia, y las que generan ruido, humos o vertidos) requieren licencia, con un plazo de resolución mayor. Te decimos en cuál encaja tu caso durante la visita, porque condiciona todo el calendario.",
       },
       {
         pregunta: "¿Se puede trabajar fuera de horario comercial?",
         respuesta:
           "En locales dentro de comunidades o zonas con vecinos, sí solemos ajustar ciertas fases ruidosas a horarios que molesten menos. Lo hablamos en la planificación inicial.",
+      },
+      {
+        pregunta: "¿Puedo mantener el negocio abierto durante la reforma?",
+        respuesta:
+          "En locales grandes se puede trabajar por fases y mantener una parte operativa, sectorizando la obra con tabique provisional. En locales pequeños casi nunca compensa: alarga el plazo total y encarece la obra más de lo que se gana quedándose abierto. Te decimos con franqueza cuál de los dos casos es el tuyo.",
+      },
+      {
+        pregunta: "¿Qué hay que tener en cuenta al reformar un local de hostelería?",
+        respuesta:
+          "Es el uso más exigente. Además de la distribución de sala y cocina, entran salida de humos (que a menudo hay que negociar con la comunidad y llevar hasta cubierta), ventilación y climatización dimensionadas para el aforo, insonorización si hay vecinos, aseos adaptados y protección contra incendios. Cada uno de esos puntos puede bloquear la apertura si se deja para el final, así que se resuelven en la fase de proyecto.",
+      },
+      {
+        pregunta: "¿La reforma incluye adaptar el local a accesibilidad?",
+        respuesta:
+          "Sí, y en la mayoría de cambios de actividad es obligatorio: acceso sin escalón o con rampa, anchos de paso suficientes y aseo adaptado cuando el uso lo exige. Lo verificamos al hacer la visita, porque es uno de los motivos más frecuentes por los que se deniega una licencia.",
+      },
+      {
+        pregunta: "¿Trabajáis también oficinas y no solo locales a pie de calle?",
+        respuesta:
+          "Sí. En oficinas el trabajo suele centrarse en distribución con mamparas, falso techo registrable, iluminación técnica, climatización por zonas y cableado de datos. Son obras más limpias y rápidas que la hostelería, y normalmente se pueden ejecutar en 4-8 semanas.",
       },
     ],
   },
