@@ -6,6 +6,7 @@ import Image from "next/image";
 import { serviciosInfo } from "@/lib/servicios-data";
 import { zonas } from "@/lib/zonas";
 import { catalogo, categoriasOrden } from "@/lib/catalogo";
+import { rutaCatalogo } from "@/lib/urls";
 
 const links = [
   { href: "/#proyectos", label: "Proyectos" },
@@ -273,7 +274,7 @@ export default function Nav() {
     titulo: cat,
     items: catalogo
       .filter((c) => c.categoria === cat)
-      .map((c) => ({ href: `/${slugCategoria(cat)}/${c.slug}`, label: c.nombreCorto })),
+      .map((c) => ({ href: rutaCatalogo(cat, c.slug), label: c.nombreCorto })),
   }));
 
   const servicioColumns: Column[] = [reformasColumn, ...categoriaColumns];
@@ -680,16 +681,4 @@ export default function Nav() {
       </div>
     </nav>
   );
-}
-
-function slugCategoria(categoria: string): string {
-  const map: Record<string, string> = {
-    Baños: "banos",
-    Cocina: "cocina",
-    Parquet: "parquet",
-    "Servicios del hogar": "servicios",
-    Climatización: "climatizacion",
-    Interiorismo: "interiorismo",
-  };
-  return map[categoria] ?? categoria.toLowerCase();
 }
