@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
 import { SITE_URL } from "@/lib/urls";
+import JavascriptReady from "@/components/javascript-ready";
 
 const hankenGrotesk = Hanken_Grotesk({
   subsets: ["latin"],
@@ -115,17 +116,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${hankenGrotesk.variable} no-js`}>
-      <head>
-        {/* Quita .no-js antes del primer pintado: si el JS funciona, las
-            animaciones de entrada se comportan con normalidad; si no,
-            el CSS de fallback deja el contenido visible igualmente. */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `document.documentElement.classList.remove('no-js')`,
-          }}
-        />
-      </head>
       <body>
+        <JavascriptReady />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

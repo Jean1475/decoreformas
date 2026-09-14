@@ -70,7 +70,12 @@ function extraccionFallback(tipoTexto: string, detalleTexto: string, urgenciaTex
 // ─── Rango de precio: reglas deterministas, no generado por IA ───────────
 // Ancla en los precios orientativos ya públicos del sitio:
 // baño desde 3.000€, cocina desde 6.000€, integral desde 35.000€ (80m²).
-function calcularRango(tipo: TipoReforma, m2: number | null, alcance: Alcance | null): { min: number; max: number } {
+function calcularRango(
+  tipo: TipoReforma,
+  m2: number | null,
+  alcance: Alcance | null,
+  localHosteleria = false
+): { min: number; max: number } {
   const alcanceMult = alcance === "estetica" ? 0.6 : 1;
 
   switch (tipo) {
@@ -93,11 +98,13 @@ function calcularRango(tipo: TipoReforma, m2: number | null, alcance: Alcance | 
     }
     case "local": {
       const m = m2 || 60;
-      const perM2Min = 200;
-      const perM2Max = 320;
+      // Mantener el cálculo alineado con los rangos publicados en la página
+      // de locales: retail 400–700 €/m² y hostelería 800–1.000 €/m².
+      const perM2Min = localHosteleria ? 800 : 400;
+      const perM2Max = localHosteleria ? 1000 : 700;
       return {
-        min: Math.round((m * perM2Min * alcanceMult) / 500) * 500,
-        max: Math.round((m * perM2Max * alcanceMult) / 500) * 500,
+        min: Math.round((m * perM2Min) / 500) * 500,
+        max: Math.round((m * perM2Max) / 500) * 500,
       };
     }
   }
@@ -119,6 +126,15 @@ const FROST = "#A8DADC";
 
 function esEmailValido(valor: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valor.trim());
+}
+
+function esTelefonoValido(valor: string): boolean {
+  const digitos = valor.replace(/\D/g, "");
+  return digitos.length >= 9 && digitos.length <= 15;
+}
+
+function textoValido(valor: unknown, maximo: number): valor is string {
+  return typeof valor === "string" && valor.trim().length > 0 && valor.trim().length <= maximo;
 }
 
 function escapeHtml(s: string): string {
@@ -307,14 +323,26 @@ export async function POST(request: NextRequest) {
     const body = (await request.json()) as DiagnosticoPayload;
     const { tipoTexto, detalleTexto, zona, situacionTexto, urgenciaTexto, fotos, nombre, contacto, canalContacto, rgpd } = body;
 
-    if (!tipoTexto?.trim() || !detalleTexto?.trim()) {
+    if (!textoValido(tipoTexto, 160) || !textoValido(detalleTexto, 1200)) {
       return Response.json({ error: "Faltan datos del proyecto" }, { status: 400 });
     }
-    if (!zona?.trim() || !situacionTexto?.trim() || !urgenciaTexto?.trim()) {
+    if (!textoValido(zona, 120) || !textoValido(situacionTexto, 600) || !textoValido(urgenciaTexto, 300)) {
       return Response.json({ error: "Faltan datos del proyecto" }, { status: 400 });
     }
-    if (!nombre?.trim() || !contacto?.trim()) {
+    if (!textoValido(nombre, 120) || !textoValido(contacto, 180)) {
       return Response.json({ error: "Faltan datos de contacto" }, { status: 400 });
+    }
+    if (!(canalContacto in CANAL_LABELS)) {
+      return Response.json({ error: "Elige cómo prefieres que te contactemos" }, { status: 400 });
+    }
+    if (canalContacto === "email" ? !esEmailValido(contacto) : !esTelefonoValido(contacto)) {
+      return Response.json(
+        { error: canalContacto === "email" ? "Introduce un email válido" : "Introduce un teléfono válido" },
+        { status: 400 }
+      );
+    }
+    if (fotos !== undefined && (!Array.isArray(fotos) || fotos.length > 3 || fotos.some((foto) => typeof foto !== "string" || foto.length > 2048))) {
+      return Response.json({ error: "Las fotos adjuntas no son válidas" }, { status: 400 });
     }
     if (!rgpd) {
       return Response.json({ error: "Falta aceptar la política de privacidad" }, { status: 400 });
@@ -341,7 +369,9 @@ export async function POST(request: NextRequest) {
     }
 
     // ── Paso 2: rango de precio determinista sobre los campos clasificados ──
-    const rango = calcularRango(extraido.tipo, extraido.m2, extraido.alcance);
+    const textoProyecto = `${tipoTexto} ${detalleTexto}`.toLowerCase();
+    const localHosteleria = extraido.tipo === "local" && /hosteler|restaurante|bar|cafeter|cocina industrial/.test(textoProyecto);
+    const rango = calcularRango(extraido.tipo, extraido.m2, extraido.alcance, localHosteleria);
     const rangoTexto = `${formatearEuros(rango.min)} – ${formatearEuros(rango.max)}`;
 
     // ── Paso 3: diagnóstico en lenguaje natural, IA solo redacta el texto ──
@@ -361,7 +391,7 @@ export async function POST(request: NextRequest) {
     }
 
     const esUrgente = extraido.urgente;
-    const clasificado = `${TIPO_LABELS[extraido.tipo]}${extraido.m2 ? `, ${extraido.m2} m²` : ""}${extraido.alcance ? `, ${extraido.alcance === "completa" ? "reforma completa" : "solo estética"}` : ""}`;
+    const clasificado = `${TIPO_LABELS[extraido.tipo]}${localHosteleria ? " de hostelería" : ""}${extraido.m2 ? `, ${extraido.m2} m²` : ""}${extraido.alcance ? `, ${extraido.alcance === "completa" ? "reforma completa" : "solo estética"}` : ""}`;
 
     let emailEnviado = false;
     let emailClienteEnviado = false;
@@ -427,6 +457,7 @@ export async function POST(request: NextRequest) {
       rango_min: rango.min,
       rango_max: rango.max,
       rango_texto: rangoTexto,
+      lead_recibido: emailEnviado,
       email_enviado: emailEnviado,
       email_cliente_enviado: emailClienteEnviado,
     });

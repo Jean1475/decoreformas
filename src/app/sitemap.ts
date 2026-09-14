@@ -16,6 +16,14 @@ const CONTENT_UPDATED = {
   zonas: new Date("2026-08-21"),
 } as const;
 
+const BLOG_INDEX_UPDATED = blogPosts.reduce(
+  (ultima, post) => {
+    const fecha = new Date(post.fecha);
+    return fecha > ultima ? fecha : ultima;
+  },
+  new Date("2026-06-08")
+);
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const home: MetadataRoute.Sitemap = [
     {
@@ -26,7 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${SITE_URL}/blog`,
-      lastModified: new Date(),
+      lastModified: BLOG_INDEX_UPDATED,
       changeFrequency: "weekly",
       priority: 0.7,
     },
