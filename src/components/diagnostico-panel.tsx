@@ -15,6 +15,8 @@ type Fase =
   | "resultado"
   | "error";
 
+type CanalContacto = "whatsapp" | "llamada" | "email";
+
 const PASOS_CON_PROGRESO: Fase[] = ["tipo", "detalle", "zona", "situacion", "urgencia", "fotos", "contacto"];
 
 const PREGUNTAS_LIBRES: Record<"tipo" | "detalle" | "situacion" | "urgencia", { texto: string; placeholder: string }> = {
@@ -48,14 +50,6 @@ function SendIcon() {
   return (
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M12 19V5M12 5l-6 6M12 5l6 6" stroke="#081622" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function CheckIconSmall() {
-  return (
-    <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-      <path d="M2.5 7l3 3 6-6" stroke="#081622" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -144,11 +138,12 @@ export default function DiagnosticoPanel({ reduce }: { reduce: boolean | null })
 
   const [nombre, setNombre] = useState("");
   const [contacto, setContacto] = useState("");
-  const canalContacto = "whatsapp";
+  const [canalContacto, setCanalContacto] = useState<CanalContacto>("whatsapp");
   const [rgpd, setRgpd] = useState(false);
 
   const [diagnostico, setDiagnostico] = useState("");
   const [rangoTexto, setRangoTexto] = useState("");
+  const [leadRecibido, setLeadRecibido] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -235,13 +230,19 @@ export default function DiagnosticoPanel({ reduce }: { reduce: boolean | null })
 
   async function enviar(e: React.FormEvent) {
     e.preventDefault();
-    if (!nombre.trim() || !contacto.trim() || !rgpd) return;
+    const contactoValido = canalContacto === "email"
+      ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contacto.trim())
+      : contacto.replace(/\D/g, "").length >= 9;
+    if (!nombre.trim() || !contactoValido || !rgpd) return;
     setErrorMsg("");
     irA("cargando");
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 20000);
     try {
       const res = await fetch("/api/diagnostico", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        signal: controller.signal,
         body: JSON.stringify({
           tipoTexto,
           detalleTexto,
@@ -255,16 +256,25 @@ export default function DiagnosticoPanel({ reduce }: { reduce: boolean | null })
           rgpd,
         }),
       });
-      if (!res.ok) throw new Error();
       const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "No se pudo procesar la solicitud.");
       transicionar(() => {
         setDiagnostico(data.diagnostico);
         setRangoTexto(data.rango_texto || "");
+        setLeadRecibido(data.lead_recibido === true);
         setFase("resultado");
       });
-    } catch {
-      setErrorMsg("No se pudo generar el diagnóstico. Llámanos al 660 56 53 24.");
+    } catch (error) {
+      setErrorMsg(
+        error instanceof DOMException && error.name === "AbortError"
+          ? "La solicitud está tardando demasiado. Envíanos el proyecto por WhatsApp."
+          : error instanceof Error
+            ? `${error.message} Puedes enviarnos el proyecto por WhatsApp.`
+            : "No se pudo generar el diagnóstico. Envíanos el proyecto por WhatsApp."
+      );
       transicionar(() => setFase("error"));
+    } finally {
+      window.clearTimeout(timeout);
     }
   }
 
@@ -276,6 +286,22 @@ export default function DiagnosticoPanel({ reduce }: { reduce: boolean | null })
       navigator.clipboard?.writeText(texto).catch(() => {});
     }
   }
+
+  const contactoValido = canalContacto === "email"
+    ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contacto.trim())
+    : contacto.replace(/\D/g, "").length >= 9;
+  const formularioValido = Boolean(nombre.trim() && contactoValido && rgpd);
+  const canalLabel = canalContacto === "email" ? "email" : canalContacto === "llamada" ? "teléfono" : "WhatsApp";
+  const whatsappTexto = [
+    "Hola, he completado el diagnóstico de Decoreformas.",
+    `Nombre: ${nombre || "Sin indicar"}`,
+    `Proyecto: ${tipoTexto}`,
+    `Detalle: ${detalleTexto}`,
+    `Zona: ${zona}`,
+    `Cuándo: ${urgenciaTexto}`,
+    rangoTexto ? `Rango orientativo: ${rangoTexto}` : "",
+  ].filter(Boolean).join("\n");
+  const whatsappHref = `https://wa.me/34660565324?text=${encodeURIComponent(whatsappTexto)}`;
 
   const pasoActualIdx = PASOS_CON_PROGRESO.indexOf(fase);
   const mostrarProgreso = pasoActualIdx !== -1;
@@ -341,6 +367,7 @@ export default function DiagnosticoPanel({ reduce }: { reduce: boolean | null })
               <textarea
                 ref={textareaRef}
                 rows={2}
+                maxLength={promptActivo.campo === "tipo" ? 160 : promptActivo.campo === "detalle" ? 1200 : promptActivo.campo === "situacion" ? 600 : 300}
                 placeholder={PREGUNTAS_LIBRES[promptActivo.campo].placeholder}
                 value={respuestaActual}
                 onChange={(e) => setRespuestaActual(e.target.value)}
@@ -397,6 +424,7 @@ export default function DiagnosticoPanel({ reduce }: { reduce: boolean | null })
                 aria-label="Zona"
                 placeholder="Escribe tu municipio o barrio..."
                 autoComplete="off"
+                maxLength={120}
                 value={zona}
                 onChange={(e) => { setZona(e.target.value); setSugerenciasAbiertas(true); }}
                 onFocus={() => setSugerenciasAbiertas(true)}
@@ -546,68 +574,101 @@ export default function DiagnosticoPanel({ reduce }: { reduce: boolean | null })
 
         {fase === "contacto" && (
           <form onSubmit={enviar} style={{ display: "flex", flexDirection: "column", gap: "0.625rem" }}>
-            <h2 style={{ ...h2Style(), marginBottom: "0.125rem" }}>¿Dónde te mandamos el diagnóstico?</h2>
-            <p style={{ fontFamily: "var(--font-hanken), sans-serif", fontSize: "0.75rem", color: "rgba(241,250,238,0.45)", padding: "0 0.25rem", marginBottom: "0.25rem" }}>
-              Sin spam. Solo tu análisis y, si quieres, te llamamos.
+            <h2 style={{ ...h2Style(), marginBottom: "0.125rem" }}>¿Cómo prefieres que te contactemos?</h2>
+            <p style={{ fontFamily: "var(--font-hanken), sans-serif", fontSize: "0.75rem", color: "rgba(241,250,238,0.72)", padding: "0 0.25rem", marginBottom: "0.25rem" }}>
+              Elige un canal y te enviaremos una respuesta sobre tu proyecto.
             </p>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.5rem" }}>
-              <input
-                type="text"
-                placeholder="Tu nombre"
-                autoComplete="given-name"
-                required
-                aria-label="Tu nombre"
-                value={nombre}
-                onChange={(e) => setNombre(e.target.value)}
-                style={inputBase}
-              />
-              <input
-                type="tel"
-                placeholder="Teléfono o email"
-                autoComplete="tel"
-                required
-                aria-label="Teléfono o email de contacto"
-                value={contacto}
-                onChange={(e) => setContacto(e.target.value)}
-                style={inputBase}
-              />
+            <div role="group" aria-label="Canal de contacto" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "0.375rem" }}>
+              {([
+                ["whatsapp", "WhatsApp"],
+                ["llamada", "Llamada"],
+                ["email", "Email"],
+              ] as const).map(([valor, etiqueta]) => {
+                const activo = canalContacto === valor;
+                return (
+                  <button
+                    key={valor}
+                    type="button"
+                    aria-pressed={activo}
+                    onClick={() => {
+                      setCanalContacto(valor);
+                      setContacto("");
+                    }}
+                    style={{
+                      padding: "0.625rem 0.375rem",
+                      borderRadius: 9,
+                      border: `1px solid ${activo ? "#A8DADC" : "rgba(255,255,255,0.22)"}`,
+                      background: activo ? "rgba(168,218,220,0.18)" : "rgba(255,255,255,0.05)",
+                      color: "#F1FAEE",
+                      fontFamily: "var(--font-hanken), sans-serif",
+                      fontSize: "0.75rem",
+                      fontWeight: activo ? 700 : 500,
+                      cursor: "pointer",
+                    }}
+                  >
+                    {etiqueta}
+                  </button>
+                );
+              })}
             </div>
 
+            <input
+              type="text"
+              placeholder="Tu nombre"
+              autoComplete="name"
+              maxLength={120}
+              required
+              aria-label="Tu nombre"
+              value={nombre}
+              onChange={(e) => setNombre(e.target.value)}
+              style={inputBase}
+            />
+            <input
+              type={canalContacto === "email" ? "email" : "tel"}
+              placeholder={canalContacto === "email" ? "tu@email.com" : "Tu teléfono"}
+              autoComplete={canalContacto === "email" ? "email" : "tel"}
+              inputMode={canalContacto === "email" ? "email" : "tel"}
+              maxLength={180}
+              required
+              aria-label={canalContacto === "email" ? "Email de contacto" : "Teléfono de contacto"}
+              value={contacto}
+              onChange={(e) => setContacto(e.target.value)}
+              style={inputBase}
+            />
+            {contacto && !contactoValido && (
+              <p role="alert" style={{ color: "#F5A9AF", fontSize: "0.75rem", fontFamily: "var(--font-hanken), sans-serif", margin: 0 }}>
+                {canalContacto === "email" ? "Introduce un email válido." : "Introduce un teléfono de al menos 9 cifras."}
+              </p>
+            )}
+
             <label style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem", cursor: "pointer", marginTop: "0.25rem" }}>
-              <span
-                onClick={() => setRgpd((v) => !v)}
-                role="checkbox"
-                aria-checked={rgpd}
-                tabIndex={0}
-                onKeyDown={(e) => { if (e.key === " " || e.key === "Enter") { e.preventDefault(); setRgpd((v) => !v); } }}
+              <input
+                type="checkbox"
+                checked={rgpd}
+                onChange={(e) => setRgpd(e.target.checked)}
+                required
                 style={{
                   flexShrink: 0,
                   width: 18,
                   height: 18,
-                  borderRadius: 5,
-                  border: `1.5px solid ${rgpd ? "#A8DADC" : "rgba(255,255,255,0.35)"}`,
-                  background: rgpd ? "#A8DADC" : "transparent",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
+                  accentColor: "#A8DADC",
                   marginTop: "0.0625rem",
+                  cursor: "pointer",
                 }}
-              >
-                {rgpd && <CheckIconSmall />}
-              </span>
-              <span style={{ fontFamily: "var(--font-hanken), sans-serif", fontSize: "0.6875rem", color: "rgba(241,250,238,0.6)", lineHeight: 1.4 }}>
+              />
+              <span style={{ fontFamily: "var(--font-hanken), sans-serif", fontSize: "0.6875rem", color: "rgba(241,250,238,0.72)", lineHeight: 1.4 }}>
                 Acepto la política de privacidad y el tratamiento de mis datos para recibir este diagnóstico y ser contactado por Decoreformas.
               </span>
             </label>
 
             <button
               type="submit"
-              disabled={!nombre.trim() || !contacto.trim() || !rgpd}
+              disabled={!formularioValido}
               style={{
                 ...btnPrimary,
                 marginTop: "0.25rem",
-                opacity: nombre.trim() && contacto.trim() && rgpd ? 1 : 0.5,
-                cursor: nombre.trim() && contacto.trim() && rgpd ? "pointer" : "not-allowed",
+                opacity: formularioValido ? 1 : 0.5,
+                cursor: formularioValido ? "pointer" : "not-allowed",
               }}
             >
               Ver mi diagnóstico →
@@ -698,31 +759,51 @@ export default function DiagnosticoPanel({ reduce }: { reduce: boolean | null })
               Esto es una orientación inicial, no un presupuesto cerrado. El precio final se confirma tras una visita gratuita a tu proyecto.
             </p>
 
-            <div
-              style={{
-                borderTop: "1px solid rgba(255,255,255,0.14)",
-                paddingTop: "0.875rem",
-                marginBottom: "1rem",
-                display: "flex",
-                flexDirection: "column",
-                gap: "0.25rem",
-              }}
-            >
-              <span style={{ fontFamily: "var(--font-hanken), sans-serif", fontSize: "0.8125rem", fontWeight: 600, color: "#F1FAEE" }}>
-                En menos de 24h te llamamos.
-              </span>
-              <span style={{ fontFamily: "var(--font-hanken), sans-serif", fontSize: "0.75rem", color: "rgba(241,250,238,0.55)" }}>
-                25 años de oficio en Madrid Sur, con equipo propio, sin subcontratas.
-              </span>
-            </div>
+            {leadRecibido ? (
+              <div
+                role="status"
+                style={{
+                  borderTop: "1px solid rgba(255,255,255,0.14)",
+                  paddingTop: "0.875rem",
+                  marginBottom: "1rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.25rem",
+                }}
+              >
+                <span style={{ fontFamily: "var(--font-hanken), sans-serif", fontSize: "0.8125rem", fontWeight: 700, color: "#F1FAEE" }}>
+                  Solicitud recibida.
+                </span>
+                <span style={{ fontFamily: "var(--font-hanken), sans-serif", fontSize: "0.75rem", color: "rgba(241,250,238,0.72)" }}>
+                  Revisaremos los datos y te contactaremos por {canalLabel}.
+                </span>
+              </div>
+            ) : (
+              <div
+                role="alert"
+                style={{
+                  padding: "0.75rem 0.875rem",
+                  marginBottom: "0.875rem",
+                  background: "rgba(230,57,70,0.14)",
+                  border: "1px solid rgba(245,169,175,0.55)",
+                  borderRadius: 10,
+                  color: "#F1FAEE",
+                  fontFamily: "var(--font-hanken), sans-serif",
+                  fontSize: "0.8125rem",
+                  lineHeight: 1.45,
+                }}
+              >
+                El diagnóstico está listo, pero no hemos podido registrar tus datos. Envíanos el resumen por WhatsApp para que podamos responderte.
+              </div>
+            )}
 
             <a
-              href="https://wa.me/34660565324?text=Hola%2C%20acabo%20de%20hacer%20el%20diagn%C3%B3stico%20y%20me%20gustar%C3%ADa%20hablar."
+              href={whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
               style={{ ...btnPrimary, textDecoration: "none" }}
             >
-              Hablar por WhatsApp →
+              {leadRecibido ? "Añadir detalles por WhatsApp →" : "Enviar proyecto por WhatsApp →"}
             </a>
           </div>
         )}
@@ -744,8 +825,8 @@ export default function DiagnosticoPanel({ reduce }: { reduce: boolean | null })
             >
               {errorMsg}
             </p>
-            <a href="tel:+34660565324" style={{ ...btnPrimary, textDecoration: "none" }}>
-              Llamar ahora →
+            <a href={whatsappHref} target="_blank" rel="noopener noreferrer" style={{ ...btnPrimary, textDecoration: "none" }}>
+              Enviar proyecto por WhatsApp →
             </a>
           </div>
         )}

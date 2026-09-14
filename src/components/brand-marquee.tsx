@@ -14,17 +14,17 @@ interface Brand {
 
 const brands: Brand[] = [
   { name: "Porcelanosa", variant: "spaced", logo: { src: "/logos/porcelanosa_logo.svg", width: 130, height: 14 } },
-  { name: "Roca", variant: "italic", logo: { src: "/logos/RocaLogo.svg.webp", width: 70, height: 34 } },
+  { name: "Roca", variant: "italic", logo: { src: "/logos/RocaLogo.svg.webp", width: 70, height: 32 } },
   { name: "KNAUF", variant: "bold", logo: { src: "/logos/knauf.svg", width: 84, height: 54 } },
   { name: "HANSGROHE", sub: "Est. 1901", variant: "stamp", logo: { src: "/logos/hansgrohe.svg", width: 130, height: 20 } },
-  { name: "BTicino", variant: "pill", logo: { src: "/logos/bticino.svg", width: 96, height: 26 } },
-  { name: "Grohe", variant: "italic", logo: { src: "/logos/grohe.svg", width: 60, height: 46 } },
+  { name: "BTicino", variant: "pill", logo: { src: "/logos/bticino.svg", width: 95, height: 26 } },
+  { name: "Grohe", variant: "italic", logo: { src: "/logos/grohe.svg", width: 76, height: 46 } },
   { name: "JUNG", variant: "spaced", logo: { src: "/logos/jung.svg", width: 84, height: 22 } },
   { name: "ROCKWOOL", sub: "Desde 1937", variant: "stamp" },
-  { name: "Leroy Merlin Pro", variant: "plain", logo: { src: "/logos/leroy-merlin.svg", width: 44, height: 26 } },
+  { name: "Leroy Merlin Pro", variant: "plain", logo: { src: "/logos/leroy-merlin.svg", width: 43, height: 26 } },
   { name: "SCHNEIDER Electric", variant: "bold", logo: { src: "/logos/schneider-electric.svg", width: 118, height: 54 } },
   { name: "Saunier Duval", variant: "italic", logo: { src: "/logos/Saunier-duval-logo.svg", width: 90, height: 49 } },
-  { name: "SIEMENS", variant: "pill", logo: { src: "/logos/siemens.svg", width: 96, height: 15 } },
+  { name: "SIEMENS", variant: "pill", logo: { src: "/logos/siemens.svg", width: 94, height: 15 } },
 ];
 
 const items = [...brands, ...brands];
@@ -48,7 +48,6 @@ function BrandItem({ name, sub, variant, logo }: Brand) {
           alt={name}
           width={logo.width}
           height={logo.height}
-          style={{ width: "auto", height: logo.height, maxWidth: logo.width }}
         />
       </span>
     );
